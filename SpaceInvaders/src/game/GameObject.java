@@ -11,7 +11,7 @@ public abstract class GameObject implements IAttack {
 
 	// ______________________ Constructor ______________________    
 
-	public GameObject( Game game, int x, int y, int live) {
+	public GameObject(Game game, int x, int y, int live) {
 		posX = x;
 		posY = y;
 		this.game = game;

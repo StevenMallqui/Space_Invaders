@@ -1,6 +1,6 @@
 package game;
 
-public class UCMShip {
+public class UCMShip extends Ship {
 	
 	// ______________________ Variables   ______________________ 
 	

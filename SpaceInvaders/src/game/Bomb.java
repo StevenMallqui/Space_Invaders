@@ -1,19 +1,19 @@
 package game;
 
 
-public class Bomb {
+public class Bomb extends Weapons {
 
 	// ______________________ Variables  ______________________  
-	
-	private int posX;
-	private int posY;
-	private boolean activeBomb;
 	
 	// ______________________ Constructor ______________________    
 	
 	// Create Bomb
-	public Bomb() {
-		activeBomb = false;
+	public Bomb(Game game, int x, int y, int lives) {
+		super(game, x, y, lives);
+		
+		posX = x;
+		posY = y;
+		live = lives;
 	}
 	
 	// ______________________   Methods   ______________________
