@@ -1,19 +1,25 @@
-package /* nombre de paquete */
-
-import /* clases importadas */
+package game;
 
 public abstract class GameObject implements IAttack {
-	protected /* coordinadas */;
+	protected int posX;
+	protected int posY;
 	protected int live;
 	protected Game game;
 	
-	public GameObject( Game game, /* coordinadas iniciales */, int live) {
-		/* almacenar coordinadas iniciales */
+	public GameObject( Game game, int x, int y, int live) {
+		posX = x;
+		posY = y;
 		this.game = game;
 		this.live = live;
 	}
 	
-	/* métodos que devuelven el valor de las coordinadas */
+	public int getPosX() {
+		return posX;
+	}
+	
+	public int getPosY() {
+		return posY;
+	}
 
 	public boolean isAlive() {
 		return this.live > 0;
@@ -23,8 +29,8 @@ public abstract class GameObject implements IAttack {
 		return this.live;
 	}
 	
-	public boolean isOnPosition( /* otras coordinadas */ ) {
-		return /* coordinadas = otras coordinadas */ ;
+	public boolean isOnPosition(int x, int y) {
+		return (x == posX && y == posY);
 	}
 
 	public void getDamage (int damage) {
@@ -32,7 +38,7 @@ public abstract class GameObject implements IAttack {
 	}
 	
 	public boolean isOut() {
-		return !game.isOnBoard( /* coordinadas */ );
+		return !game.isOnBoard(posX, posY);
 	}
 
 	public abstract void computerAction();

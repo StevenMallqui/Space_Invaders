@@ -69,7 +69,7 @@ public class Game implements IPlayerController{
 		currentCycle += 1;
 	}
 	
-	public boolean isOnBoard( /* coordinadas */ ) {
+	public boolean isOnBoard(int posX, int posY /* coordinadas */ ) {
 
 		return /* condición de rango sobre las coordenadas */ ;
 	}
