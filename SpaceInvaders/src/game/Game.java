@@ -1,4 +1,3 @@
-
 package game;
 
 import java.util.Random;
@@ -305,9 +304,23 @@ public class Game {
 
 	public boolean validMovement(String direction, String spaces) {
 		boolean ok = false;
+		int num = Integer.parseInt(spaces);
 		if (direction.equals("right") || direction.equals("left"))
-			if (spaces.equals("1") || spaces.equals("2")) 
-			ok = true;	
+			if (num == 1 || num == 2) 
+			ok = true;
+		
+		if (ok) {
+			if (direction.equals("left")) {
+				if ((ucm.getY() - num) < MinColRow)
+					ok = false;
+			}
+			else	
+				if ((ucm.getY() + num) > NUMCOL-1)
+					ok = false;
+
+			
+		}
+			
 		
 		return ok;
 	}
