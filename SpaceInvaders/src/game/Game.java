@@ -2,13 +2,17 @@ package game;
 
 import java.util.Random;
 
+import stuff.BoardInitializer;
+import stuff.GameObjectBoard;
+import stuff.UCMShip;
+
 public class Game {
 		
 	// ______________________ Variables   ______________________  
 	
 	// World Borders :
-	private final int NUMFIL = 8;
-	private final int NUMCOL = 9 ;
+	private final static int DIM_Y = 8;
+	private final static int DIM_X = 9 ;
 	private final int MinColRow = 0;
 	
 	// Objects
@@ -19,6 +23,8 @@ public class Game {
 	private Level level;
 	private Ovni ufo;
 	private Random rand;
+	private BoardInitializer initializer;
+	private GameObjectBoard board;
 	
 	// Variables
 	private int cycle = 0;
@@ -26,6 +32,7 @@ public class Game {
 	private boolean direction = false;
 	private boolean shockwave = false;
 	private int shockDamage = 1;
+	
 
 	// End
 	private boolean end = false;
@@ -33,8 +40,10 @@ public class Game {
 
 	// ______________________ Constructor ______________________    
 
-	public Game(String level,Random rand) {
+	public Game(Level level,Random rand) {
 		this.rand = rand;
+		this.level = level;
+		/*
 		if(level.equals("EASY")) 
 			this.level = Level.EASY;
 		
@@ -48,7 +57,9 @@ public class Game {
 		regularList = new RegularShipList(this.level);
 		destroyerList = new DestroyerShipList(this.level);
 		ufo = new Ovni();
-		missile = new UCMMisil();
+		missile = new UCMMisil();*/
+		initializer = new BoardInitializer();
+		initGame();
 		
 	}
 
@@ -56,6 +67,15 @@ public class Game {
 
 	// -------------------   Screen Printer  -------------------
 
+	//Initializer 
+	public void initGame () {
+		cycle = 0;
+		board = initializer.initialize(this, level);
+		ucm = new UCMShip(this, DIM_X / 2, DIM_Y - 1);
+		board.add(ucm);
+	}
+	
+	
 	//COLLISIONS && PRINTING 
 	public String toString(int x,int y) {
 		String ship = "";
@@ -159,7 +179,7 @@ public class Game {
 	// update Bombs
 	private void updateBombs() {
 		destroyerList.shootBombs(rand);
-		destroyerList.advanceBombs(NUMFIL);
+		destroyerList.advanceBombs(DIM_Y);
 		
 		if (destroyerList.bombDestroyed(ucm.getX(), ucm.getY())) 
 			ucm.takeLife(destroyerList.getDamage());
@@ -191,7 +211,7 @@ public class Game {
 	
 	// checkHorizontalBorder
 	private void checkHorizontalBorder() {
-		if (destroyerList.reachLimit(NUMCOL-1, MinColRow, direction) || regularList.reachLimit(NUMCOL-1, MinColRow, direction)) {
+		if (destroyerList.reachLimit(DIM_X-1, MinColRow, direction) || regularList.reachLimit(DIM_X-1, MinColRow, direction)) {
 			destroyerList.goDestroyersDown();
 			regularList.goRegularsDown();
 			
@@ -224,7 +244,7 @@ public class Game {
 			System.out.println("\n   ALIENS WIN");
 		}
 		
-		else if(regularList.reachBottom(NUMFIL-1) || destroyerList.reachBottom(NUMFIL-1)) {
+		else if(regularList.reachBottom(DIM_Y-1) || destroyerList.reachBottom(DIM_Y-1)) {
 			finished = true;
 			System.out.println("\n   ALIENS WIN");
 		}
@@ -252,8 +272,8 @@ public class Game {
 	public void shootShockwave() {
 		if (!ufo.getActive())
 			shockwave = false;
-		for (int i = 0; i < NUMFIL; i++)
-			for (int j = 0; j < NUMCOL; j++) {
+		for (int i = 0; i < DIM_Y; i++)
+			for (int j = 0; j < DIM_X; j++) {
 				points += regularList.damage(i, j, shockDamage);
 				points += destroyerList.damage(i, j, shockDamage);
 				points += ufo.damage(i, j, shockDamage);
@@ -279,12 +299,12 @@ public class Game {
 	}
 	// get number of rows
 	public int getNUMFIL() {
-		return NUMFIL;
+		return DIM_Y;
 	}
 	
 	// get number of columns
 	public int getNUMCOL() {
-		return NUMCOL;
+		return DIM_X;
 	}
 	
 	//COUNTER (CYCLE)
@@ -315,7 +335,7 @@ public class Game {
 					ok = false;
 			}
 			else	
-				if ((ucm.getY() + num) > NUMCOL-1)
+				if ((ucm.getY() + num) > DIM_X-1)
 					ok = false;
 
 			

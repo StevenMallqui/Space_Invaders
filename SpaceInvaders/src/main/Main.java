@@ -13,7 +13,6 @@ public class Main {
 		 long seed = 0l;
 		 String level;
 		 
-		 // marcos nepe
 		 // Read arguments
 		 if (args.length > 0) {
 			 
