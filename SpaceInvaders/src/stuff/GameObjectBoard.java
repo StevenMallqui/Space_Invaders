@@ -1,3 +1,5 @@
+import game.GameObject;
+
 package /* nombre de paquete */
 
 import /* clases importadas */

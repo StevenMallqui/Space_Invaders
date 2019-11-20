@@ -1,7 +1,6 @@
-% !TEX encoding = IsoLatin9
-package /* nombre de paquete */;
+package game;
 
-import /* clases importadas */
+import game.GameObject;
 
 public class Game implements IPlayerController{
 	public final static int DIM_X = 9;
