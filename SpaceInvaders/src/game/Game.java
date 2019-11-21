@@ -344,4 +344,9 @@ public class Game {
 		
 		return ok;
 	}
+
+	public boolean isOnBoard(int posX, int posY) {
+		// TODO Auto-generated method stub
+		return false;
+	}
 }

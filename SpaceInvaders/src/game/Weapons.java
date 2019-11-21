@@ -5,6 +5,7 @@ public class Weapons extends GameObject {
 	// ______________________ Variables   ______________________  
 
 	protected int damage;
+	
 	// ______________________ Constructor ______________________    
 
 	public Weapons(Game game, int x, int y, int live) {
