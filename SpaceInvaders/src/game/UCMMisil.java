@@ -12,7 +12,7 @@ public class UCMMisil extends Weapons {
 
 	// ______________________ Constructor ______________________  
 
-	public UCMMisil() {
+	public UCMMisil(Game game, int x, int y, int live) {
 		active = false;
 	}
 
