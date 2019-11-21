@@ -70,7 +70,7 @@ public class Game implements IPlayerController{
 	
 	public boolean isOnBoard(int posX, int posY /* coordinadas */ ) {
 
-		return /* condición de rango sobre las coordenadas */ ;
+		return /* condiciï¿½n de rango sobre las coordenadas */ ;
 	}
 	
 	public void exit() {
@@ -88,5 +88,5 @@ public class Game implements IPlayerController{
 		else return "This should not happen";
 	}
 	
-	// TODO implementar los métodos del interfaz IPlayerController
+	// TODO implementar los mï¿½todos del interfaz IPlayerController
 }
