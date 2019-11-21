@@ -1,7 +1,7 @@
 package game;
 
 
-public class UCMMisil {
+public class UCMMisil extends Weapons {
 	
 	// ______________________ Variables   ______________________  
 	
