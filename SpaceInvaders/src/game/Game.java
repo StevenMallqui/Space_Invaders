@@ -142,9 +142,18 @@ public class Game {
 	
 	//Player wins
 	
+	private boolean playerWin() {
+		return AlienShip.allDead();
+	}
+	
+	//Aliens wins
+	public boolean aliensWin() {
+		return !player.isAlive() || AlienShip.haveLanded();
+	}
 	
 	// User Info
 	
+	/*
 	public String scoreBoard() {
 		String text = "";
 		int suma = destroyerList.getCounter()+regularList.getCounter();
@@ -157,11 +166,15 @@ public class Game {
 		
 		return text;
 	}
-	
+	*/
 	// ----------------------   Update   -----------------------
 
 	// Update
 	public void update() {
+		board.computerAction();
+		board.update();
+		cycle +=1;
+		/*
 		cycle++;
 		
 		updateMissile();
@@ -172,9 +185,11 @@ public class Game {
 			updateEnemies();
 		
 		updateUFO();
+		*/
 	}
 	
 	// Update Missile
+	/*
 	private void updateMissile() {
 		boolean impact = false;
 		missile.moveMisil(MinColRow);;
@@ -229,8 +244,17 @@ public class Game {
 	public void shootMissile() {
 		missile.shoot(ucm.getX(), ucm.getY());
 	}
+	*/
+	
+	//Return a boolean if it´s on board
+	
+	public boolean isOnBoard(int posX, int posY) {
+
+		return false;
+	}
 	
 	// Move ship
+	/*
 	public void moveUCMShip(String dir, String num) {
 		int spaces = Integer.parseInt(num);
 		
@@ -260,6 +284,8 @@ public class Game {
 	}
 	
 	// update ufo
+	
+	/*
 	private void updateUFO() {
 		if (ufo.getActive())
 			ufo.moverY(MinColRow);
@@ -270,8 +296,11 @@ public class Game {
 				ufo.starting();
 		}
 	}
+	*/
+	
 	
 	//GAME OVER 
+	/*
 	public boolean gameFinished() {
 		boolean finished = false;
 		
@@ -279,6 +308,7 @@ public class Game {
 			finished = true;
 			ucm.setSkin("!xx!?");
 			System.out.println("\n   ALIENS WIN");
+		
 		}
 		
 		else if(regularList.reachBottom(DIM_Y-1) || destroyerList.reachBottom(DIM_Y-1)) {
@@ -299,13 +329,15 @@ public class Game {
 			System.out.println("\n   PLAYER WIN");
 		}
 		
-		return finished; 
+		return finished;
+		
 	}
-
+	 */ 
 	
 	// ----------------------  Operations ----------------------		
 	
 	//ACTIVATE SHOCKWAVE 
+	/*
 	public void shootShockwave() {
 		if (!ufo.getActive())
 			shockwave = false;
@@ -315,7 +347,7 @@ public class Game {
 				points += destroyerList.damage(i, j, shockDamage);
 				points += ufo.damage(i, j, shockDamage);
 			}
-		
+		*/
 	}
 
 	// End game
@@ -323,13 +355,24 @@ public class Game {
 		end = true;
 	}
 	
+	//When game is finished 
+	
+	public String getWinnerMessage () {
+		if (playerWin()) return "Player win!";
+		else if (aliensWin()) return "Aliens win!";
+		else if (end) return "Player exits the game";
+		else return "This should not happen";
+	}
+	
+	/*
 	// Reset Game
 	public void resetGame() {
 		reset = true;
 	}
-	
+	*/
 	// ----------------------  Get  Info  ----------------------		
 
+	/*
 	// get reset
 	public boolean getReset() {
 		return reset;
@@ -381,9 +424,6 @@ public class Game {
 		
 		return ok;
 	}
-
-	public boolean isOnBoard(int posX, int posY) {
-		// TODO Auto-generated method stub
-		return false;
-	}
+	*/
+	
 }
