@@ -1,7 +1,7 @@
 package game;
 
 
-public class UCMMisil {
+public class UCMMisil extends Weapons {
 	
 	// ______________________ Variables   ______________________  
 	
@@ -12,7 +12,7 @@ public class UCMMisil {
 
 	// ______________________ Constructor ______________________  
 
-	public UCMMisil() {
+	public UCMMisil(Game game, int x, int y, int live) {
 		active = false;
 	}
 
