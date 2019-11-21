@@ -4,6 +4,7 @@ import java.util.Random;
 
 import stuff.BoardInitializer;
 import stuff.GameObjectBoard;
+import stuff.Level;
 import stuff.UCMShip;
 
 public class Game {
@@ -75,9 +76,33 @@ public class Game {
 		board.add(ucm);
 	}
 	
+	//Return our random number 
+	
+	public Random getRandom() {
+		return rand;
+	}
+	
+	//Return the level selected 
+	
+	public Level getLevel() {
+		return level;
+	}
+	
+	//Restart the game
+	
+	public void reset() {
+		initGame();
+	}
+	
+	//Add objects 
+	
+	public void addObject(GameObject object) {
+		board.add(object);
+	}
 	
 	//COLLISIONS && PRINTING 
 	public String toString(int x,int y) {
+		/*
 		String ship = "";
 		
 		//UCMSHIP POSITION
@@ -103,11 +128,23 @@ public class Game {
 		//OVNI POSITION
 		else if(ufo.getActive() && ufo.location(x, y))
 			ship = ufo.toString();
-		
+
 		return ship;
+		*/
+		return board.toString(x,y);
 	}
 	
+	//Game is finished 
+	
+	public boolean isFinished() {
+		return playerWin() || aliensWin() || doExit;
+	}
+	
+	//Player wins
+	
+	
 	// User Info
+	
 	public String scoreBoard() {
 		String text = "";
 		int suma = destroyerList.getCounter()+regularList.getCounter();
