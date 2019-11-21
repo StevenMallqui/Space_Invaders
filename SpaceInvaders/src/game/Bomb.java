@@ -21,9 +21,6 @@ public class Bomb extends Weapons {
 	// ----------------------   Get Info  ----------------------
 	
 	// Get Active bomb
-	public boolean getActiveBomb() {
-		return activeBomb;
-	}
 	
 	// Get Row
 	public int getX() {
@@ -48,9 +45,6 @@ public class Bomb extends Weapons {
 	}
 	
 	// Deactivate bomb
-	public void deactivateBomb() {
-		activeBomb = false;
-	}
 
 	// ----------------------  Operations ----------------------
 		
@@ -60,10 +54,4 @@ public class Bomb extends Weapons {
 	}
 	
 	// Shoot Bomb
-	public void shootBomb(int X, int Y) {
-		activeBomb = true;
-		posX = X;
-		posY = Y;
-	}
-	
 }

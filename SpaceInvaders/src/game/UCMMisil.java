@@ -3,6 +3,7 @@ package game;
 
 public class UCMMisil extends Weapons {
 	
+
 	// ______________________ Variables   ______________________  
 	
 	private int posX;
@@ -13,7 +14,8 @@ public class UCMMisil extends Weapons {
 	// ______________________ Constructor ______________________  
 
 	public UCMMisil(Game game, int x, int y, int live) {
-		active = false;
+		super(game, x, y, live);
+		// TODO Auto-generated constructor stub
 	}
 
 	// ______________________   Methods   ______________________

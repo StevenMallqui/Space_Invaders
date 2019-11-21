@@ -2,6 +2,7 @@ package game;
 
 public class UCMShip extends Ship {
 	
+
 	// ______________________ Variables   ______________________ 
 	
 	 private int life;
@@ -11,10 +12,9 @@ public class UCMShip extends Ship {
 
 	// ______________________ Constructor ______________________  
 	 
-	public UCMShip() {
-		life = 3;
-		posX = 7;
-		posY = 4;
+		public UCMShip(Game game, int x, int y, int live) {
+			super(game, x, y, live);
+			// TODO Auto-generated constructor stub
 		}
 
 
