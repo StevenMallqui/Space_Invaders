@@ -1,6 +1,6 @@
 package game;
 
-public class Weapons extends GameObject {
+public abstract class Weapons extends GameObject {
 	
 	// ______________________ Variables   ______________________  
 
@@ -19,27 +19,9 @@ public class Weapons extends GameObject {
 		return damage;
 	}
 
-	@Override
-	public void computerAction() {
-		// TODO Auto-generated method stub
-		
-	}
+	public abstract void computerAction();
+	public abstract void onDelete();
+	public abstract void move();
+	public abstract String toString();
 
-	@Override
-	public void onDelete() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void move() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public String toString() {
-		// TODO Auto-generated method stub
-		return null;
-	}
 }

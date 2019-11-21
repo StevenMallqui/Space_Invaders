@@ -1,12 +1,13 @@
 package game;
 
-public class DestroyerAlien extends AlienShip {
+public class EnemyShip extends Ship {
 
+	
 	// ______________________ Variables   ______________________  
 
 	// ______________________ Constructor ______________________    
 
-	public DestroyerAlien(Game game, int x, int y, int live) {
+	public EnemyShip(Game game, int x, int y, int live) {
 		super(game, x, y, live);
 		// TODO Auto-generated constructor stub
 	}

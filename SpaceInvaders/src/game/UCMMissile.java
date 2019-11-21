@@ -1,12 +1,13 @@
 package game;
 
-public class DestroyerAlien extends AlienShip {
 
+public class UCMMissile extends Weapons {
+	
 	// ______________________ Variables   ______________________  
 
 	// ______________________ Constructor ______________________    
 
-	public DestroyerAlien(Game game, int x, int y, int live) {
+	public UCMMissile(Game game, int x, int y, int live) {
 		super(game, x, y, live);
 		// TODO Auto-generated constructor stub
 	}
@@ -21,4 +22,5 @@ public class DestroyerAlien extends AlienShip {
 
 	// ----------------------  Operations ----------------------
 
+	
 }
