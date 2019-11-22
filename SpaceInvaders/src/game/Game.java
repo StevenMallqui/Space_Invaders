@@ -1,43 +1,47 @@
 package game;
 
+
 import java.util.Random;
 
-import stuff.BoardInitializer;
-import stuff.GameObjectBoard;
-import stuff.Level;
-import stuff.UCMShip;
+import stuff.*;
 
-public class Game {
+public class Game implements IPlayerController {
 		
 	// ______________________ Variables   ______________________  
 	
 	// World Borders :
 	private final static int DIM_Y = 8;
 	private final static int DIM_X = 9 ;
-	private final int MinColRow = 0;
+	//private final int MinColRow = 0;
 	
 	// Objects
 	private UCMShip ucm;
+	/*
 	private RegularShipList regularList;
 	private DestroyerShipList destroyerList;
 	private UCMMisil missile;
-	private Level level;
 	private Ovni ufo;
-	private Random rand;
+	*/
 	private BoardInitializer initializer;
 	private GameObjectBoard board;
 	
 	// Variables
 	private int cycle = 0;
+	private Random rand;
+	private Level level;
+
+
+	/*
 	private int points = 0;
 	private boolean direction = false;
 	private boolean shockwave = false;
 	private int shockDamage = 1;
-	
+	*/
 
 	// End
 	private boolean end = false;
-	private boolean reset = false;
+	
+	//private boolean reset = false;
 
 	// ______________________ Constructor ______________________    
 
@@ -148,7 +152,7 @@ public class Game {
 	
 	//Aliens wins
 	public boolean aliensWin() {
-		return !player.isAlive() || AlienShip.haveLanded();
+		return !ucm.isAlive() || AlienShip.haveLanded();
 	}
 	
 	// User Info
@@ -347,9 +351,10 @@ public class Game {
 				points += destroyerList.damage(i, j, shockDamage);
 				points += ufo.damage(i, j, shockDamage);
 			}
-		*/
+		
 	}
-
+	 */
+	
 	// End game
 	public void endGame() {
 		end = true;
@@ -362,6 +367,42 @@ public class Game {
 		else if (aliensWin()) return "Aliens win!";
 		else if (end) return "Player exits the game";
 		else return "This should not happen";
+	}
+
+	@Override
+	public boolean move(int numCells) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean shootLaser() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean shockWave() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public void receivePoints(int points) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void enableShockWave() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void enableMissile() {
+		// TODO Auto-generated method stub
+		
 	}
 	
 	/*
