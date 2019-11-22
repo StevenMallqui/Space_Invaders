@@ -8,8 +8,9 @@ public abstract class Weapons extends GameObject {
 	
 	// ______________________ Constructor ______________________    
 
-	public Weapons(Game game, int x, int y, int live) {
-		super(game, x, y, live);
+	public Weapons(Game game, int x, int y, int damage) {
+		super(game, x, y, 1);
+		this.damage = damage;
 	}
 
 	// ______________________   Methods   ______________________
@@ -19,6 +20,7 @@ public abstract class Weapons extends GameObject {
 		return damage;
 	}
 
+	// abstract
 	public abstract void computerAction();
 	public abstract void onDelete();
 	public abstract void move();

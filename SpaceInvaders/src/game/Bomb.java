@@ -7,9 +7,27 @@ public class Bomb extends Weapons {
 
 	// ______________________ Constructor ______________________    
 
-	public Bomb(Game game, int x, int y, int live) {
-		super(game, x, y, live);
+	public Bomb(Game game, int x, int y) {
+		super(game, x, y, 1);
 		// TODO Auto-generated constructor stub
+	}
+
+	public void computerAction() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void onDelete() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void move() {
+		posY++;
+	}
+
+	public String toString() {
+		return "*";
 	}
 
 	// ______________________   Methods   ______________________

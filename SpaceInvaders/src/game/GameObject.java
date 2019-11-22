@@ -8,7 +8,7 @@ public abstract class GameObject {
 	protected int posY;
 	protected int live;
 	protected Game game;
-
+	
 	// ______________________ Constructor ______________________    
 
 	public GameObject(Game game, int x, int y, int live) {
@@ -63,5 +63,5 @@ public abstract class GameObject {
 	public boolean isOut() {
 		return !game.isOnBoard(posX, posY);
 	}
-
+	
 }
