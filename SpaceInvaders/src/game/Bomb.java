@@ -3,8 +3,6 @@ package game;
 
 public class Bomb extends Weapons {
 
-	// ______________________ Variables   ______________________  
-
 	// ______________________ Constructor ______________________    
 
 	public Bomb(Game game, int x, int y) {
@@ -12,34 +10,66 @@ public class Bomb extends Weapons {
 		// TODO Auto-generated constructor stub
 	}
 
+	// ______________________   Methods   ______________________
+
+	// Computer action
 	public void computerAction() {
-		// TODO Auto-generated method stub
-		
+		// See if bomb can be shot
 	}
 
+	// On delete
 	public void onDelete() {
-		// TODO Auto-generated method stub
+		// No clue
 		
 	}
 
+	// move
 	public void move() {
 		posY++;
 	}
 
+	// skin
 	public String toString() {
 		return "*";
 	}
 
-	// ______________________   Methods   ______________________
-
-	// ----------------------   Get Info  ----------------------
-
-
-	// ----------------------   Set Info  ----------------------
-
-
-	// ----------------------  Operations ----------------------
-
 
 	
 }
+
+/*
+//Get Position X
+public int getPosX() {
+	return posX;
+}
+
+//Get Position Y
+public int getPosY() {
+	return posY;
+}
+
+//Is object alive
+public boolean isAlive() {
+	return this.live > 0;
+}
+
+//Get lives
+public int getLive() {
+	return this.live;
+}
+
+//is in current position
+public boolean isOnPosition(int x, int y) {
+	return (x == posX && y == posY);
+}
+
+//get object damage
+public void getDamage (int damage) {
+	this.live = damage >= this.live ? 0 : this.live - damage;
+}
+
+//is out of bounds
+public boolean isOut() {
+	return !game.isOnBoard(posX, posY);
+}
+*/

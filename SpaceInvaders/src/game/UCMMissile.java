@@ -3,46 +3,69 @@ package game;
 
 public class UCMMissile extends Weapons {
 	
-	// ______________________ Variables   ______________________  
-
 	// ______________________ Constructor ______________________    
 
-	public UCMMissile(Game game, int x, int y, int live) {
-		super(game, x, y, live);
-		// TODO Auto-generated constructor stub
-	}
-
-	public void computerAction() {
-		
-	}
-
-	@Override
-	public void onDelete() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void move() {
-		// TODO Auto-generated method stub
-		posY--;
-	}
-
-	@Override
-	public String toString() {
-		// TODO Auto-generated method stub
-		return "oo";
+	public UCMMissile(Game game, int x, int y) {
+		super(game, x, y, 1);
 	}
 
 	// ______________________   Methods   ______________________
 
-	// ----------------------   Get Info  ----------------------
+	public void computerAction() {
+		// Not USed
+	}
 
+	// On delete
+	public void onDelete() {
+		// No clue
+		
+	}
 
-	// ----------------------   Set Info  ----------------------
+	// move
+	public void move() {
+		posY--;
+	}
 
-
-	// ----------------------  Operations ----------------------
+	// skin
+	public String toString() {
+		return "oo";
+	}
 
 	
 }
+/*
+// Get Position X
+public int getPosX() {
+	return posX;
+}
+
+// Get Position Y
+public int getPosY() {
+	return posY;
+}
+
+// Is object alive
+public boolean isAlive() {
+	return this.live > 0;
+}
+
+// Get lives
+public int getLive() {
+	return this.live;
+}
+
+// is in current position
+public boolean isOnPosition(int x, int y) {
+	return (x == posX && y == posY);
+}
+
+// get object damage
+public void getDamage (int damage) {
+	this.live = damage >= this.live ? 0 : this.live - damage;
+}
+
+// is out of bounds
+public boolean isOut() {
+	return !game.isOnBoard(posX, posY);
+}
+*/
