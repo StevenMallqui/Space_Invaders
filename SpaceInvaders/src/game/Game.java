@@ -23,7 +23,7 @@ public class Game implements IPlayerController {
 	private Ovni ufo;
 	*/
 	private BoardInitializer initializer;
-	private GameObjectBoard board;
+	GameObjectBoard board;
 	
 	// Variables
 	private int cycle = 0;
