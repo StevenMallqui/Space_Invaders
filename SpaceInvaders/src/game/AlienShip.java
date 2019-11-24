@@ -1,6 +1,6 @@
 package game;
 
-public class AlienShip extends EnemyShip {
+public abstract class AlienShip extends EnemyShip {
 
 	// ______________________ Variables   ______________________  
 

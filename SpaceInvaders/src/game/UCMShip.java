@@ -2,15 +2,15 @@ package game;
 
 public class UCMShip extends Ship {
 
-	// ______________________ Variables   ______________________  
-
 	// ______________________ Constructor ______________________    
 
 	public UCMShip(Game game, int x, int y, int live) {
-		super(game, x, y, live);
+		super(game, 7, 4, 3);
 		// TODO Auto-generated constructor stub
 	}
 
+	// ______________________   Methods   ______________________
+	
 	@Override
 	public void computerAction() {
 		// TODO Auto-generated method stub
@@ -24,7 +24,7 @@ public class UCMShip extends Ship {
 	}
 
 	@Override
-	public void move() {
+	public void move(int spaces) {
 		// TODO Auto-generated method stub
 		
 	}
@@ -35,15 +35,47 @@ public class UCMShip extends Ship {
 		return null;
 	}
 
-	// ______________________   Methods   ______________________
+	@Override
+	public void move() {
+		// TODO Auto-generated method stub
+		
+	}
 
-	// ----------------------   Get Info  ----------------------
-
-
-	// ----------------------   Set Info  ----------------------
-
-
-	// ----------------------  Operations ----------------------
-	
-	
 }
+
+/*
+//Get Position X
+public int getPosX() {
+	return posX;
+}
+
+//Get Position Y
+public int getPosY() {
+	return posY;
+}
+
+//Is object alive
+public boolean isAlive() {
+	return this.live > 0;
+}
+
+//Get lives
+public int getLive() {
+	return this.live;
+}
+
+//is in current position
+public boolean isOnPosition(int x, int y) {
+	return (x == posX && y == posY);
+}
+
+//get object damage
+public void getDamage (int damage) {
+	this.live = damage >= this.live ? 0 : this.live - damage;
+}
+
+//is out of bounds
+public boolean isOut() {
+	return !game.isOnBoard(posX, posY);
+}
+*/
