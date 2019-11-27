@@ -1,4 +1,7 @@
-package game;
+package gameObjects;
+
+import game.Game;
+import game.IAttack;
 
 public abstract class GameObject implements IAttack {
 	

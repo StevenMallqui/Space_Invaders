@@ -1,4 +1,4 @@
-import game.GameObject;
+import gameObjects.GameObject;
 
 package /* nombre de paquete */
 

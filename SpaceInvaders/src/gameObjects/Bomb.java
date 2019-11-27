@@ -1,5 +1,6 @@
-package game;
+package gameObjects;
 
+import game.Game;
 
 public class Bomb extends Weapons {
 

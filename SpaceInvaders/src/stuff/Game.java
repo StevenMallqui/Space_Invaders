@@ -1,6 +1,6 @@
 package game;
 
-import game.GameObject;
+import gameObjects.GameObject;
 
 public class Game implements IPlayerController{
 	public final static int DIM_X = 9;

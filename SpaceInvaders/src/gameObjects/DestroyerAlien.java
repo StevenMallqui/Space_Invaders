@@ -1,12 +1,14 @@
-package game;
+package gameObjects;
 
-public class RegularAlien extends AlienShip {
+import game.Game;
+
+public class DestroyerAlien extends AlienShip {
 
 	// ______________________ Variables   ______________________  
 
 	// ______________________ Constructor ______________________    
 
-	public RegularAlien(Game game, int x, int y, int live) {
+	public DestroyerAlien(Game game, int x, int y, int live) {
 		super(game, x, y, live);
 		// TODO Auto-generated constructor stub
 	}
@@ -27,7 +29,8 @@ public class RegularAlien extends AlienShip {
 
 	// Get skin
 	public String toString() {
-		return "R[" + lives + "]";
+		return "D[" + lives + "]";
 	}
+
 
 }
