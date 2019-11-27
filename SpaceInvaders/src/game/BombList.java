@@ -5,7 +5,7 @@ import java.util.Random;
 
 public class BombList {
 	
-	// ______________________  Variables  ______________________
+/*	// ______________________  Variables  ______________________
 	
 	private Level level;
 	private Bomb []bomb;
@@ -93,7 +93,7 @@ public class BombList {
 			}
 		return impacted;
 	}
-
+*/
 	
 }
 	

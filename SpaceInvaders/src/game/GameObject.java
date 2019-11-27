@@ -6,7 +6,7 @@ public abstract class GameObject {
 
 	protected int posX;
 	protected int posY;
-	protected int live;
+	protected int lives;
 	protected Game game;
 	
 	// ______________________ Constructor ______________________    
@@ -15,7 +15,7 @@ public abstract class GameObject {
 		posX = x;
 		posY = y;
 		this.game = game;
-		this.live = live;
+		this.lives = live;
 	}
 
 	// ______________________   Methods   ______________________
@@ -41,12 +41,12 @@ public abstract class GameObject {
 
 	// Is object alive
 	public boolean isAlive() {
-		return this.live > 0;
+		return this.lives > 0;
 	}
 
 	// Get lives
 	public int getLive() {
-		return this.live;
+		return this.lives;
 	}
 	
 	// is in current position
@@ -54,9 +54,11 @@ public abstract class GameObject {
 		return (x == posX && y == posY);
 	}
 
-	// get object damage
-	public void getDamage (int damage) {
-		this.live = damage >= this.live ? 0 : this.live - damage;
+	// take crash damage
+	public void damageObject (int damage) {
+		// damages object, and if is dealt more damage than
+		// life it stays at 0 health
+		this.lives = damage >= this.lives ? 0 : this.lives - damage;
 	}
 	
 	// is out of bounds
