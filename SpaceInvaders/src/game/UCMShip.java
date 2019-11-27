@@ -1,6 +1,8 @@
 package game;
 
 public class UCMShip extends Ship {
+	
+	private boolean shockwave = false;
 
 	// ______________________ Constructor ______________________    
 
@@ -11,71 +13,33 @@ public class UCMShip extends Ship {
 
 	// ______________________   Methods   ______________________
 	
-	@Override
+	// computer action -----------------------------------------
 	public void computerAction() {
 		// TODO Auto-generated method stub
 		
 	}
 
-	@Override
+	// on delete -----------------------------------------------
 	public void onDelete() {
 		// TODO Auto-generated method stub
 		
 	}
 
-	@Override
-	public void move(int spaces) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
+	// get skin
 	public String toString() {
-		// TODO Auto-generated method stub
-		return null;
+		return "^__^";
+	}
+
+	// get shock wave
+	public boolean getShockwave() {
+		return shockwave;
 	}
 
 	@Override
+	// not used -----------------------------------------------
 	public void move() {
-		// TODO Auto-generated method stub
+		// Empty
 		
 	}
 
 }
-
-/*
-//Get Position X
-public int getPosX() {
-	return posX;
-}
-
-//Get Position Y
-public int getPosY() {
-	return posY;
-}
-
-//Is object alive
-public boolean isAlive() {
-	return this.live > 0;
-}
-
-//Get lives
-public int getLive() {
-	return this.live;
-}
-
-//is in current position
-public boolean isOnPosition(int x, int y) {
-	return (x == posX && y == posY);
-}
-
-//get object damage
-public void getDamage (int damage) {
-	this.live = damage >= this.live ? 0 : this.live - damage;
-}
-
-//is out of bounds
-public boolean isOut() {
-	return !game.isOnBoard(posX, posY);
-}
-*/

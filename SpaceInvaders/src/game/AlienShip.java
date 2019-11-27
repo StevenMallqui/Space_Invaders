@@ -12,13 +12,9 @@ public abstract class AlienShip extends EnemyShip {
 	}
 
 	// ______________________   Methods   ______________________
-
-	// ----------------------   Get Info  ----------------------
-
-
-	// ----------------------   Set Info  ----------------------
-
-
-	// ----------------------  Operations ----------------------
-
+	
+	// Go down
+	public void goDown() {
+		this.posX--;
+	}
 }

@@ -14,13 +14,23 @@ public class Ovni extends EnemyShip {
 
 	// ______________________   Methods   ______________________
 
-	// ----------------------   Get Info  ----------------------
+	@Override
+	public void computerAction() {
+		// TODO Auto-generated method stub
+		
+	}
 
+	@Override
+	public void onDelete() {
+		// TODO Auto-generated method stub
+		
+	}
 
-	// ----------------------   Set Info  ----------------------
-
-
-	// ----------------------  Operations ----------------------
+	@Override
+	public String toString() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
 	
 	

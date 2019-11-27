@@ -12,12 +12,12 @@ public class Bomb extends Weapons {
 
 	// ______________________   Methods   ______________________
 
-	// Computer action
+	// Computer action -----------------------------------------
 	public void computerAction() {
 		// See if bomb can be shot
 	}
 
-	// On delete
+	// On delete -----------------------------------------------
 	public void onDelete() {
 		// No clue
 		

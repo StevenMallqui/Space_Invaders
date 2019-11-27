@@ -13,12 +13,22 @@ public class DestroyerAlien extends AlienShip {
 
 	// ______________________   Methods   ______________________
 
-	// ----------------------   Get Info  ----------------------
+	@Override
+	public void computerAction() {
+		// TODO Auto-generated method stub
+		
+	}
 
+	@Override
+	public void onDelete() {
+		// TODO Auto-generated method stub
+		
+	}
 
-	// ----------------------   Set Info  ----------------------
+	// Get skin
+	public String toString() {
+		return "D[" + lives + "]";
+	}
 
-
-	// ----------------------  Operations ----------------------
 
 }
