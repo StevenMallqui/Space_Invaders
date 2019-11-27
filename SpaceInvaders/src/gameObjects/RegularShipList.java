@@ -2,29 +2,33 @@ package gameObjects;
 
 import java.util.Random;
 
+import game.Level;
+import game.Game;
+
 public class RegularShipList {
-	/*
+	
 	// ______________________  Variables  ______________________
 	
-	private RegularShip[] regulars;
+	private RegularAlien[] regulars;
+	private Game game;
 	private final int points=10;
 
 	
 	// ______________________ Constructor ______________________ 
 	
-	public RegularShipList(Level level) {	
+	public RegularShipList(Game game, Level level) {	
 		int numAliens = level.getNumRegularAliens();
 		int numAliRow = level.getNumRegularAliensPerRow();
 		
 		int strRow = level.getRegularStartingRow();
 		int strCol = level.getRegularStartingCol();
 
-		regulars = new RegularShip[numAliens];
+		regulars = new RegularAlien[numAliens];
 		
 		for (int i = 0; i < (numAliens/numAliRow); i++)
 			for(int j = 0; j < numAliens; j++)
 				regulars[j+(i*numAliRow)]
-						= new RegularShip(strRow + i, strCol + j);
+						= new RegularAlien(game, strRow + i, strCol + j);
 		
 	}
 
@@ -36,7 +40,7 @@ public class RegularShipList {
 	public boolean location(int x,int y) {
 		boolean enc = false;
 		for(int i = 0; i < regulars.length; i++) {
-			if(regulars[i].location(x,y) && regulars[i].getResistance()!= 0) {
+			if(regulars[i].location(x,y) && regulars[i].isAlive()) {
 				enc = true;
 			}
 		}
@@ -51,8 +55,8 @@ public class RegularShipList {
 			if(regulars[i].location(x, y)) 
 				pos = i;
 			
-		if(regulars[pos].getResistance()> 0)
-			ship = "D[" + regulars[pos].getResistance() + "]";
+		if(regulars[pos].isAlive());
+		ship = "D[" + regulars[pos].getLive() + "]";
 		
 		return ship;
 	}
@@ -79,7 +83,7 @@ public class RegularShipList {
 		boolean end = false;
 		
 		for (int i= 0; i < regulars.length; i++)
-			if (regulars[i].getX() >= NUMFIL)
+			if (regulars[i].getPosX() >= NUMFIL)
 				end = true;
 		return end;
 	}
@@ -92,12 +96,12 @@ public class RegularShipList {
 	
 	// Get Row
 	public int getX(int i) {
-		return regulars[i].getX();
+		return regulars[i].getPosX();
 	}
 	
 	// Get Column
 	public int getY(int i) {
-		return regulars[i].getY();
+		return regulars[i].getPosY();
 	}
 
 	// Get Points
@@ -108,16 +112,16 @@ public class RegularShipList {
 	// ----------------------  Operations ----------------------
 	
 	// Advance ships
-	public void advanceRegulars(boolean direction) {
+	public void advanceRegulars(int direction) {
 		
 		for (int i = 0; i < regulars.length; i++)
-			regulars[i].move(direction);
+			regulars[i].moveShip(direction);
 	}
 	
 	// Move down
 	public void goRegularsDown() {
 		for(int i=0;i<regulars.length;i++) 
-			regulars[i].moveDown();
+			regulars[i].goDown();
 	}
 
 	// take damage
@@ -126,11 +130,11 @@ public class RegularShipList {
 		int points = 0;
 		
 		for(int i = 0; !hit && i < regulars.length; i++) {
-			hit = (regulars[i].getX() == x && regulars[i].getY() == y);
+			hit = (regulars[i].getPosX() == x && regulars[i].getPosY() == y);
 			if (hit) {
-				regulars[i].damage(damage);
+				regulars[i].damageObject(damage);
 			
-				if (regulars[i].getResistance() == 0) {
+				if (!regulars[i].isAlive()) {
 					erraseShip(i);
 					points += this.points;
 				}
@@ -148,13 +152,13 @@ public class RegularShipList {
 	}
 	
 	// Create smaller list
-	private RegularShip[] newList() {
-		RegularShip[] rShip = new RegularShip[regulars.length -1];
+	private RegularAlien[] newList() {
+		RegularAlien[] rShip = new RegularAlien[regulars.length -1];
 		
 		for (int i = 0; i < rShip.length; i++)
 			rShip[i] = regulars[i];
 		
 		return rShip;
 	}
-*/
+
 }	

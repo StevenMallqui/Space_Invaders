@@ -22,4 +22,8 @@ public abstract class Weapons extends GameObject {
 		return damage;
 	}
 	
+	// deactivate
+	public void deactivate() {
+		lives = 0;
+	}
 }

@@ -8,8 +8,8 @@ public class RegularAlien extends AlienShip {
 
 	// ______________________ Constructor ______________________    
 
-	public RegularAlien(Game game, int x, int y, int live) {
-		super(game, x, y, live);
+	public RegularAlien(Game game, int x, int y) {
+		super(game, x, y, 2);
 		// TODO Auto-generated constructor stub
 	}
 

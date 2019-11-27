@@ -2,12 +2,16 @@ package gameObjects;
 
 import java.util.Random;
 
+import game.Level;
+import game.Game;
+
 public class DestroyerShipList {
-	/*
+	
 	// ______________________  Variables  ______________________
 	
-	private DestroyerShip[] destroyers;
+	private DestroyerAlien[] destroyers;
 	private BombList bombList;
+	private Game game;
 
 	private final int points = 10;
 	private final int damage = 1;
@@ -15,8 +19,9 @@ public class DestroyerShipList {
 	
 	// ______________________ Constructor ______________________ 
 	
-	public DestroyerShipList(Level level) {
-		bombList = new BombList(level);
+	public DestroyerShipList(Game game, Level level) {
+		bombList = new BombList(game, level);
+		this.game = game;
 		
 		int numAliens = level.getNumDestroyerAliens();
 		int numAliRow = level.getNumDestroyerAliensPerRow();
@@ -24,11 +29,11 @@ public class DestroyerShipList {
 		int strRow = level.getDestroyerStartingRow();
 		int strCol = level.getDestroyerStartingCol();
 
-		destroyers = new DestroyerShip[numAliens];
+		destroyers = new DestroyerAlien[numAliens];
 		
 		for (int i = 0; i < (numAliens/numAliRow); i++)
 			for(int j = 0; j < numAliens; j++)
-				destroyers[j+(i*numAliRow)] = new DestroyerShip(strRow + i, strCol + j);
+				destroyers[j+(i*numAliRow)] = new DestroyerAlien(game, strRow + i, strCol + j);
 	}
 
 	// ______________________   Methods   ______________________
@@ -39,7 +44,7 @@ public class DestroyerShipList {
 	public boolean location(int x,int y) {
 		boolean enc = false;
 		for(int i=0;i<destroyers.length;i++) {
-			if(destroyers[i].location(x,y)&& destroyers[i].getResistance()!= 0) {
+			if(destroyers[i].location(x,y)&& destroyers[i].isAlive()) {
 				enc=true;
 			}
 		}
@@ -54,8 +59,8 @@ public class DestroyerShipList {
 			if(destroyers[i].location(x, y)) 
 				pos = i;
 			
-		if(destroyers[pos].getResistance()> 0)
-			ship = "D[" + destroyers[pos].getResistance() + "]";
+		if(destroyers[pos].isAlive())
+			ship = "D[" + destroyers[pos].getLive() + "]";
 		
 		return ship;
 	}
@@ -82,7 +87,7 @@ public class DestroyerShipList {
 		boolean end = false;
 		
 		for (int i= 0; i < destroyers.length; i++)
-			if (destroyers[i].getX() >= NUMFIL)
+			if (destroyers[i].getPosX() >= NUMFIL)
 				end = true;
 		return end;
 	}
@@ -95,12 +100,12 @@ public class DestroyerShipList {
 	
 	// Get Row
 	public int getX(int i) {
-		return destroyers[i].getX();
+		return destroyers[i].getPosX();
 	}
 	
 	// Get Column
 	public int getY(int i) {
-		return destroyers[i].getY();
+		return destroyers[i].getPosY();
 	}
 
 	// Get Points
@@ -117,17 +122,17 @@ public class DestroyerShipList {
 	// ----------------------  Operations ----------------------
 	
 	// Advance ships
-	public void advanceDestroyers(boolean direction) {
+	public void advanceDestroyers(int direction) {
 		
 		for(int i=0;i<destroyers.length;i++) {
-			destroyers[i].move(direction);
+			destroyers[i].moveShip(direction);
 		}
 	}
 	
 	// Move down
 	public void goDestroyersDown() {
 		for(int i = 0; i < destroyers.length; i++) {
-			destroyers[i].moveDown();
+			destroyers[i].goDown();
 		}
 	}
 
@@ -137,11 +142,11 @@ public class DestroyerShipList {
 			boolean hit = false;
 			
 			for(int i = 0; !hit && i < destroyers.length; i++) {
-				hit = (destroyers[i].getX() == x && destroyers[i].getY() == y);
+				hit = (destroyers[i].getPosX() == x && destroyers[i].getPosY() == y);
 				if (hit) {
-					destroyers[i].damage(damage);
+					destroyers[i].damageObject(damage);
 				
-					if (destroyers[i].getResistance() == 0) {
+					if (!destroyers[i].isAlive()) {
 						erraseShip(i);
 						points += this.points;
 					}
@@ -159,8 +164,8 @@ public class DestroyerShipList {
 		}
 		
 		// Create smaller list
-		private DestroyerShip[] newList() {
-			DestroyerShip[] rShip = new DestroyerShip[destroyers.length -1];
+		private DestroyerAlien[] newList() {
+			DestroyerAlien[] rShip = new DestroyerAlien[destroyers.length -1];
 			
 			for (int i = 0; i < rShip.length; i++)
 				rShip[i] = destroyers[i];
@@ -189,11 +194,11 @@ public class DestroyerShipList {
 	// shoot
 	public void shootBombs(Random rand) {
 		for (int i = 0; i < destroyers.length; i ++)
-			bombList.spawn(destroyers[i].getX(), destroyers[i].getY(), rand);
+			bombList.spawn(destroyers[i].getPosX(), destroyers[i].getPosY(), rand);
 	}
 
 	// Bomb destroyed
 	public boolean bombDestroyed(int x, int y) {
 		return bombList.impact(x, y);
-	}*/
+	}
 }

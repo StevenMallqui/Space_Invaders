@@ -1,25 +1,28 @@
 package gameObjects;
 
-
 import java.util.Random; 
+import game.Level;
+import game.Game;
 
 public class BombList {
 	
-/*	// ______________________  Variables  ______________________
+	// ______________________  Variables  ______________________
 	
 	private Level level;
 	private Bomb []bomb;
+	private Game game;
 	private String skin = ".";
 
 	// ______________________ Constructor ______________________
 	
-	public BombList(Level level){
+	public BombList(Game game, Level level){
 		this.level = level;
+		this.game = game;
 		
 		bomb = new Bomb[level.getNumDestroyerAliens()];
 		
 		for(int i = 0; i < bomb.length; i++) {
-			bomb[i] = new Bomb();
+			bomb[i] = new Bomb(game, -1, -1);
 		}
 	}
 
@@ -38,7 +41,7 @@ public class BombList {
 		int num = 0;
 		
 		for (int i = 0; i < bomb.length; i++)
-			if (bomb[i].getActiveBomb())
+			if (bomb[i].isAlive())
 				num++;
 			
 		return num;
@@ -49,7 +52,7 @@ public class BombList {
 		boolean found = false;
 		
 		for (int i = 0; i < bomb.length && !found; i++)
-			if ((bomb[i].getActiveBomb()) && (bomb[i].getX() == x && bomb[i].getY() == y)) 
+			if ((bomb[i].isAlive()) && (bomb[i].getPosX() == x && bomb[i].getPosY() == y)) 
 				found = true;
 			
 		return found;
@@ -58,15 +61,15 @@ public class BombList {
 	// ----------------------  Operations ----------------------
 	
 	// Spawn Bombs
-	public void spawn(int X, int Y, Random rand) {
+	public void spawn(int x, int y, Random rand) {
 		boolean continueSearch = true;
 		for (int i = 0; i < bomb.length && continueSearch; i++)
-			if (!bomb[i].getActiveBomb()) {
+			if (!bomb[i].isAlive()) {
 				continueSearch = false;
 				float frec = rand.nextFloat();
 				
 				if (frec < level.getShootFrequency()) 
-					bomb[i].shootBomb(X, Y);
+					bomb[i] = new Bomb(game, x, y);
 			}
 	}
 	
@@ -74,11 +77,11 @@ public class BombList {
 	// Advance Bombs
 	public void goDown(int worldBorder) {
 		for (int i = 0; i < bomb.length; i++) 
-			if (bomb[i].getActiveBomb()) {
-				bomb[i].moveDown();
+			if (bomb[i].isAlive()) {
+				bomb[i].move();
 			
-				if(bomb[i].getX() >= worldBorder) 
-					bomb[i].deactivateBomb();
+				if(bomb[i].getPosX() >= worldBorder) 
+					bomb[i].deactivate();
 			}	
 	}
 	
@@ -87,13 +90,13 @@ public class BombList {
 		boolean impacted = false;
 		
 		for(int i = 0; i < bomb.length && !impacted; i++)
-			if( bomb[i].getActiveBomb() && bomb[i].getX() == x && bomb[i].getY() == y) {
-				bomb[i].deactivateBomb();
+			if( bomb[i].isAlive() && bomb[i].getPosX() == x && bomb[i].getPosY() == y) {
+				bomb[i].deactivate();
 				impacted = true;
 			}
 		return impacted;
 	}
-*/
+
 	
 }
 	
