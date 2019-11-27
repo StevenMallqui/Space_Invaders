@@ -6,8 +6,8 @@ public class UCMShip extends Ship {
 
 	// ______________________ Constructor ______________________    
 
-	public UCMShip(Game game, int x, int y, int live) {
-		super(game, 7, 4, 3);
+	public UCMShip(Game game, int x, int y) {
+		super(game, x, y, 3);
 		// TODO Auto-generated constructor stub
 	}
 

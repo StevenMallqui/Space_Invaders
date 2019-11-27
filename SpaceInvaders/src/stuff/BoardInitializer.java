@@ -1,6 +1,6 @@
-package /* nombre de paquete */;
+package stuff;
 
-import /* clases importadas */
+import;
 
 public class BoardInitializer {
 	
@@ -30,4 +30,5 @@ public class BoardInitializer {
 	private void initializeDestroyerAliens() {
 		// TODO implement
 	}
+	
 }
