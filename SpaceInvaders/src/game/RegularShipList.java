@@ -1,6 +1,9 @@
 package game;
 
+import java.util.Random;
+
 public class RegularShipList {
+	/*
 	// ______________________  Variables  ______________________
 	
 	private RegularShip[] regulars;
@@ -153,5 +156,5 @@ public class RegularShipList {
 		
 		return rShip;
 	}
-
+*/
 }	

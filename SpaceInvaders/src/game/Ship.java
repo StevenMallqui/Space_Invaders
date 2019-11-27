@@ -8,9 +8,16 @@ public abstract class Ship extends GameObject {
 		super(game, x, y, live);
 	}
 
+	// ______________________   Methods   ______________________
+
 	// move ship
 	public void moveShip(int spaces) {
-		this.posY += spaces;
+		posY += spaces;
+	}
+
+	// Get Reached World Border
+	public boolean reachLimit(int num) {
+		return (posY == num);
 	}
 
 }

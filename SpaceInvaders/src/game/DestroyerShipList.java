@@ -3,7 +3,7 @@ package game;
 import java.util.Random;
 
 public class DestroyerShipList {
-	
+	/*
 	// ______________________  Variables  ______________________
 	
 	private DestroyerShip[] destroyers;
@@ -195,5 +195,5 @@ public class DestroyerShipList {
 	// Bomb destroyed
 	public boolean bombDestroyed(int x, int y) {
 		return bombList.impact(x, y);
-	}
+	}*/
 }

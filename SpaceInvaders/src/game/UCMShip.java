@@ -41,4 +41,9 @@ public class UCMShip extends Ship {
 		
 	}
 
+	@Override
+	public String toString() {
+		return "^__^";
+	}
+
 }
