@@ -1,5 +1,4 @@
-import game.GameObject;
-
+package game;
 package /* nombre de paquete */;
 
 public interface IAttack {

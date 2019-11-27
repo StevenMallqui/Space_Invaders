@@ -1,6 +1,6 @@
 package game;
 
-public abstract class GameObject {
+public abstract class GameObject implements IAttack {
 	
 	// ______________________ Variables   ______________________  
 
