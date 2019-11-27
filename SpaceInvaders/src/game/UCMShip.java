@@ -25,10 +25,6 @@ public class UCMShip extends Ship {
 		
 	}
 
-	// get skin
-	public String toString() {
-		return "^__^";
-	}
 
 	// get shock wave
 	public boolean getShockwave() {
@@ -39,6 +35,9 @@ public class UCMShip extends Ship {
 	// not used -----------------------------------------------
 	public void move() {
 		// Empty
+		
+	}
+	public void enableShockWave() {
 		
 	}
 

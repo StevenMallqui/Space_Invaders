@@ -48,7 +48,7 @@ public class GameObjectBoard {
 		// TODO implement
 	}
 
-	public String toString( /* coordinadas */ ) {
+	public String toString(int x, int y) {
 		// TODO implement
 	}
 
