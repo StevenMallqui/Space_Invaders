@@ -1,6 +1,7 @@
 package game;
 
 import game.BoardInitializer;
+import game.GameObjectBoard;
 import gameObjects.GameObject;
 
 public class Game implements IPlayerController{
@@ -66,12 +67,12 @@ public class Game implements IPlayerController{
 	public void update() {
 		board.computerAction();
 		board.update();
-		currentCycle += 1;
+		currentCycle ++;
 	}
 	
-	public boolean isOnBoard(int posX, int posY /* coordinadas */ ) {
+	public boolean isOnBoard(int posX, int posY) {
 
-		return /* condici�n de rango sobre las coordenadas */ ;
+		return false;
 	}
 	
 	public void exit() {

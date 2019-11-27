@@ -1,4 +1,4 @@
-package stuff;
+package game;
 
 import gameObjects.GameObject;
 
@@ -33,7 +33,7 @@ public class GameObjectBoard {
 	private int getIndex(int x, int y) {
 		int index=0;
 		for(int i=0; i < objects.length; i++) {
-			if(objects[i].isOnPosition(x, y)) {
+			if(objects[i].location(x, y)) {
 				index=i;
 			}
 		}
@@ -92,7 +92,7 @@ public class GameObjectBoard {
 
 	public String toString(int x, int y) {
 		for(GameObject G : objects) {
-			if(G.isOnPosition(x, y)){
+			if(G.location(x, y)){
 				return G.toString();
 			}
 		}

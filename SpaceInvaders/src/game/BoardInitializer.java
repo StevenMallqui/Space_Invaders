@@ -29,7 +29,7 @@ public class BoardInitializer {
 	}
 	
 	private void initializeDestroyerAliens() {
-		// TODO implement
+		
 	}
 	
 }

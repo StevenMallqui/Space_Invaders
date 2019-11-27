@@ -1,5 +1,6 @@
-package stuff;
+package view;
 
+import game.Game;
 
 public interface GamePrinter {
 	String toString(Game game);

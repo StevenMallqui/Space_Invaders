@@ -35,15 +35,17 @@ public class UCMShip extends Ship {
 
 	@Override
 	// not used -----------------------------------------------
-	public void move(int bs) {
+	public void move() {
 		// Empty
 		
 	}
+	
+	// enable shock wave
 	public void enableShockWave() {
 		
 	}
 
-	@Override
+	// get skin
 	public String toString() {
 		return "^__^";
 	}

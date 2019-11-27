@@ -1,6 +1,6 @@
-package pr2.view;
+package view;
 
-import pr2.game.Game;
+import game.Game;
 
 public class PrinterGenerator {
 		private static GamePrinter[] availablePrinters = {
