@@ -77,7 +77,7 @@ public class Game implements IPlayerController {
 	//Game is finished 
 	
 	public boolean isFinished() {
-		return playerWin() || aliensWin() || doExit;
+		return playerWin() || aliensWin() || end;
 	}
 	
 	//Player wins
@@ -124,7 +124,6 @@ public class Game implements IPlayerController {
 
 	@Override
 	public boolean move(int numCells) {
-		ucm.move(numCells);
 		return false;
 	}
 
@@ -137,7 +136,7 @@ public class Game implements IPlayerController {
 	@Override
 	public boolean shockWave() {
 		
-		return ucm.getShockwave;
+		return ucm.getShockwave();
 	}
 
 	@Override
@@ -148,7 +147,7 @@ public class Game implements IPlayerController {
 
 	@Override
 	public void enableShockWave() {
-		ucm.enableShockWave;
+		ucm.enableShockWave();
 		
 	}
 
