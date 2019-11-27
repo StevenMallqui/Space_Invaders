@@ -1,5 +1,6 @@
 package game;
 
+import game.BoardInitializer;
 import gameObjects.GameObject;
 
 public class Game implements IPlayerController{

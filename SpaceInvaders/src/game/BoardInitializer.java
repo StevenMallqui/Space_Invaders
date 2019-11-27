@@ -1,6 +1,7 @@
-package stuff;
+package game;
 
-import;
+import stuff.*;
+
 
 public class BoardInitializer {
 	
