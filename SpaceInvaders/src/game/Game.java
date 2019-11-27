@@ -371,7 +371,7 @@ public class Game implements IPlayerController {
 
 	@Override
 	public boolean move(int numCells) {
-		// TODO Auto-generated method stub
+		ucm.move(numCells);
 		return false;
 	}
 
@@ -383,8 +383,8 @@ public class Game implements IPlayerController {
 
 	@Override
 	public boolean shockWave() {
-		// TODO Auto-generated method stub
-		return false;
+		
+		return ucm.getShockwave;
 	}
 
 	@Override
@@ -401,7 +401,7 @@ public class Game implements IPlayerController {
 
 	@Override
 	public void enableMissile() {
-		// TODO Auto-generated method stub
+		
  	}
 	
 	/*

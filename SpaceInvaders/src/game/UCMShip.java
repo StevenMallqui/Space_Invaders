@@ -22,7 +22,7 @@ public class UCMShip extends Ship {
 		// TODO Auto-generated method stub
 		
 	}
-
+ 
 	@Override
 	public void move(int spaces) {
 		// TODO Auto-generated method stub
