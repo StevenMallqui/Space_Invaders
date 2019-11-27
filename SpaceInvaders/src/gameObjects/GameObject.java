@@ -54,7 +54,7 @@ public abstract class GameObject implements IAttack {
 	}
 	
 	// is in current position
-	public boolean isOnPosition(int x, int y) {
+	public boolean location(int x, int y) {
 		return (x == posX && y == posY);
 	}
 
