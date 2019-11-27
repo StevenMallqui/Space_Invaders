@@ -16,7 +16,7 @@ public class Game implements IPlayerController {
 	// Objects
 	private UCMShip ucm;
 	private BoardInitializer initializer;
-	GameObjectBoard board;
+	private GameObjectBoard board;
 	
 	// Variables
 	private int cycle = 0;
