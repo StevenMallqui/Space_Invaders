@@ -13,8 +13,8 @@ public class Game implements IPlayerController {
 	// ______________________ Variables   ______________________  
 	
 	// World Borders :
-	private final static int DIM_Y = 8;
-	private final static int DIM_X = 9 ;
+	public final static int DIM_Y = 8;
+	public final static int DIM_X = 9 ;
 	
 	// Objects
 	private UCMShip ucm;

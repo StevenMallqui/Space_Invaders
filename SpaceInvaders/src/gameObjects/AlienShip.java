@@ -24,5 +24,13 @@ public abstract class AlienShip extends EnemyShip {
 	public boolean reachBottom(int min) {
 		return (posX == min);
 	}
+	
+	public static boolean allDead() {
+		return false;
+	}
+	
+	public static boolean haveLanded() {
+		return false;
+	}
 
 }
