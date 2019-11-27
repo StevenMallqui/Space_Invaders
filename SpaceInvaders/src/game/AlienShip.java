@@ -17,4 +17,10 @@ public abstract class AlienShip extends EnemyShip {
 	public void goDown() {
 		this.posX--;
 	}
+	
+	// Get Reached bottom
+	public boolean reachBottom(int min) {
+		return (posX == min);
+	}
+
 }

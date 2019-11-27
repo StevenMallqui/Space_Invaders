@@ -13,4 +13,9 @@ public abstract class Ship extends GameObject {
 		this.posY += spaces;
 	}
 
+	// Get Reached World Border
+	public boolean reachLimit(int num) {
+		return (posY == num);
+	}
+
 }
