@@ -2,6 +2,8 @@ package main;
 
 import controller.Controller;
 import game.Game;
+import game.Level;
+
 import java.util.Random;
 
 
@@ -34,9 +36,19 @@ public class Main {
 			 }
 			 
 			 Random rand = new Random(seed);
+			 Level nvl = null;
 			 
+				if (level.equals("EASY"))
+					nvl = Level.EASY;
+					
+				else if (level.equals("HARD"))
+					nvl = Level.HARD;
+					
+				else if (level.equals("Insane"))
+					nvl = Level.INSANE;
+		 
 			 do {
-			 Game game = new Game(level, rand);
+			 Game game = new Game(nvl, rand);
 			 Controller controlador = new Controller(game);
 			 
 			 // Run game
