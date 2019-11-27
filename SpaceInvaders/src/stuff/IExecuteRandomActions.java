@@ -1,4 +1,4 @@
-package /* nombre de paquete */;
+package stuff;
 
 import /* clases importadas */
 

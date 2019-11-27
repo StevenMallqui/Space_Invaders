@@ -35,7 +35,7 @@ public class UCMShip extends Ship {
 
 	@Override
 	// not used -----------------------------------------------
-	public void move() {
+	public void move(int bs) {
 		// Empty
 		
 	}

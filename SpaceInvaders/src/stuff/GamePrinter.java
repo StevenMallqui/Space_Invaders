@@ -1,6 +1,5 @@
-package pr2.view;
+package stuff;
 
-import pr2.game.Game;
 
 public interface GamePrinter {
 	String toString(Game game);
