@@ -1,6 +1,9 @@
-package game;
+package gameObjects;
 
-public abstract class GameObject {
+import game.Game;
+import game.IAttack;
+
+public abstract class GameObject implements IAttack {
 	
 	// ______________________ Variables   ______________________  
 

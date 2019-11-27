@@ -1,4 +1,6 @@
-package game;
+package gameObjects;
+
+import game.Game;
 
 public class UCMShip extends Ship {
 	

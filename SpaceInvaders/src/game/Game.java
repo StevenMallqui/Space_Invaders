@@ -3,6 +3,9 @@ package game;
 
 import java.util.Random;
 
+import gameObjects.AlienShip;
+import gameObjects.GameObject;
+import gameObjects.UCMShip;
 import stuff.*;
 
 public class Game implements IPlayerController {
@@ -16,7 +19,7 @@ public class Game implements IPlayerController {
 	// Objects
 	private UCMShip ucm;
 	private BoardInitializer initializer;
-	GameObjectBoard board;
+	private GameObjectBoard board;
 	
 	// Variables
 	private int cycle = 0;

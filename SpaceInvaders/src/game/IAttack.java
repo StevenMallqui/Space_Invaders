@@ -1,6 +1,6 @@
-import game.GameObject;
+package game;
 
-package /* nombre de paquete */;
+import gameObjects.GameObject;
 
 public interface IAttack {
 	default boolean performAttack(GameObject other) {return false;};

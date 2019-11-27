@@ -1,12 +1,14 @@
-package game;
+package gameObjects;
 
-public class DestroyerAlien extends AlienShip {
+import game.Game;
+
+public class Ovni extends EnemyShip {
 
 	// ______________________ Variables   ______________________  
 
 	// ______________________ Constructor ______________________    
 
-	public DestroyerAlien(Game game, int x, int y, int live) {
+	public Ovni(Game game, int x, int y, int live) {
 		super(game, x, y, live);
 		// TODO Auto-generated constructor stub
 	}
@@ -25,10 +27,13 @@ public class DestroyerAlien extends AlienShip {
 		
 	}
 
-	// Get skin
+	@Override
 	public String toString() {
-		return "D[" + lives + "]";
+		// TODO Auto-generated method stub
+		return null;
 	}
 
-
+	
+	
+	
 }
