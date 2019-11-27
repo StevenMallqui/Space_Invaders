@@ -11,7 +11,6 @@ public class Main {
 	
 	// Static main class
 	 public static void main(String[] args) {
-		 boolean reset;
 		 long seed = 0l;
 		 String level;
 		 
@@ -47,15 +46,12 @@ public class Main {
 				else if (level.equals("Insane"))
 					nvl = Level.INSANE;
 		 
-			 do {
 			 Game game = new Game(nvl, rand);
 			 Controller controlador = new Controller(game);
 			 
 			 // Run game
 			 controlador.run();
 			 
-			 reset = controlador.getReset();
-			 } while (reset);
 		 }
 		 
 		 else 
