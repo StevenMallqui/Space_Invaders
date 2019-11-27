@@ -49,11 +49,7 @@ public class Controller {
 		}
 		
 		// End game
-		System.out.println(new GamePrinter(game,game.getNUMFIL(),game.getNUMCOL()));
-		
-		
-		// Reset game?
-		reset = game.getReset();
+		System.out.println(new GamePrinter(game,game.getNUMFIL(),game.getNUMCOL()));		
 	}
 	
 	
@@ -66,11 +62,6 @@ public class Controller {
 		System.out.print(pintar);
 		System.out.print("  Command > ");
 
-	}
-		
-	// get reset
-	public boolean getReset() {
-		return reset;
 	}
 }
 
