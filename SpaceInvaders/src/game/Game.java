@@ -70,8 +70,8 @@ public class Game implements IPlayerController {
 	}
 	
 	//COLLISIONS && PRINTING 
-	public String toString(int x,int y) {
-		return board.toString(x,y);
+	public String toString(int posX,int posY) {
+		return board.toString(posX,posY);
 	}
 	
 	//Game is finished 
