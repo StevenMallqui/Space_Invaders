@@ -60,7 +60,7 @@ public class Controller {
 	
 	// Print Game
 	private void printGame() {
-		pintar = new GamePrinter(game,game.getNUMFIL(),game.getNUMCOL());
+		pintar = new GamePrinter(game, game.getNUMFIL(),game.getNUMCOL());
 		
 		System.out.println(game.scoreBoard());
 		System.out.print(pintar);
