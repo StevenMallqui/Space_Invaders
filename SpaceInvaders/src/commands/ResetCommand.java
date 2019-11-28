@@ -9,7 +9,7 @@ public class ResetCommand extends Command {
 	// ______________________ Constructor ______________________    
 
 	public ResetCommand() {
-		super("reset","r","reset","Starts a new game.");
+		super("reset", "r", "reset", "Starts a new game.");
 	}
 	
 	// ______________________   Methods   ______________________
