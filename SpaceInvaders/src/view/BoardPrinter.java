@@ -25,5 +25,12 @@ public class BoardPrinter implements GamePrinter {
 		// TODO Auto-generated method stub
 		return null;
 	}
+	
+	// Score Board
+	public String scoreBoard() {
+		
+		
+		return String;
+	}
 
 }
