@@ -3,8 +3,13 @@ package game;
 import gameObjects.GameObject;
 
 public class GameObjectBoard {
+	
+	//______________________ Variables________________________
+	
 	private GameObject[] objects;
 	private int currentObjects;
+	
+	//______________________Constructor_______________________
 	
 	public GameObjectBoard (int width, int height) {
 		
@@ -62,14 +67,14 @@ public class GameObjectBoard {
 	}
 	
 	private void checkAttacks(GameObject object) { // Preguntar si hace esta funcion
-		for(GameObject G : objects) {
-			G.performAttack(object);
+		for(GameObject aux : objects) {
+			aux.performAttack(object);
 		}	
 		
 	}
 	public void computerAction() {
-		for(GameObject G : objects) {
-			G.computerAction();;
+		for(GameObject aux : objects) {
+			aux.computerAction();;
 		}
 	}
 	
@@ -91,9 +96,9 @@ public class GameObjectBoard {
 	}
 
 	public String toString(int x, int y) {
-		for(GameObject G : objects) {
-			if(G.location(x, y)){
-				return G.toString();
+		for(GameObject aux : objects) {
+			if(aux.location(x, y)){
+				return aux.toString();
 			}
 		}
 		return " ";
