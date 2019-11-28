@@ -27,7 +27,7 @@ public class ResetCommand extends Command {
 	
 	// Execute
 	public boolean execute(Game game) {
-		game.resetGame();
+		game.initGame();
 		return false;
 	}
 	

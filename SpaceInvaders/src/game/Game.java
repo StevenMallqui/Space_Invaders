@@ -158,4 +158,19 @@ public class Game implements IPlayerController {
 	public void enableMissile() {
 		
  	}
+
+	public int getNUMFIL() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	public int getNUMCOL() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	public char[] scoreBoard() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

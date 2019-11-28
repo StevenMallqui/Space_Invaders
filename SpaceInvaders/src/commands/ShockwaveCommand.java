@@ -28,8 +28,7 @@ public class ShockwaveCommand extends Command {
 	public boolean execute(Game game) {
 		boolean ok = false;
 
-		if (game.getShockwave()) {
-			game.shootShockwave();
+		if (game.shockWave()) {
 			ok = false;
 			game.update();
 		}

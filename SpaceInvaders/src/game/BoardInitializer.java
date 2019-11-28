@@ -1,7 +1,5 @@
 package game;
 
-
-
 public class BoardInitializer {
 	
 	private Level level;

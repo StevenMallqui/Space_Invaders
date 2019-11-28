@@ -1,6 +1,5 @@
 package game;
 
-
 public interface IExecuteRandomActions {
 	
 	static boolean canGenerateRandomOvni(Game game){

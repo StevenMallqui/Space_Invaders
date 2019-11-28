@@ -19,8 +19,7 @@ public class ShootCommand extends Command {
 	public boolean execute(Game game) {
 		boolean ok = false;
 	
-		if (!game.getActiveMissile()) {
-			game.shootMissile();
+		if (game.shootLaser()) {
 			game.update();
 			ok = true;
 		}
