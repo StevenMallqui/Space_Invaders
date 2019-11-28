@@ -173,4 +173,30 @@ public class Game implements IPlayerController {
 		// TODO Auto-generated method stub
 		return null;
 	}
+	
+	public int getLives() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	public int getCycle() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	public int getPoints() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	public int numEnemies() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	public boolean availableShockwave() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
 }

@@ -1,6 +1,7 @@
 package view;
 
 import game.Game;
+import game.GameObjectBoard;
 
 public class BoardPrinter implements GamePrinter {
 
@@ -26,11 +27,14 @@ public class BoardPrinter implements GamePrinter {
 		return null;
 	}
 	
-	// Score Board
-	public String scoreBoard() {
+	public String scoreBoard(Game game) {
+		String text = "";		
+		text += "  Life : " + game.getLives();
+		text += "\n  Number of cycles : " + game.getCycle();
+		text += "\n  Points : " + game.getPoints();
+		text += "\n  Remaining aliens : " + game.numEnemies();
+		text += "\n  Shockwave : " + game.availableShockwave();
 		
-		
-		return String;
+		return text;
 	}
-
 }

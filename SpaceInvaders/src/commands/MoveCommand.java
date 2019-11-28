@@ -23,8 +23,8 @@ public class MoveCommand extends Command{
 		
 		if (commandWords.length == 3 && (commandWords[0].equals(shortCut) || commandWords[0].equals(name))) {
 			command = new MoveCommand();
+			command.setCommands(commandWords[1], commandWords[2]);
 		}
-		command.setCommands(commandWords[1], commandWords[2]);
 		return command;
 	}
 	
