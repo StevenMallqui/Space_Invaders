@@ -4,12 +4,12 @@ import gameObjects.GameObject;
 
 public class GameObjectBoard {
 	
-	//______________________ Variables________________________
+	//______________________ VARIABLES________________________
 	
 	private GameObject[] objects;
 	private int currentObjects;
 	
-	//______________________Constructor_______________________
+	//______________________CONSTRUCTOR_______________________
 	
 	public GameObjectBoard (int width, int height) {
 		
@@ -17,14 +17,13 @@ public class GameObjectBoard {
 		currentObjects = 0;
 	}
 	
+	
+	//_______________________METHODS (PRIVATE)_____________________________
+	
 	private int getCurrentObjects () {
 		return this.currentObjects; 
 	}
 	
-	public void add (GameObject object) {
-		objects[currentObjects]= object;
-		currentObjects++;
-	}
 	private GameObject getObjectInPosition (int x,int y ) {
 		
 		for(int i = 0;i< currentObjects;i++) {
@@ -35,6 +34,7 @@ public class GameObjectBoard {
 		}
 		return null;
 	}
+	
 	private int getIndex(int x, int y) {
 		int index=0;
 		for(int i=0; i < objects.length; i++) {
@@ -44,6 +44,7 @@ public class GameObjectBoard {
 		}
 		return index;
 	}
+	
 	private void remove (GameObject object) {
 		int index = 0;
 		boolean found = false;
@@ -60,24 +61,13 @@ public class GameObjectBoard {
 		}
 	}
 	
-	public void update() { // Preguntar si solo se mueven al hace update
-		for(GameObject G : objects) {
-			G.move();
-		}
-	}
-	
 	private void checkAttacks(GameObject object) { // Preguntar si hace esta funcion
 		for(GameObject aux : objects) {
 			aux.performAttack(object);
 		}	
 		
 	}
-	public void computerAction() {
-		for(GameObject aux : objects) {
-			aux.computerAction();;
-		}
-	}
-	
+
 	private void removeDead() {
 		int index = 0;
 		boolean found = false;
@@ -95,6 +85,27 @@ public class GameObjectBoard {
 		
 	}
 
+	
+//_______________________METHODS (PUBLIC)_____________________________
+	
+	public void add (GameObject object) {
+		objects[currentObjects]= object;
+		currentObjects++;
+	}
+	
+	public void update() { // Preguntar si solo se mueven al hace update
+		for(GameObject G : objects) {
+			G.move();
+		}
+	}
+	
+	
+	public void computerAction() {
+		for(GameObject aux : objects) {
+			aux.computerAction();;
+		}
+	}
+	
 	public String toString(int x, int y) {
 		for(GameObject aux : objects) {
 			if(aux.location(x, y)){
