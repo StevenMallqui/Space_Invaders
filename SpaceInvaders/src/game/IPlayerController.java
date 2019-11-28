@@ -1,5 +1,5 @@
 package game;
-package /* nombre de paquete */;
+
 
 public interface IPlayerController {
 	

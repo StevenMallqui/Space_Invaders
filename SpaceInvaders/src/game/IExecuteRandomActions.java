@@ -1,6 +1,5 @@
 package game;
 
-import /* clases importadas */
 
 public interface IExecuteRandomActions {
 	
