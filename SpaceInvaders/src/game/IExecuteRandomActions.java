@@ -1,7 +1,5 @@
 package game;
 
-import /* clases importadas */
-
 public interface IExecuteRandomActions {
 	
 	static boolean canGenerateRandomOvni(Game game){

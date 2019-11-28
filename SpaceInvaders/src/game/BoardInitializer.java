@@ -1,8 +1,5 @@
 package game;
 
-import stuff.*;
-
-
 public class BoardInitializer {
 	
 	private Level level;

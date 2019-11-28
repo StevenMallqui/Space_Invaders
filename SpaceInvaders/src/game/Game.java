@@ -6,7 +6,6 @@ import java.util.Random;
 import gameObjects.AlienShip;
 import gameObjects.GameObject;
 import gameObjects.UCMShip;
-import stuff.*;
 
 public class Game implements IPlayerController {
 		
@@ -158,4 +157,19 @@ public class Game implements IPlayerController {
 	public void enableMissile() {
 		
  	}
+
+	public int getNUMFIL() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	public int getNUMCOL() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	public char[] scoreBoard() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

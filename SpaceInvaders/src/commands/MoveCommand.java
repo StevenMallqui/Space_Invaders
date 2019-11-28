@@ -7,7 +7,7 @@ public class MoveCommand extends Command{
 	// ______________________ Variables   ______________________  
 
 	private String direction;
-	private String spaces;
+	private int spaces;
 	
 	// ______________________ Constructor ______________________    
 
@@ -32,9 +32,8 @@ public class MoveCommand extends Command{
 	public boolean execute(Game game) {
 		boolean ok = false;
 
-		if (game.validMovement(direction, spaces)) {
+		if (game.move(spaces)) {
 			game.update();
-			game.moveUCMShip(direction, spaces);
 			ok = true;
 		}
 
@@ -43,6 +42,6 @@ public class MoveCommand extends Command{
 	
 	private void setCommands(String command1, String command2) {
 		direction = command1;
-		spaces = command2;
+		spaces =Integer.parseInt(command2) ;
 	}
 }
