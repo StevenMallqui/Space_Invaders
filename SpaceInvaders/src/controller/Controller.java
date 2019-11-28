@@ -58,7 +58,8 @@ public class Controller {
 	private void printGame() {
 		pintar = new GamePrinter(game, game.getNUMFIL(),game.getNUMCOL());
 		
-		System.out.println(view.scoreBoard());
+		
+		System.out.println();
 		System.out.print(pintar);
 		System.out.print("  Command > ");
 

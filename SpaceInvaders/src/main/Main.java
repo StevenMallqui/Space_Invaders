@@ -146,17 +146,6 @@ public class Main {
 	// User Info
 	
 	/*
-	public String scoreBoard() {
-		String text = "";
-		int suma = destroyerList.getCounter()+regularList.getCounter();
-		
-		text += "  Life : " + ucm.getLife();
-		text += "\n  Number of cycles : " + cycle;
-		text += "\n  Points : " + points;
-		text += "\n  Remaining aliens : " + suma;
-		text += "\n  Shockwave : " + shockwave;
-		
-		return text;
 	}
 	*/
 
