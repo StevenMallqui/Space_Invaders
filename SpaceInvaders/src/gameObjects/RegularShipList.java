@@ -1,7 +1,5 @@
 package gameObjects;
 
-import java.util.Random;
-
 import game.Level;
 import game.Game;
 
@@ -11,7 +9,7 @@ public class RegularShipList {
 	
 	private RegularAlien[] regulars;
 	private Game game;
-	private final int points=10;
+	private final int points = 10;
 
 	
 	// ______________________ Constructor ______________________ 
@@ -29,7 +27,6 @@ public class RegularShipList {
 			for(int j = 0; j < numAliens; j++)
 				regulars[j+(i*numAliRow)]
 						= new RegularAlien(game, strRow + i, strCol + j);
-		
 	}
 
 	// ______________________   Methods   ______________________

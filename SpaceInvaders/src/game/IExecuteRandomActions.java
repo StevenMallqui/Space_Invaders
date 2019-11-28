@@ -1,4 +1,4 @@
-package stuff;
+package game;
 
 import /* clases importadas */
 
