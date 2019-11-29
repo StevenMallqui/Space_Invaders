@@ -26,7 +26,7 @@ public class GameObjectBoard {
 	
 	private GameObject getObjectInPosition (int x,int y ) {
 		
-		for(int i = 0;i< currentObjects;i++) {
+		for(int i = 0; i < currentObjects; i++) {
 			
 			if(objects[i].getPosX() == x && objects[i].getPosY() == y) {
 				return objects[i];
@@ -108,7 +108,7 @@ public class GameObjectBoard {
 	
 	public String toString(int x, int y) {
 		for(GameObject aux : objects) {
-			if(aux.location(x, y)){
+			if(aux != null && aux.location(x, y)){
 				return aux.toString();
 			}
 		}

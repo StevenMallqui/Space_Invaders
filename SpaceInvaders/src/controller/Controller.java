@@ -49,14 +49,14 @@ public class Controller {
 		}
 		
 		// End game
-		System.out.println(new GamePrinter(game,game.getNUMFIL(),game.getNUMCOL()));		
+		System.out.println(new GamePrinter(game, game.getNUMCOL(), game.getNUMFIL()));		
 	}
 	
 	
 	
 	// Print Game
 	private void printGame() {
-		pintar = new GamePrinter(game, game.getNUMFIL(),game.getNUMCOL());
+		pintar = new GamePrinter(game, game.DIM_Y, game.DIM_X);
 		
 		
 		System.out.println();
