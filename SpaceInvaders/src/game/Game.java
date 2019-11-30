@@ -49,25 +49,21 @@ public class Game implements IPlayerController {
 	}
 	
 	//Return our random number 
-	
 	public Random getRandom() {
 		return rand;
 	}
 	
-	//Return the level selected 
-	
+	//Return the level selected 	
 	public Level getLevel() {
 		return level;
 	}
 	
-	//Restart the game
-	
+	//Restart the game	
 	public void reset() {
 		initGame();
 	}
 	
-	//Add objects 
-	
+	//Add objects 	
 	public void addObject(GameObject object) {
 		board.add(object);
 	}
@@ -77,14 +73,12 @@ public class Game implements IPlayerController {
 		return board.toString(posX,posY);
 	}
 	
-	//Game is finished 
-	
+	//Game is finished 	
 	public boolean isFinished() {
 		return playerWin() || aliensWin() || end;
 	}
 	
-	//Player wins
-	
+	//Player wins	
 	private boolean playerWin() {
 		return AlienShip.allDead();
 	}
@@ -104,7 +98,6 @@ public class Game implements IPlayerController {
 	}
 	
 	//Return a boolean if it´s on board
-	
 	public boolean isOnBoard(int posX, int posY) {
 
 		return false;
@@ -117,7 +110,6 @@ public class Game implements IPlayerController {
 	}
 	
 	//When game is finished 
-	
 	public String getWinnerMessage () {
 		if (playerWin()) return "Player win!";
 		else if (aliensWin()) return "Aliens win!";
@@ -136,29 +128,31 @@ public class Game implements IPlayerController {
 		
 		return ok;
 	}
+	
 
-	@Override
+	// shoot laser
 	public boolean shootLaser() {
-		// TODO Auto-generated method stub
+		
+		
+		
 		return false;
 	}
 
-	@Override
+	// shock wave
 	public boolean shockWave() {
 		
 		return ucm.getShockwave();
 	}
 
-	@Override
+	// receive points
 	public void receivePoints(int points) {
 		// TODO Auto-generated method stub
 		
 	}
 
-	@Override
+	// enable shock wave
 	public void enableShockWave() {
 		ucm.enableShockWave();
-		
 	}
 
 	@Override

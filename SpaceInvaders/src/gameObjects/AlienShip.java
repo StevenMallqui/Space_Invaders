@@ -27,13 +27,13 @@ public abstract class AlienShip extends EnemyShip {
 		return (posX == min);
 	}
 	
-	/*public static boolean allDead() {
-		return (lives == 0);
+	public static boolean allDead() {
+		return false;
 	}
 	
 	public static boolean haveLanded() {
-		return (game.DIM_X == posX);
-	}*/
+		return false;
+	}
 
 	// move
 	public void move() {
