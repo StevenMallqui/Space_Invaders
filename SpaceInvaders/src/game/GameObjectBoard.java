@@ -67,9 +67,9 @@ public class GameObjectBoard {
 	
 	// check attacks
 	private void checkAttacks(GameObject object) { // Preguntar si hace esta funcion
-		for(GameObject aux : objects) {
+		for(GameObject obj : objects) {
 			if (obj != null)
-				aux.performAttack(object);
+				obj.performAttack(object);
 		}	
 		
 	}
