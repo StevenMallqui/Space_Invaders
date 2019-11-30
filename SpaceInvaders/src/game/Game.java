@@ -5,6 +5,7 @@ import java.util.Random;
 
 import gameObjects.AlienShip;
 import gameObjects.GameObject;
+import gameObjects.GameObjectBoard;
 import gameObjects.UCMShip;
 
 

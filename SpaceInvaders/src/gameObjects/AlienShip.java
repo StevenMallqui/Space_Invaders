@@ -37,19 +37,18 @@ public abstract class AlienShip extends EnemyShip {
 		if (game.getDirection()) {
 			if (posY + 1 < game.DIM_Y)
 				posY++;
-			else {
+			
+			else 
 				game.changeDirection();
-				this.posX++;
-			}
+			
 		}
 		
 		else {
 			if (posY - 1 > 0)
 				posY--;
-			else {
+			else 
 				game.changeDirection();
-				this.posX++;
-			}
+			
 		}
 	}
 	

@@ -1,6 +1,4 @@
-package game;
-
-import gameObjects.GameObject;
+package gameObjects;
 
 public class GameObjectBoard {
 	
@@ -103,9 +101,17 @@ public class GameObjectBoard {
 	
 	// update
 	public void update() {
-		for(GameObject obj : objects) 
-			if (obj != null)
-				obj.move();
+		for(GameObject obj : objects) {
+			if (obj != null) {
+				if (obj instanceof AlienShip) {
+					
+				}
+				
+				else {
+					obj.move();
+				}
+			}
+		}
 	}
 	
 	// computer action
