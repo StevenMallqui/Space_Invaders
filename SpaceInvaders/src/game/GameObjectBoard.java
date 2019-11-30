@@ -68,7 +68,8 @@ public class GameObjectBoard {
 	// check attacks
 	private void checkAttacks(GameObject object) { // Preguntar si hace esta funcion
 		for(GameObject aux : objects) {
-			aux.performAttack(object);
+			if (obj != null)
+				aux.performAttack(object);
 		}	
 		
 	}
@@ -103,14 +104,16 @@ public class GameObjectBoard {
 	// update
 	public void update() { // Preguntar si solo se mueven al hace update
 		for(GameObject obj : objects) {
-			obj.move();
+			if (obj != null)
+				obj.move();
 		}
 	}
 	
 	// computer action
 	public void computerAction() {
 		for(GameObject obj : objects) {
-			obj.computerAction();
+			if (obj != null)
+				obj.computerAction();
 		}
 	}
 	
