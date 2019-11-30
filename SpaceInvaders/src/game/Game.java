@@ -44,7 +44,7 @@ public class Game implements IPlayerController {
 	public void initGame () {
 		cycle = 0;
 		board = initializer.initialize(this, level);
-		ucm = new UCMShip(this, DIM_X / 2, DIM_Y - 1);
+		ucm = new UCMShip(this, DIM_X /2, DIM_Y -1);
 		board.add(ucm);
 	}
 	
@@ -125,9 +125,16 @@ public class Game implements IPlayerController {
 		else return "This should not happen";
 	}
 
-	@Override
-	public boolean move(int numCells) {
-		return false;
+	// Move
+	public boolean move(int num) {
+		boolean ok = false;
+		
+		if (ucm.getPosY() + num < DIM_Y && ucm.getPosY() + num > 0) {
+			ok = true;
+			ucm.moveShip(num);
+		}
+		
+		return ok;
 	}
 
 	@Override
@@ -160,13 +167,11 @@ public class Game implements IPlayerController {
  	}
 
 	public int getNUMFIL() {
-		// TODO Auto-generated method stub
-		return 0;
+		return DIM_X;
 	}
 
 	public int getNUMCOL() {
-		// TODO Auto-generated method stub
-		return 0;
+		return DIM_Y;
 	}
 
 	public char[] scoreBoard() {

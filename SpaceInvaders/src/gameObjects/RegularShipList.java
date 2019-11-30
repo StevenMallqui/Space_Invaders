@@ -109,10 +109,10 @@ public class RegularShipList {
 	// ----------------------  Operations ----------------------
 	
 	// Advance ships
-	public void advanceRegulars(int direction) {
+	public void advanceRegulars() {
 		
 		for (int i = 0; i < regulars.length; i++)
-			regulars[i].moveShip(direction);
+			regulars[i].move();
 	}
 	
 	// Move down

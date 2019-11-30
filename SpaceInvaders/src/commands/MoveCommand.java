@@ -31,6 +31,9 @@ public class MoveCommand extends Command{
 	// Execute
 	public boolean execute(Game game) {
 		boolean ok = false;
+		
+		if (direction.equals("left"))
+			spaces = -spaces;
 
 		if (game.move(spaces)) {
 			game.update();

@@ -122,10 +122,10 @@ public class DestroyerShipList {
 	// ----------------------  Operations ----------------------
 	
 	// Advance ships
-	public void advanceDestroyers(int direction) {
+	public void advanceDestroyers() {
 		
 		for(int i=0;i<destroyers.length;i++) {
-			destroyers[i].moveShip(direction);
+			destroyers[i].move();
 		}
 	}
 	
