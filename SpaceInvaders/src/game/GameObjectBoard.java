@@ -1,4 +1,6 @@
-package gameObjects;
+package game;
+
+import gameObjects.*;
 
 public class GameObjectBoard {
 	
@@ -23,7 +25,7 @@ public class GameObjectBoard {
 		return this.currentObjects; 
 	}
 	
-	// get objet in position
+	// get object in position
 	private GameObject getObjectInPosition (int x,int y ) {
 		
 		for(int i = 0; i < currentObjects; i++) {
@@ -38,7 +40,7 @@ public class GameObjectBoard {
 	// get index
 	private int getIndex(int x, int y) {
 		int index=0;
-		for(int i=0; i < objects.length; i++) {
+		for(int i=0; i < currentObjects; i++) {
 			if(objects[i].location(x, y)) {
 				index=i;
 			}
@@ -103,13 +105,16 @@ public class GameObjectBoard {
 	public void update() {
 		for(GameObject obj : objects) {
 			if (obj != null) {
-				if (obj instanceof AlienShip) {
-					
-				}
-				
-				else {
+				if (!(obj instanceof AlienShip)) 
 					obj.move();
-				}
+			}
+		}
+		
+		boolean possible = true;
+		for (int i = 0; i < currentObjects && possible; i++) {
+			if (objects[i] instanceof AlienShip) {
+				
+				objects[i].
 			}
 		}
 	}

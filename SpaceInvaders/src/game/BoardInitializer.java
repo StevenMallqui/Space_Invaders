@@ -3,7 +3,6 @@ package game;
 import gameObjects.Ovni;
 import gameObjects.RegularAlien;
 import gameObjects.DestroyerAlien;
-import gameObjects.GameObjectBoard;
 
 public class BoardInitializer {
 	

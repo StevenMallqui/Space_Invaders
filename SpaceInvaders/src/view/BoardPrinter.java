@@ -1,7 +1,7 @@
 package view;
 
 import game.Game;
-import gameObjects.GameObjectBoard;
+import game.GameObjectBoard;
 
 public class BoardPrinter implements GamePrinter {
 
