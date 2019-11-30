@@ -13,17 +13,19 @@ public class GameObjectBoard {
 	
 	public GameObjectBoard (int width, int height) {
 		
-		objects = new GameObject[width*height];
+		objects = new GameObject[width * height];
 		currentObjects = 0;
 	}
 	
 	
 	//_______________________METHODS (PRIVATE)_____________________________
 	
+	// get current objects
 	private int getCurrentObjects () {
 		return this.currentObjects; 
 	}
 	
+	// get objet in position
 	private GameObject getObjectInPosition (int x,int y ) {
 		
 		for(int i = 0; i < currentObjects; i++) {
@@ -35,6 +37,7 @@ public class GameObjectBoard {
 		return null;
 	}
 	
+	// get index
 	private int getIndex(int x, int y) {
 		int index=0;
 		for(int i=0; i < objects.length; i++) {
@@ -45,6 +48,7 @@ public class GameObjectBoard {
 		return index;
 	}
 	
+	// remove
 	private void remove (GameObject object) {
 		int index = 0;
 		boolean found = false;
@@ -61,6 +65,7 @@ public class GameObjectBoard {
 		}
 	}
 	
+	// check attacks
 	private void checkAttacks(GameObject object) { // Preguntar si hace esta funcion
 		for(GameObject aux : objects) {
 			aux.performAttack(object);
@@ -68,6 +73,7 @@ public class GameObjectBoard {
 		
 	}
 
+	// remove dead
 	private void removeDead() {
 		int index = 0;
 		boolean found = false;
@@ -77,6 +83,7 @@ public class GameObjectBoard {
 				index = i;
 			}
 		}
+		
 		if(found) {
 			for(int i = index;i< currentObjects-1;i++) {
 				objects[i] = objects[i+1];
@@ -87,23 +94,27 @@ public class GameObjectBoard {
 	
 //_______________________METHODS (PUBLIC)_____________________________
 	
+	// add
 	public void add (GameObject object) {
 		objects[currentObjects] = object;
 		currentObjects++;
 	}
 	
+	// update
 	public void update() { // Preguntar si solo se mueven al hace update
 		for(GameObject G : objects) {
 			G.move();
 		}
 	}
 	
+	// computer action
 	public void computerAction() {
 		for(GameObject aux : objects) {
 			aux.computerAction();
 		}
 	}
 	
+	// to string
 	public String toString(int x, int y) {
 		for(GameObject aux : objects) {
 			if(aux != null && aux.location(x, y)){

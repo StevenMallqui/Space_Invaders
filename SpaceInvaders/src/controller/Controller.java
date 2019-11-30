@@ -17,8 +17,6 @@ public class Controller {
 	private Scanner in;
 	private GamePrinter pintar;
 	
-	private boolean reset = false;
-
 	// ______________________ Constructor ______________________    
 
 	public Controller(Game game) {
@@ -49,7 +47,7 @@ public class Controller {
 		}
 		
 		// End game
-		System.out.println(new GamePrinter(game, game.getNUMCOL(), game.getNUMFIL()));		
+		System.out.println(new GamePrinter(game, game.DIM_X, game.DIM_Y));		
 	}
 	
 	

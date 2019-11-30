@@ -121,9 +121,9 @@ public class Game implements IPlayerController {
 	public boolean move(int num) {
 		boolean ok = false;
 		
-		if (ucm.getPosY() + num < DIM_Y && ucm.getPosY() + num > 0) {
+		if (ucm.getPosY() + num <= 0 || ucm.getPosY() + num > DIM_Y) {
 			ok = true;
-			ucm.moveShip(num);
+			ucm.setMovement(num);
 		}
 		
 		return ok;
@@ -140,7 +140,6 @@ public class Game implements IPlayerController {
 
 	// shock wave
 	public boolean shockWave() {
-		
 		return ucm.getShockwave();
 	}
 
@@ -159,14 +158,6 @@ public class Game implements IPlayerController {
 	public void enableMissile() {
 		
  	}
-
-	public int getNUMFIL() {
-		return DIM_X;
-	}
-
-	public int getNUMCOL() {
-		return DIM_Y;
-	}
 
 	public char[] scoreBoard() {
 		// TODO Auto-generated method stub
@@ -191,11 +182,6 @@ public class Game implements IPlayerController {
 	public int numEnemies() {
 		// TODO Auto-generated method stub
 		return 0;
-	}
-
-	public boolean availableShockwave() {
-		// TODO Auto-generated method stub
-		return false;
 	}
 
 }
