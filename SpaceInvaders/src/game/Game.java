@@ -121,7 +121,7 @@ public class Game implements IPlayerController {
 	public boolean move(int num) {
 		boolean ok = false;
 		
-		if (ucm.getPosY() + num <= 0 || ucm.getPosY() + num > DIM_Y) {
+		if (ucm.getPosY() + num >= 0 && ucm.getPosY() + num <= DIM_Y) {
 			ok = true;
 			ucm.setMovement(num);
 		}
