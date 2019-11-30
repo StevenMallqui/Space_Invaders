@@ -46,9 +46,9 @@ public class UCMShip extends Ship {
 		posY += numSpacesMove;
 	}
 
-	// available move
-	public boolean availableMove(int num) {
-		return (game.DIM_Y == num && num == 0);
+	// set movement
+	public void setMovement(int num) {
+		numSpacesMove = num;
 	}
 
 }

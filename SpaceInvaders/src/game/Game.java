@@ -121,9 +121,10 @@ public class Game implements IPlayerController {
 	public boolean move(int num) {
 		boolean ok = false;
 		
-		if (ucm.availableMove(num)) 
+		if (ucm.getPosY() + num <= 0 || ucm.getPosY() + num > DIM_Y) {
 			ok = true;
-		
+			ucm.setMovement(num);
+		}
 		
 		return ok;
 	}
@@ -139,7 +140,6 @@ public class Game implements IPlayerController {
 
 	// shock wave
 	public boolean shockWave() {
-		
 		return ucm.getShockwave();
 	}
 
@@ -158,14 +158,6 @@ public class Game implements IPlayerController {
 	public void enableMissile() {
 		
  	}
-
-	public int getNUMFIL() {
-		return DIM_X;
-	}
-
-	public int getNUMCOL() {
-		return DIM_Y;
-	}
 
 	public char[] scoreBoard() {
 		// TODO Auto-generated method stub

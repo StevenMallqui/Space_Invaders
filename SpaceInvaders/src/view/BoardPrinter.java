@@ -27,13 +27,14 @@ public class BoardPrinter implements GamePrinter {
 		return null;
 	}
 	
+	// score board
 	public String scoreBoard(Game game) {
 		String text = "";		
 		text += "  Life : " + game.getLives();
 		text += "\n  Number of cycles : " + game.getCycle();
 		text += "\n  Points : " + game.getPoints();
 		text += "\n  Remaining aliens : " + game.numEnemies();
-		text += "\n  Shockwave : " + game.availableShockwave();
+		text += "\n  Shockwave : " + game.shockWave();
 		
 		return text;
 	}
