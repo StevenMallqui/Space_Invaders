@@ -1,38 +1,35 @@
 package gameObjects;
 
 import game.Game;
+import game.IExecuteRandomActions;
 
-public class Ovni extends EnemyShip {
-
-	// ______________________ Variables   ______________________  
-
-	// ______________________ Constructor ______________________    
-
+public class Ovni extends EnemyShip implements IExecuteRandomActions{
+	
+	//______________________Variables______________________  
+	
+	//______________________Constructor______________________    
+	
 	public Ovni(Game game, int x, int y, int live) {
-		super(game, x, y, live);
+		super(game, x, y, 1);
 		// TODO Auto-generated constructor stub
 	}
-
-	// ______________________   Methods   ______________________
-
+	
+	//______________________Methods______________________
+	
 	@Override
 	public void computerAction() {
 		// TODO Auto-generated method stub
-		
 	}
-
+	
 	@Override
 	public void onDelete() {
 		// TODO Auto-generated method stub
-		
 	}
-
+	
 	@Override
 	public String toString() {
-		// TODO Auto-generated method stub
-		return null;
+		return "O[" + lives + "]";
 	}
-
 	
 	
 	
