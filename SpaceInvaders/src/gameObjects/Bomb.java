@@ -1,8 +1,9 @@
 package gameObjects;
 
 import game.Game;
+import game.IExecuteRandomActions;
 
-public class Bomb extends Weapons {
+public class Bomb extends Weapons implements IExecuteRandomActions {
 
 	// ______________________ Constructor ______________________    
 
@@ -13,15 +14,14 @@ public class Bomb extends Weapons {
 
 	// ______________________   Methods   ______________________
 
-	// Computer action -----------------------------------------
+	// Computer action
 	public void computerAction() {
-		// See if bomb can be shot
+		IExecuteRandomActions.canGenerateRandomBomb(game);
 	}
 
 	// On delete -----------------------------------------------
 	public void onDelete() {
 		// No clue
-		
 	}
 
 	// move

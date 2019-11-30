@@ -102,23 +102,23 @@ public class GameObjectBoard {
 	
 	// update
 	public void update() { // Preguntar si solo se mueven al hace update
-		for(GameObject G : objects) {
-			G.move();
+		for(GameObject obj : objects) {
+			obj.move();
 		}
 	}
 	
 	// computer action
 	public void computerAction() {
-		for(GameObject aux : objects) {
-			aux.computerAction();
+		for(GameObject obj : objects) {
+			obj.computerAction();
 		}
 	}
 	
 	// to string
 	public String toString(int x, int y) {
-		for(GameObject aux : objects) {
-			if(aux != null && aux.location(x, y)){
-				return aux.toString();
+		for(GameObject obj : objects) {
+			if(obj != null && obj.location(x, y)){
+				return obj.toString();
 			}
 		}
 		return " ";
