@@ -27,10 +27,12 @@ public abstract class AlienShip extends EnemyShip {
 		return (posX == min);
 	}
 	
+	// all dead
 	public static boolean allDead() {
 		return false;
 	}
 	
+	// have landed
 	public static boolean haveLanded() {
 		return false;
 	}
@@ -39,6 +41,7 @@ public abstract class AlienShip extends EnemyShip {
 	public void move() {
 		if (direction)
 			posY++;
+		
 		else 
 			posY--;
 	}

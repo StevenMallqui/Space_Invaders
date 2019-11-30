@@ -12,7 +12,7 @@ public class MoveCommand extends Command{
 	// ______________________ Constructor ______________________    
 
 	public MoveCommand() {
-		super("move", "m","move <left|right><1|2>","Moves UCM-Ship to the indicated direction.");
+		super("move", "m","move <left|right> <1|2>","Moves UCM-Ship to the indicated direction.");
 	}
 
 	// ______________________   Methods   ______________________
@@ -32,13 +32,17 @@ public class MoveCommand extends Command{
 	public boolean execute(Game game) {
 		boolean ok = false;
 		
-		if (direction.equals("left"))
-			spaces = -spaces;
-
-		if (game.move(spaces)) {
-			game.update();
-			ok = true;
-		}
+		if (direction.equals("left") || direction.equals("right")) 
+			if (spaces ==  1 || spaces == 2) {
+				
+				if (direction.equals("left"))
+					spaces = -spaces;
+		
+				if (game.move(spaces)) {
+					game.update();
+					ok = true;
+				}
+			}
 
 		return ok;
 	}

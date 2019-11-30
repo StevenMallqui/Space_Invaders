@@ -121,10 +121,9 @@ public class Game implements IPlayerController {
 	public boolean move(int num) {
 		boolean ok = false;
 		
-		if (ucm.getPosY() + num < DIM_Y && ucm.getPosY() + num > 0) {
+		if (ucm.availableMove(num)) 
 			ok = true;
-			ucm.moveShip(num);
-		}
+		
 		
 		return ok;
 	}
@@ -191,11 +190,6 @@ public class Game implements IPlayerController {
 	public int numEnemies() {
 		// TODO Auto-generated method stub
 		return 0;
-	}
-
-	public boolean availableShockwave() {
-		// TODO Auto-generated method stub
-		return false;
 	}
 
 }
