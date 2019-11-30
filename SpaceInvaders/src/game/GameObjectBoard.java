@@ -8,6 +8,7 @@ public class GameObjectBoard {
 	
 	private GameObject[] objects;
 	private int currentObjects;
+	private boolean direction;
 	
 	//______________________CONSTRUCTOR_______________________
 	
@@ -21,7 +22,7 @@ public class GameObjectBoard {
 	//_______________________METHODS (PRIVATE)_____________________________
 	
 	// get current objects
-	private int getCurrentObjects () {
+	private int getCurrentObjects() {
 		return this.currentObjects; 
 	}
 	
@@ -102,11 +103,10 @@ public class GameObjectBoard {
 	}
 	
 	// update
-	public void update() { // Preguntar si solo se mueven al hace update
-		for(GameObject obj : objects) {
+	public void update() {
+		for(GameObject obj : objects) 
 			if (obj != null)
 				obj.move();
-		}
 	}
 	
 	// computer action
