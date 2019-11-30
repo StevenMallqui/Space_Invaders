@@ -12,7 +12,7 @@ public class MoveCommand extends Command{
 	// ______________________ Constructor ______________________    
 
 	public MoveCommand() {
-		super("move","m","move <left|right><1|2>","Moves UCM-Ship to the indicated direction.");
+		super("move", "m","move <left|right><1|2>","Moves UCM-Ship to the indicated direction.");
 	}
 
 	// ______________________   Methods   ______________________
