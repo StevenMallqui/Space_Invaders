@@ -84,7 +84,6 @@ public class GameObjectBoard {
 		}
 		
 	}
-
 	
 //_______________________METHODS (PUBLIC)_____________________________
 	
@@ -98,7 +97,6 @@ public class GameObjectBoard {
 			G.move();
 		}
 	}
-	
 	
 	public void computerAction() {
 		for(GameObject aux : objects) {
@@ -114,6 +112,5 @@ public class GameObjectBoard {
 		}
 		return " ";
 	}
-
-
+	
 }
