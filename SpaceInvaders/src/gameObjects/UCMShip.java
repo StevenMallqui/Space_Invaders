@@ -50,4 +50,9 @@ public class UCMShip extends Ship {
 		return "^__^";
 	}
 
+	// move ship
+	public void moveShip(int spaces) {
+		posY += spaces;
+	}
+
 }

@@ -125,9 +125,16 @@ public class Game implements IPlayerController {
 		else return "This should not happen";
 	}
 
-	@Override
-	public boolean move(int numCells) {
-		return false;
+	// Move
+	public boolean move(int num) {
+		boolean ok = false;
+		
+		if (ucm.getPosY() + num < DIM_Y && ucm.getPosY() + num > 0) {
+			ok = true;
+			ucm.moveShip(num);
+		}
+		
+		return ok;
 	}
 
 	@Override

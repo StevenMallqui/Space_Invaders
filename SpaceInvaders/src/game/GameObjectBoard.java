@@ -89,7 +89,7 @@ public class GameObjectBoard {
 //_______________________METHODS (PUBLIC)_____________________________
 	
 	public void add (GameObject object) {
-		objects[currentObjects]= object;
+		objects[currentObjects] = object;
 		currentObjects++;
 	}
 	
@@ -102,7 +102,7 @@ public class GameObjectBoard {
 	
 	public void computerAction() {
 		for(GameObject aux : objects) {
-			aux.computerAction();;
+			aux.computerAction();
 		}
 	}
 	
