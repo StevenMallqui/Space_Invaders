@@ -19,12 +19,7 @@ public class GameObjectBoard {
 	
 	
 	//_______________________METHODS (PRIVATE)_____________________________
-	
-	// get current objects
-	private int getCurrentObjects() {
-		return this.currentObjects; 
-	}
-	
+		
 	// get object in position
 	private GameObject getObjectInPosition (int x,int y ) {
 		
@@ -114,7 +109,7 @@ public class GameObjectBoard {
 		for (int i = 0; i < currentObjects && possible; i++) {
 			if (objects[i] instanceof AlienShip) {
 				
-				objects[i].
+				//objects[i].
 			}
 		}
 	}

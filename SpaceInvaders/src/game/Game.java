@@ -136,6 +136,7 @@ public class Game implements IPlayerController {
 
 	// shoot laser
 	public boolean shootLaser() {
+		board.
 		
 		return false;
 	}
