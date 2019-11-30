@@ -1,8 +1,8 @@
 package gameObjects;
 
-import game.Game;
+import game.*;
 
-public class Ovni extends EnemyShip {
+public class Ovni extends EnemyShip implements IExecuteRandomActions{
 	
 	//______________________Variables______________________  
 	

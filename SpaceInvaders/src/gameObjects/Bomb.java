@@ -1,7 +1,6 @@
 package gameObjects;
 
-import game.Game;
-import game.IExecuteRandomActions;
+import game.*;
 
 public class Bomb extends Weapons implements IExecuteRandomActions {
 
