@@ -11,14 +11,13 @@ public class Ovni extends EnemyShip implements IExecuteRandomActions{
 	
 	public Ovni(Game game, int x, int y, int live) {
 		super(game, x, y, 1);
-		// TODO Auto-generated constructor stub
 	}
 	
 	//______________________Methods______________________
 	
 	@Override
 	public void computerAction() {
-		// TODO Auto-generated method stub
+		IExecuteRandomActions.canGenerateRandomOvni(game);
 	}
 	
 	@Override
