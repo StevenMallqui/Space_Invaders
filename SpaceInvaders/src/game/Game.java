@@ -29,6 +29,10 @@ public class Game implements IPlayerController {
 	// End
 	private boolean end;
 	
+	// direction
+	private boolean direction;
+
+	
 	// ______________________ Constructor ______________________    
 
 	public Game(Level level, Random rand) {
@@ -133,8 +137,6 @@ public class Game implements IPlayerController {
 	// shoot laser
 	public boolean shootLaser() {
 		
-		
-		
 		return false;
 	}
 
@@ -184,4 +186,14 @@ public class Game implements IPlayerController {
 		return 0;
 	}
 
+	public boolean getDirection() {
+		return direction;
+	}
+	
+	public void changeDirection() {
+		if (direction)
+			direction = false;
+		else
+			direction = true;
+	}
 }

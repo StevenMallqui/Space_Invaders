@@ -8,7 +8,6 @@ public class GameObjectBoard {
 	
 	private GameObject[] objects;
 	private int currentObjects;
-	private boolean direction;
 	
 	//______________________CONSTRUCTOR_______________________
 	

@@ -17,11 +17,6 @@ public abstract class AlienShip extends EnemyShip {
 
 	// ______________________   Methods   ______________________
 	
-	// Go down
-	public void goDown() {
-		this.posX--;
-	}
-	
 	// Get Reached bottom
 	public boolean reachBottom(int min) {
 		return (posX == min);
@@ -39,18 +34,23 @@ public abstract class AlienShip extends EnemyShip {
 
 	// move
 	public void move() {
-		if (direction)
-			posY++;
+		if (game.getDirection()) {
+			if (posY + 1 < game.DIM_Y)
+				posY++;
+			else {
+				game.changeDirection();
+				this.posX++;
+			}
+		}
 		
-		else 
-			posY--;
+		else {
+			if (posY - 1 > 0)
+				posY--;
+			else {
+				game.changeDirection();
+				this.posX++;
+			}
+		}
 	}
 	
-	// Change direction
-	public void changeDirection() {
-		if (direction)
-			direction = false;
-		else
-			direction = true;
-	}
 }
