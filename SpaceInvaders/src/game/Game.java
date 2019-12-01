@@ -193,10 +193,10 @@ public class Game implements IPlayerController {
 	public String scoreBoard() {
 		String text = "";
 		
-		text += "  Cycle : " + cycle + "\n\n";
+		text += "  Cycle : " + cycle + "\n";
 		text += "  lives : " + ucm.getLive() + "\n";
 		text += "  Points : " + points + "\n";
-		text += "  Shockwave : " + ucm.getShockwave() + "\n\n";
+		text += "  Shockwave : " + ucm.getShockwave() + "\n";
 		text += "  Aliens left : " + board.getCurrentEnemies() + "\n";
 
 		return text;
