@@ -20,7 +20,7 @@ public class Bomb extends Weapons implements IExecuteRandomActions {
 
 	// On delete -----------------------------------------------
 	public void onDelete() {
-		// No clue
+		
 	}
 
 	// move

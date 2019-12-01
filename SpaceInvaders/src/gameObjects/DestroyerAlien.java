@@ -5,6 +5,7 @@ import game.Game;
 public class DestroyerAlien extends AlienShip {
 
 	// ______________________ Variables   ______________________  
+	private boolean activeBomb;
 	
 	// ______________________ Constructor ______________________    
 
@@ -17,12 +18,6 @@ public class DestroyerAlien extends AlienShip {
 
 	@Override
 	public void computerAction() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void onDelete() {
 		// TODO Auto-generated method stub
 		
 	}

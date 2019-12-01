@@ -52,6 +52,9 @@ public abstract class AlienShip extends EnemyShip {
 		}
 	}
 	
+	public void onDelete() {
+		game.setPoints(this.points);		
+	}
 	// NearBorder
 	
 }

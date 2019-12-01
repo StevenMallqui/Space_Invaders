@@ -8,6 +8,7 @@ public abstract class Weapons extends GameObject {
 
 	protected int damage = 1;
 	
+	
 	// ______________________ Constructor ______________________    
 
 	public Weapons(Game game, int x, int y) {

@@ -21,12 +21,6 @@ public class RegularAlien extends AlienShip {
 		
 	}
 
-	@Override
-	public void onDelete() {
-		// TODO Auto-generated method stub
-		
-	}
-
 	// Get skin
 	public String toString() {
 		return "R[" + lives + "]";

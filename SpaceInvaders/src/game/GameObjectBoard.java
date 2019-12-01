@@ -25,7 +25,7 @@ public class GameObjectBoard {
 		
 		for(int i = 0; i < currentObjects; i++) {
 			
-			if(objects[i].getPosX() == x && objects[i].getPosY() == y) {
+			if(objects[i].location(x, y)) {
 				return objects[i];
 			}
 		}
