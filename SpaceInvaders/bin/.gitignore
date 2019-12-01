@@ -1,2 +1,5 @@
 /gameObjects/
 /game/
+/controller/
+/view/
+/commands/

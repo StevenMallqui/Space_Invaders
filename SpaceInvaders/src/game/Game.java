@@ -189,19 +189,6 @@ public class Game implements IPlayerController {
 	public boolean getShockWave() {
 		return ucm.getShockwave();
 	}
-
-	// print score board
-	public String scoreBoard() {
-		String text = "";
-		
-		text += "\n  Cycle : " + cycle + "\n";
-		text += "  lives : " + ucm.getLive() + "\n";
-		text += "  Points : " + points + "\n";
-		text += "  Shockwave : " + ucm.getShockwave() + "\n";
-		text += "  Aliens left : " + board.getCurrentEnemies();
-
-		return text;
-	}
 	
 	// change direction
 	public void changeDirection() {

@@ -90,16 +90,16 @@ public class GameObjectBoard {
 	
 	// add
 	public void add(GameObject object) {
-		objects = newList(currentObjects +1);
+		objects = newList(currentObjects);
 		objects[currentObjects] = object;
 		currentObjects++;
 	}
 	
 	// new list
 	public GameObject[] newList(int size) {
-		GameObject[] list = new GameObject[size -1];
+		GameObject[] list = new GameObject[size +1];
 		
-		for (int i = 0; i < size; i++)
+		for (int i = 0; i < currentObjects; i++)
 			list[i] = objects[i];
 		
 		return list;
