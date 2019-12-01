@@ -5,6 +5,7 @@ import java.util.Random;
 
 import gameObjects.AlienShip;
 import gameObjects.GameObject;
+import gameObjects.UCMMissile;
 import gameObjects.UCMShip;
 
 
@@ -29,6 +30,11 @@ public class Game implements IPlayerController {
 	// End
 	private boolean end;
 	
+	// direction
+	private int points = 0;
+	private boolean direction;
+
+	
 	// ______________________ Constructor ______________________    
 
 	public Game(Level level, Random rand) {
@@ -39,14 +45,8 @@ public class Game implements IPlayerController {
 		
 	}
 	// ______________________   Methods   ______________________
-
-	//Initializer 
-	public void initGame () {
-		cycle = 0;
-		board = initializer.initialize(this, level);
-		ucm = new UCMShip(this, DIM_X /2, DIM_Y -1);
-		board.add(ucm);
-	}
+	
+	// ----------------------  Get Info  -----------------------
 	
 	//Return our random number 
 	public Random getRandom() {
@@ -57,17 +57,7 @@ public class Game implements IPlayerController {
 	public Level getLevel() {
 		return level;
 	}
-	
-	//Restart the game	
-	public void reset() {
-		initGame();
-	}
-	
-	//Add objects 	
-	public void addObject(GameObject object) {
-		board.add(object);
-	}
-	
+
 	//COLLISIONS && PRINTING 
 	public String toString(int posX,int posY) {
 		return board.toString(posX,posY);
@@ -77,7 +67,7 @@ public class Game implements IPlayerController {
 	public boolean isFinished() {
 		return playerWin() || aliensWin() || end;
 	}
-	
+
 	//Player wins	
 	private boolean playerWin() {
 		return AlienShip.allDead();
@@ -87,7 +77,78 @@ public class Game implements IPlayerController {
 	public boolean aliensWin() {
 		return !ucm.isAlive() || AlienShip.haveLanded();
 	}
+
+	// receive points
+	public void receivePoints(int points) {
+		// TODO Auto-generated method stub
+		
+	}
 	
+	// Get lives
+	public int getLives() {
+		return ucm.getLive();
+	}
+
+	// get cycle
+	public int getCycle() {
+		return cycle;
+	}
+
+	// get points
+	public int getPoints() {
+		return points;
+	}
+
+	// get number of enemies
+	public int numEnemies() {
+		return board.getCurrentEnemies();
+	}
+
+	// get direction
+	public boolean getDirection() {
+		return direction;
+	}
+	
+	// ----------------------  Set Info  -----------------------
+	
+	// enable shock wave
+	public void enableShockWave() {
+		ucm.enableShockWave();
+	}
+
+	// enable missile
+	public void enableMissile() {
+		ucm.enableMissile();
+ 	}
+
+	// ----------------------  End Game  -----------------------
+
+	//Initializer 
+	public void initGame () {
+		cycle = 0;
+		board = initializer.initialize(this, level);
+		ucm = new UCMShip(this, DIM_X /2, DIM_Y -1);
+		board.add(ucm);
+	}
+
+	// End game
+	public void endGame() {
+		end = true;
+	}
+
+	//Restart the game	
+	public void reset() {
+		initGame();
+	}
+
+	//When game is finished 
+	public String getWinnerMessage () {
+		if (playerWin()) return "Player win!";
+		else if (aliensWin()) return "Aliens win!";
+		else if (end) return "Player exits the game";
+		else return "This should not happen";
+	}
+
 	// ----------------------   Update   -----------------------
 
 	// Update
@@ -104,19 +165,14 @@ public class Game implements IPlayerController {
 	}
 	
 	
-	// End game
-	public void endGame() {
-		end = true;
+	// ---------------------- Operations -----------------------
+
+	
+	//Add objects 	
+	public void addObject(GameObject object) {
+		board.add(object);
 	}
 	
-	//When game is finished 
-	public String getWinnerMessage () {
-		if (playerWin()) return "Player win!";
-		else if (aliensWin()) return "Aliens win!";
-		else if (end) return "Player exits the game";
-		else return "This should not happen";
-	}
-
 	// Move
 	public boolean move(int num) {
 		boolean ok = false;
@@ -129,59 +185,45 @@ public class Game implements IPlayerController {
 		return ok;
 	}
 	
-
-	// shoot laser
-	public boolean shootLaser() {
-		
-		
-		
-		return false;
-	}
-
 	// shock wave
-	public boolean shockWave() {
+	public boolean getShockWave() {
 		return ucm.getShockwave();
 	}
 
-	// receive points
-	public void receivePoints(int points) {
-		// TODO Auto-generated method stub
+	// print score board
+	public String scoreBoard() {
+		String text = "";
 		
-	}
+		text += "\n  Cycle : " + cycle + "\n";
+		text += "  lives : " + ucm.getLive() + "\n";
+		text += "  Points : " + points + "\n";
+		text += "  Shockwave : " + ucm.getShockwave() + "\n";
+		text += "  Aliens left : " + board.getCurrentEnemies();
 
-	// enable shock wave
-	public void enableShockWave() {
-		ucm.enableShockWave();
-	}
-
-	@Override
-	public void enableMissile() {
-		
- 	}
-
-	public char[] scoreBoard() {
-		// TODO Auto-generated method stub
-		return null;
+		return text;
 	}
 	
-	public int getLives() {
-		// TODO Auto-generated method stub
-		return 0;
+	// change direction
+	public void changeDirection() {
+		if (direction)
+			direction = false;
+		else
+			direction = true;
 	}
 
-	public int getCycle() {
-		// TODO Auto-generated method stub
-		return 0;
+	// shoot Laser
+	public boolean shootLaser() {
+		if (!board.shootLaser())
+			return false;
+		
+		else {
+			board.add(new UCMMissile(this, ucm.getPosX(), ucm.getPosY()));
+			return true;
+		}
 	}
 
-	public int getPoints() {
-		// TODO Auto-generated method stub
-		return 0;
+	// shoot shock wave
+	public boolean shockWave() {
+		return board.shootShockwave();
 	}
-
-	public int numEnemies() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
 }

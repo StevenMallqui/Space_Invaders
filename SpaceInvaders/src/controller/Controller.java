@@ -39,6 +39,8 @@ public class Controller {
 			if (command != null) {
 				if (command.execute(game))
 					printGame();
+				else
+					System.out.print("  Command > ");
 			}
 			
 			else 
@@ -47,15 +49,15 @@ public class Controller {
 		}
 		
 		// End game
-		System.out.println(new GamePrinter(game, game.DIM_X, game.DIM_Y));		
+		System.out.println(new GamePrinter(game, Game.DIM_X, Game.DIM_Y));		
 	}
 	
 	
 	// Print Game
 	private void printGame() {
-		pintar = new GamePrinter(game, game.DIM_Y, game.DIM_X);
+		pintar = new GamePrinter(game, Game.DIM_Y, Game.DIM_X);
 		
-		System.out.println();
+		System.out.println(game.scoreBoard());
 		System.out.print(pintar);
 		System.out.print("  Command > ");
 

@@ -7,7 +7,7 @@ public class UCMMissile extends Weapons {
 	// ______________________ Constructor ______________________    
 
 	public UCMMissile(Game game, int x, int y) {
-		super(game, x, y, 1);
+		super(game, x, y);
 	}
 
 	// ______________________   Methods   ______________________
@@ -25,7 +25,9 @@ public class UCMMissile extends Weapons {
 
 	// move
 	public void move() {
-		posY--;
+		posX--;
+		if (posX < 0)
+			lives = 0;
 	}
 
 	// skin

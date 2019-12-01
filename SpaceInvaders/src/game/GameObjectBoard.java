@@ -1,6 +1,6 @@
 package game;
 
-import gameObjects.GameObject;
+import gameObjects.*;
 
 public class GameObjectBoard {
 	
@@ -19,13 +19,8 @@ public class GameObjectBoard {
 	
 	
 	//_______________________METHODS (PRIVATE)_____________________________
-	
-	// get current objects
-	private int getCurrentObjects () {
-		return this.currentObjects; 
-	}
-	
-	// get objet in position
+		
+	// get object in position
 	private GameObject getObjectInPosition (int x,int y ) {
 		
 		for(int i = 0; i < currentObjects; i++) {
@@ -40,7 +35,7 @@ public class GameObjectBoard {
 	// get index
 	private int getIndex(int x, int y) {
 		int index=0;
-		for(int i=0; i < objects.length; i++) {
+		for(int i=0; i < currentObjects; i++) {
 			if(objects[i].location(x, y)) {
 				index=i;
 			}
@@ -49,7 +44,7 @@ public class GameObjectBoard {
 	}
 	
 	// remove
-	private void remove (GameObject object) {
+	private void remove(GameObject object) {
 		int index = 0;
 		boolean found = false;
 		for(int i=0; i < objects.length; i++) {
@@ -66,7 +61,7 @@ public class GameObjectBoard {
 	}
 	
 	// check attacks
-	private void checkAttacks(GameObject object) { // Preguntar si hace esta funcion
+	private void checkAttacks(GameObject object) {
 		for(GameObject obj : objects) {
 			if (obj != null)
 				obj.performAttack(object);
@@ -102,11 +97,18 @@ public class GameObjectBoard {
 	}
 	
 	// update
-	public void update() { // Preguntar si solo se mueven al hace update
-		for(GameObject obj : objects) {
-			if (obj != null)
-				obj.move();
-		}
+	public void update() {
+		for (GameObject go : objects) 
+			if (go != null) {
+				if (go instanceof AlienShip) {
+					go.move();
+				}
+				
+				else 
+					go.move();
+				
+			}
+		
 	}
 	
 	// computer action
@@ -115,6 +117,8 @@ public class GameObjectBoard {
 			if (obj != null)
 				obj.computerAction();
 		}
+		
+		removeDead();
 	}
 	
 	// to string
@@ -126,5 +130,32 @@ public class GameObjectBoard {
 		}
 		return " ";
 	}
+
+	// get number of enemies
+	public int getCurrentEnemies() {
+		int num = 0;
+		
+		for(GameObject obj : objects) 
+			if(obj instanceof AlienShip)
+				num++;
+				
+		return num;
+	}
+
 	
+	public boolean shootLaser() {
+		for (GameObject go : objects) 
+			if (go != null && go instanceof UCMMissile) 
+				if (go.isAlive())
+					return false;
+
+		return true;
+	}
+
+
+	public boolean shootShockwave() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+			
 }

@@ -10,17 +10,12 @@ public abstract class AlienShip extends EnemyShip {
 	
 	// ______________________ Constructor ______________________    
 
-	public AlienShip(Game game, int x, int y, int live) {
-		super(game, x, y, live);
+	public AlienShip(Game game, int x, int y, int live, int points) {
+		super(game, x, y, live, points);
 		// TODO Auto-generated constructor stub
 	}
 
 	// ______________________   Methods   ______________________
-	
-	// Go down
-	public void goDown() {
-		this.posX--;
-	}
 	
 	// Get Reached bottom
 	public boolean reachBottom(int min) {
@@ -39,18 +34,24 @@ public abstract class AlienShip extends EnemyShip {
 
 	// move
 	public void move() {
-		if (direction)
-			posY++;
+		if (game.getDirection()) {
+			if (posY < Game.DIM_Y)
+				posY++;
+			
+			else 
+				game.changeDirection();
+			
+		}
 		
-		else 
-			posY--;
+		else {
+			if (posY > 0)
+				posY--;
+			else 
+				game.changeDirection();
+			
+		}
 	}
 	
-	// Change direction
-	public void changeDirection() {
-		if (direction)
-			direction = false;
-		else
-			direction = true;
-	}
+	// NearBorder
+	
 }

@@ -7,7 +7,7 @@ public class Bomb extends Weapons implements IExecuteRandomActions {
 	// ______________________ Constructor ______________________    
 
 	public Bomb(Game game, int x, int y) {
-		super(game, x, y, 1);
+		super(game, x, y);
 		// TODO Auto-generated constructor stub
 	}
 
@@ -26,6 +26,8 @@ public class Bomb extends Weapons implements IExecuteRandomActions {
 	// move
 	public void move() {
 		posY++;
+		if (Game.DIM_X == posX)
+			lives = 0;
 	}
 
 	// skin

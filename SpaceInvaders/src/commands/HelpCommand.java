@@ -45,6 +45,6 @@ public class HelpCommand extends Command{
 		
 		System.out.println(text);
 		
-		return true;
+		return false;
 	}
 }
