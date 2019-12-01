@@ -21,10 +21,9 @@ public class RegularAlien extends AlienShip {
 		
 	}
 
-	@Override
+	// on delete
 	public void onDelete() {
-		// TODO Auto-generated method stub
-		
+		game.receivePoints(points);
 	}
 
 	// Get skin
