@@ -4,8 +4,9 @@ import game.Game;
 
 public class UCMShip extends Ship {
 	
-	private int numSpacesMove;
 	private boolean shockwave = false;
+	
+	private int numSpacesMove;
 
 	// ______________________ Constructor ______________________    
 
@@ -15,12 +16,12 @@ public class UCMShip extends Ship {
 
 	// ______________________   Methods   ______________________
 	
-	// computer action -----------------------------------------
+	// computer action
 	public void computerAction() {
 		
 	}
 
-	// on delete -----------------------------------------------
+	// on delete
 	public void onDelete() {
 		
 	}
@@ -32,8 +33,8 @@ public class UCMShip extends Ship {
 	}
 
 	// enable shock wave
-	public void enableShockWave() {
-		
+	public void setShockWave(boolean sk) {
+		shockwave = sk;
 	}
 
 	// get skin
@@ -49,6 +50,16 @@ public class UCMShip extends Ship {
 	// set movement
 	public void setMovement(int num) {
 		numSpacesMove = num;
+	}
+
+	public void enableShockWave() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void enableMissile() {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

@@ -5,11 +5,11 @@ import game.*;
 public class Ovni extends EnemyShip implements IExecuteRandomActions{
 	
 	//______________________Variables______________________  
-	
+		
 	//______________________Constructor______________________    
 	
 	public Ovni(Game game, int x, int y, int live) {
-		super(game, x, y, 1);
+		super(game, x, y, live, 25);
 	}
 	
 	//______________________Methods______________________

@@ -10,8 +10,8 @@ public abstract class AlienShip extends EnemyShip {
 	
 	// ______________________ Constructor ______________________    
 
-	public AlienShip(Game game, int x, int y, int live) {
-		super(game, x, y, live);
+	public AlienShip(Game game, int x, int y, int live, int points) {
+		super(game, x, y, live, points);
 		// TODO Auto-generated constructor stub
 	}
 

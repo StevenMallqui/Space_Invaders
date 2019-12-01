@@ -1,3 +1,5 @@
 /game/
 /gameObjects/
 /view/
+/commands/
+/controller/

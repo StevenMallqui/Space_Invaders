@@ -39,6 +39,8 @@ public class Controller {
 			if (command != null) {
 				if (command.execute(game))
 					printGame();
+				else
+					System.out.print("  Command > ");
 			}
 			
 			else 

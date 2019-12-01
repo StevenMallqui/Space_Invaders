@@ -5,11 +5,11 @@ import game.Game;
 public class DestroyerAlien extends AlienShip {
 
 	// ______________________ Variables   ______________________  
-
+	
 	// ______________________ Constructor ______________________    
 
 	public DestroyerAlien(Game game, int x, int y) {
-		super(game, x, y, 1);
+		super(game, x, y, 1, 10);
 		// TODO Auto-generated constructor stub
 	}
 

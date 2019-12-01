@@ -98,19 +98,13 @@ public class GameObjectBoard {
 	
 	// update
 	public void update() {
-		for(GameObject obj : objects) {
-			if (obj != null) {
-				if (!(obj instanceof AlienShip)) 
-					obj.move();
-			}
-		}
-		
-		boolean possible = true;
-		for (int i = 0; i < currentObjects && possible; i++) {
-			if (objects[i] instanceof AlienShip) {
-				
-				//objects[i].
-			}
+		boolean ok = true;
+		for (int i = 0; ok && i < currentObjects; i++) {
+			if (objects[i] != null) 
+				objects[i].computerAction();
+			
+			else 
+				ok = false;
 		}
 	}
 	
@@ -130,6 +124,24 @@ public class GameObjectBoard {
 			}
 		}
 		return " ";
+	}
+
+
+	public int getCurrentEnemies() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+
+	public boolean shootLaser() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+
+	public boolean shootShockwave() {
+		// TODO Auto-generated method stub
+		return false;
 	}
 	
 }
