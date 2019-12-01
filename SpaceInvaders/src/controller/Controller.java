@@ -6,7 +6,7 @@ import commands.CommandGenerator;
 import commands.Command;
 
 import game.Game;
-import game.GamePrinter;
+import view.BoardPrinter;
 import java.lang.String;
 
 public class Controller {
@@ -15,7 +15,7 @@ public class Controller {
 
 	private Game game;
 	private Scanner in;
-	private GamePrinter pintar;
+	private BoardPrinter printer;
 	
 	// ______________________ Constructor ______________________    
 
@@ -49,16 +49,16 @@ public class Controller {
 		}
 		
 		// End game
-		System.out.println(new GamePrinter(game, Game.DIM_X, Game.DIM_Y));		
+		System.out.println(new BoardPrinter(Game.DIM_X, Game.DIM_Y));		
 	}
 	
 	
 	// Print Game
 	private void printGame() {
-		pintar = new GamePrinter(game, Game.DIM_Y, Game.DIM_X);
+		printer = new BoardPrinter(Game.DIM_Y, Game.DIM_X);
 		
-		System.out.println(game.scoreBoard());
-		System.out.print(pintar);
+		System.out.println(printer.scoreBoard(game));
+		System.out.print(printer.toString(game));
 		System.out.print("  Command > ");
 
 	}

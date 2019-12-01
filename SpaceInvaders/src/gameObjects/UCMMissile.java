@@ -20,7 +20,6 @@ public class UCMMissile extends Weapons {
 	// On delete -----------------------------------------------
 	public void onDelete() {
 		// No clue
-		
 	}
 
 	// move

@@ -1,6 +1,7 @@
 package commands;
 
 import game.Game;
+import view.BoardPrinter;
 
 public class HelpCommand extends Command{
 
@@ -26,6 +27,7 @@ public class HelpCommand extends Command{
 	
 	// Execute
 	public boolean execute(Game game) {
+		//BoardPrinter bp = new BoardPrinter(0, 0);
 		String text = "\n";
 		Command c = new MoveCommand();
 		text += c.helpText();
@@ -42,8 +44,10 @@ public class HelpCommand extends Command{
 		c = new UpdateCommand();
 		text += c.helpText();
 		text += this.helpText();
+		text+= "\n";
 		
-		System.out.println(text);
+
+		System.out.print(text);
 		
 		return false;
 	}

@@ -1,30 +1,79 @@
 package view;
 
+import commands.*;
+
 import game.Game;
 import game.GameObjectBoard;
+import util.MyStringUtils;
 
 public class BoardPrinter implements GamePrinter {
 
+	int numRows; 
+	int numCols;
+	String[][] board;
+	final String space = " ";
+	
 	public BoardPrinter(int dimX, int dimY) {
-		// TODO Auto-generated constructor stub
+		numRows = dimX;
+		numCols = dimY;
+		
 	}
 
-	@Override
 	public String toString(Game game) {
-		// TODO Auto-generated method stub
-		return null;
+		board = new String[numRows][numCols];
+		for(int i = 0; i < numRows; i++) {
+			for(int j = 0; j < numCols; j++) {
+				board[i][j] =  game.toString(i, j);
+			}
+		}
+
+		int cellSize = 7;
+		int marginSize = 2;
+		String vDelimiter = "|";
+		String hDelimiter = "-";
+		
+		String rowDelimiter = MyStringUtils.repeat(hDelimiter, (numCols * (cellSize + 1)) - 1);
+		String margin = MyStringUtils.repeat(space, marginSize);
+		String lineDelimiter = String.format("%n%s%s%n", margin + space, rowDelimiter);
+		
+		StringBuilder str = new StringBuilder();
+		
+		str.append(lineDelimiter);
+		
+		for(int i=0; i<numRows; i++) {
+				str.append(margin).append(vDelimiter);
+				for (int j=0; j<numCols; j++) {
+					str.append( MyStringUtils.centre(board[i][j], cellSize)).append(vDelimiter);
+				}
+				str.append(lineDelimiter);
+		}
+		return str.toString();
 	}
 
-	@Override
+
 	public GamePrinter parse(String name) {
-		// TODO Auto-generated method stub
-		return null;
+		return PrinterGenerator.parse(name);
 	}
 
-	@Override
 	public String helpText() {
-		// TODO Auto-generated method stub
-		return null;
+		String text = "\n";
+		Command c = new MoveCommand();
+		text += c.helpText();
+		c = new ShootCommand();
+		text += c.helpText();
+		c = new ShockwaveCommand();
+		text += c.helpText();
+		c = new ListCommand();
+		text += c.helpText();
+		c = new ResetCommand();
+		text += c.helpText();
+		c = new ExitCommand();
+		text += c.helpText();
+		c = new UpdateCommand();
+		text += c.helpText();
+		text += this.helpText();
+		
+		return text;
 	}
 	
 	// score board
