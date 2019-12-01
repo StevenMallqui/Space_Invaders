@@ -5,6 +5,7 @@ import java.util.Random;
 
 import gameObjects.AlienShip;
 import gameObjects.GameObject;
+import gameObjects.UCMMissile;
 import gameObjects.UCMShip;
 
 
@@ -193,11 +194,11 @@ public class Game implements IPlayerController {
 	public String scoreBoard() {
 		String text = "";
 		
-		text += "  Cycle : " + cycle + "\n";
+		text += "\n  Cycle : " + cycle + "\n";
 		text += "  lives : " + ucm.getLive() + "\n";
 		text += "  Points : " + points + "\n";
 		text += "  Shockwave : " + ucm.getShockwave() + "\n";
-		text += "  Aliens left : " + board.getCurrentEnemies() + "\n";
+		text += "  Aliens left : " + board.getCurrentEnemies();
 
 		return text;
 	}
@@ -212,7 +213,13 @@ public class Game implements IPlayerController {
 
 	// shoot Laser
 	public boolean shootLaser() {
-		return board.shootLaser();
+		if (!board.shootLaser())
+			return false;
+		
+		else {
+			board.add(new UCMMissile(this, ucm.getPosX(), ucm.getPosY()));
+			return true;
+		}
 	}
 
 	// shoot shock wave

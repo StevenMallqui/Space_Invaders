@@ -44,7 +44,7 @@ public class GameObjectBoard {
 	}
 	
 	// remove
-	private void remove (GameObject object) {
+	private void remove(GameObject object) {
 		int index = 0;
 		boolean found = false;
 		for(int i=0; i < objects.length; i++) {
@@ -61,7 +61,7 @@ public class GameObjectBoard {
 	}
 	
 	// check attacks
-	private void checkAttacks(GameObject object) { // Preguntar si hace esta funcion
+	private void checkAttacks(GameObject object) {
 		for(GameObject obj : objects) {
 			if (obj != null)
 				obj.performAttack(object);
@@ -98,14 +98,17 @@ public class GameObjectBoard {
 	
 	// update
 	public void update() {
-		boolean ok = true;
-		for (int i = 0; ok && i < currentObjects; i++) {
-			if (objects[i] != null) 
-				objects[i].computerAction();
-			
-			else 
-				ok = false;
-		}
+		for (GameObject go : objects) 
+			if (go != null) {
+				if (go instanceof AlienShip) {
+					go.move();
+				}
+				
+				else 
+					go.move();
+				
+			}
+		
 	}
 	
 	// computer action
@@ -114,6 +117,8 @@ public class GameObjectBoard {
 			if (obj != null)
 				obj.computerAction();
 		}
+		
+		removeDead();
 	}
 	
 	// to string
@@ -126,16 +131,25 @@ public class GameObjectBoard {
 		return " ";
 	}
 
-
+	// get number of enemies
 	public int getCurrentEnemies() {
-		// TODO Auto-generated method stub
-		return 0;
+		int num = 0;
+		
+		for(GameObject obj : objects) 
+			if(obj instanceof AlienShip)
+				num++;
+				
+		return num;
 	}
 
-
+	
 	public boolean shootLaser() {
-		// TODO Auto-generated method stub
-		return false;
+		for (GameObject go : objects) 
+			if (go != null && go instanceof UCMMissile) 
+				if (go.isAlive())
+					return false;
+
+		return true;
 	}
 
 
@@ -143,5 +157,5 @@ public class GameObjectBoard {
 		// TODO Auto-generated method stub
 		return false;
 	}
-	
+			
 }

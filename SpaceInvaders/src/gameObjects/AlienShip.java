@@ -35,7 +35,7 @@ public abstract class AlienShip extends EnemyShip {
 	// move
 	public void move() {
 		if (game.getDirection()) {
-			if (posY + 1 < game.DIM_Y)
+			if (posY < Game.DIM_Y)
 				posY++;
 			
 			else 
@@ -44,12 +44,14 @@ public abstract class AlienShip extends EnemyShip {
 		}
 		
 		else {
-			if (posY - 1 > 0)
+			if (posY > 0)
 				posY--;
 			else 
 				game.changeDirection();
 			
 		}
 	}
+	
+	// NearBorder
 	
 }

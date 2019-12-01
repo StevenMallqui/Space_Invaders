@@ -5,6 +5,7 @@ import game.Game;
 public class UCMShip extends Ship {
 	
 	private boolean shockwave = false;
+	private boolean missile = false;
 	
 	private int numSpacesMove;
 
@@ -18,7 +19,7 @@ public class UCMShip extends Ship {
 	
 	// computer action
 	public void computerAction() {
-		
+
 	}
 
 	// on delete
@@ -30,6 +31,11 @@ public class UCMShip extends Ship {
 	// get shock wave
 	public boolean getShockwave() {
 		return shockwave;
+	}
+	
+	// get active missile
+	public boolean getMissile() {
+		return missile;
 	}
 
 	// enable shock wave
@@ -45,6 +51,7 @@ public class UCMShip extends Ship {
 	// move ship
 	public void move() {
 		posY += numSpacesMove;
+		numSpacesMove = 0;
 	}
 
 	// set movement
@@ -52,14 +59,15 @@ public class UCMShip extends Ship {
 		numSpacesMove = num;
 	}
 
+	// enable shock wave
 	public void enableShockWave() {
 		// TODO Auto-generated method stub
-		
+		shockwave = true;
 	}
 
 	public void enableMissile() {
 		// TODO Auto-generated method stub
-		
+		missile = true;
 	}
 
 }
