@@ -41,6 +41,6 @@ public class Ovni extends EnemyShip implements IExecuteRandomActions{
 		else {
 			this.posY = 9;
 		}
-		}
-		
 	}
+		
+}

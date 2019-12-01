@@ -6,6 +6,7 @@ public class UCMShip extends Ship {
 	
 	private boolean shockwave = true;
 	private boolean missile = false;
+	private String skin = "^__^";
 	
 	private int numSpacesMove;
 
@@ -19,12 +20,13 @@ public class UCMShip extends Ship {
 	
 	// computer action
 	public void computerAction() {
-
+		
 	}
 
 	// on delete
 	public void onDelete() {
-		
+		game.endGame();
+		skin = "!xx!";
 	}
 
 
@@ -45,7 +47,7 @@ public class UCMShip extends Ship {
 
 	// get skin
 	public String toString() {
-		return "^__^";
+		return skin;
 	}
 
 	// move ship

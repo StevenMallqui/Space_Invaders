@@ -21,6 +21,11 @@ public class RegularAlien extends AlienShip {
 		
 	}
 
+	// on delete
+	public void onDelete() {
+		game.receivePoints(points);
+	}
+
 	// Get skin
 	public String toString() {
 		return "R[" + lives + "]";
