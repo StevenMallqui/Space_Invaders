@@ -5,6 +5,8 @@ import game.*;
 public class Ovni extends EnemyShip implements IExecuteRandomActions{
 	
 	//______________________Variables______________________  
+	
+	private UCMShip ucm;
 		
 	//______________________Constructor______________________    
 	
@@ -16,12 +18,15 @@ public class Ovni extends EnemyShip implements IExecuteRandomActions{
 	
 	@Override
 	public void computerAction() {
-		IExecuteRandomActions.canGenerateRandomOvni(game);
+		if(IExecuteRandomActions.canGenerateRandomOvni(game)){
+			move();
+		}
 	}
 	
 	@Override
 	public void onDelete() {
-		// TODO Auto-generated method stub
+		ucm.enableShockWave();
+		game.setPoints(this.points);
 	}
 	
 	@Override
@@ -30,8 +35,12 @@ public class Ovni extends EnemyShip implements IExecuteRandomActions{
 	}
 	
 	public void move() {
-		this.posY--;
+		if(this.posY > 0) {
+			this.posY--;	
+		}
+		else {
+			this.posY = 9;
+		}
+		}
+		
 	}
-	
-	
-}

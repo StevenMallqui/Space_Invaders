@@ -7,7 +7,7 @@ public abstract class EnemyShip extends Ship {
 	
 	// ______________________ Variables   ______________________  
 	
-	private int points;
+	protected int points;
 
 	// ______________________ Constructor ______________________    
 

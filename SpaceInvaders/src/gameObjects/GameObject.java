@@ -41,6 +41,7 @@ public abstract class GameObject implements IAttack {
 	public int getPosY() {
 		return posY;
 	}
+	
 
 	// Is object alive
 	public boolean isAlive() {

@@ -98,7 +98,13 @@ public class Game implements IPlayerController {
 	public int getPoints() {
 		return points;
 	}
-
+	
+	// set points
+	public void setPoints(int aux) {
+		this.points += aux;
+	}
+		
+	
 	// get number of enemies
 	public int numEnemies() {
 		return board.getCurrentEnemies();

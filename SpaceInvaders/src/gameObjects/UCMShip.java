@@ -61,7 +61,6 @@ public class UCMShip extends Ship {
 
 	// enable shock wave
 	public void enableShockWave() {
-		// TODO Auto-generated method stub
 		shockwave = true;
 	}
 
