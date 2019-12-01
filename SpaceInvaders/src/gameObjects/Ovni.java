@@ -29,6 +29,9 @@ public class Ovni extends EnemyShip implements IExecuteRandomActions{
 		return "O[" + lives + "]";
 	}
 	
+	public void move() {
+		this.posY--;
+	}
 	
 	
 }
