@@ -150,9 +150,7 @@ public class GameObjectBoard {
 	public boolean shootLaser() {
 		for (GameObject go : objects) 
 			if (go instanceof UCMMissile) 
-				if (go.isAlive())
-					return false;
-
+				return false;
 		return true;
 	}
 
