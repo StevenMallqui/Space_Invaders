@@ -58,7 +58,7 @@ public class Controller {
 		printer = new BoardPrinter(Game.DIM_Y, Game.DIM_X);
 		
 		System.out.println(printer.scoreBoard(game));
-		System.out.print(printer);
+		System.out.print(printer.toString(game));
 		System.out.print("  Command > ");
 
 	}
