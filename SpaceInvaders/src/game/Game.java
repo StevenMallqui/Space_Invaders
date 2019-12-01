@@ -70,12 +70,12 @@ public class Game implements IPlayerController {
 
 	//Player wins	
 	private boolean playerWin() {
-		return AlienShip.allDead();
+		return board.allDead();
 	}
 	
 	//Aliens wins
 	public boolean aliensWin() {
-		return !ucm.isAlive() || AlienShip.haveLanded();
+		return !ucm.isAlive() || board.haveLanded();
 	}
 
 	// receive points

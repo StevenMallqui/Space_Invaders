@@ -61,7 +61,7 @@ public class GameObjectBoard {
 	
 	// check attacks
 	private void checkAttacks(GameObject object) {
-		for(GameObject obj : objects) {
+		for (GameObject obj : objects) {
 				obj.performAttack(object);
 		}	
 		
@@ -69,21 +69,11 @@ public class GameObjectBoard {
 
 	// remove dead
 	private void removeDead() {
-		int index = 0;
-		boolean found = false;
-		for(int i = 0; i < currentObjects; i++) {
-			if(!objects[i].isAlive()) {
-				found = true;
-				index = i;
-			}
-		}
-		
-		if(found) {
-			for(int i = index; i < currentObjects-1;i++) {
-				objects[i] = objects[i+1];
-			}
-		}
-		
+		for(int i = 0; i < currentObjects; i++) 
+			if(!objects[i].isAlive()) 
+				remove(objects[i]);
+			
+				
 	}
 	
 //_______________________METHODS (PUBLIC)_____________________________
@@ -120,8 +110,8 @@ public class GameObjectBoard {
 	public void computerAction() {
 		for(GameObject obj : objects) {
 				obj.computerAction();
+				checkAttacks(obj);
 		}
-		
 		removeDead();
 	}
 	
@@ -146,15 +136,16 @@ public class GameObjectBoard {
 		return num;
 	}
 
-	
+	// shoot laser
 	public boolean shootLaser() {
 		for (GameObject go : objects) 
 			if (go instanceof UCMMissile) 
 				return false;
+		
 		return true;
 	}
 
-
+	// shoot shock wave
 	public boolean shootShockwave() {
 		for (GameObject go: objects) {
 			if (go instanceof EnemyShip)
@@ -163,5 +154,25 @@ public class GameObjectBoard {
 		
 		return true;
 	}
+	
+	// all dead
+		public boolean allDead() {			
+			for (GameObject go : objects) {
+				if (go.isAlive())
+					return false;
+			}
 			
+			return true;
+		}
+		
+		// have landed
+		public boolean haveLanded() {
+			for (GameObject go : objects) {
+				if (go instanceof AlienShip && go.getPosX() == Game.DIM_X -1)
+					return false;
+			}
+			
+			return true;
+		}
+
 }
