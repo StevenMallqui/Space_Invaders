@@ -211,6 +211,12 @@ public class Game implements IPlayerController {
 
 	// shoot shock wave
 	public boolean shockWave() {
-		return board.shootShockwave();
+		if (ucm.getShockwave()) {
+			board.shootShockwave();
+			return true;
+		}
+		
+		else return false;
+		
 	}
 }

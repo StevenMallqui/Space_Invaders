@@ -158,8 +158,12 @@ public class GameObjectBoard {
 
 
 	public boolean shootShockwave() {
-		// TODO Auto-generated method stub
-		return false;
+		for (GameObject go: objects) {
+			if (go instanceof EnemyShip)
+				go.damageObject(1);
+		}
+		
+		return true;
 	}
 			
 }

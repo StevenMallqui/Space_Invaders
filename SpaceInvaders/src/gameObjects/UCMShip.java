@@ -4,7 +4,7 @@ import game.Game;
 
 public class UCMShip extends Ship {
 	
-	private boolean shockwave = false;
+	private boolean shockwave = true;
 	private boolean missile = false;
 	
 	private int numSpacesMove;
