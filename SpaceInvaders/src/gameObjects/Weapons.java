@@ -13,7 +13,6 @@ public abstract class Weapons extends GameObject {
 
 	public Weapons(Game game, int x, int y) {
 		super(game, x, y, 1);
-		this.damage = damage;
 	}
 
 	// ______________________   Methods   ______________________

@@ -11,7 +11,6 @@ public class DestroyerAlien extends AlienShip {
 
 	public DestroyerAlien(Game game, int x, int y) {
 		super(game, x, y, 1, 10);
-		// TODO Auto-generated constructor stub
 	}
 
 	// ______________________   Methods   ______________________
