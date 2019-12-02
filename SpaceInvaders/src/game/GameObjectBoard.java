@@ -55,8 +55,8 @@ public class GameObjectBoard {
 			}
 		
 		objects = newList(currentObjects -1);
-		objects[currentObjects] = object;
-		currentObjects++;
+		//objects[currentObjects] = object;
+		currentObjects--;
 	}
 	
 	// check attacks
