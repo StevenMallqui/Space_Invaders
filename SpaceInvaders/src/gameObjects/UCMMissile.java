@@ -34,5 +34,9 @@ public class UCMMissile extends Weapons {
 		return "oo";
 	}
 
-	
+	public boolean receiveBombAttack(int damage) {
+		damageObject(damage);
+		return true;
+	}
+
 }
