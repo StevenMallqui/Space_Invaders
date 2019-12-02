@@ -15,12 +15,6 @@ public class DestroyerAlien extends AlienShip {
 
 	// ______________________   Methods   ______________________
 
-	@Override
-	public void computerAction() {
-		// TODO Auto-generated method stub
-		
-	}
-
 	// Get skin
 	public String toString() {
 		return "D[" + lives + "]";

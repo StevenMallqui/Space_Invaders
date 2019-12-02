@@ -4,10 +4,6 @@ import game.Game;
 
 public abstract class AlienShip extends EnemyShip {
 
-	// ______________________ Variables   ______________________  
-	
-	boolean direction = false;
-	
 	// ______________________ Constructor ______________________    
 
 	public AlienShip(Game game, int x, int y, int live, int points) {
@@ -25,26 +21,27 @@ public abstract class AlienShip extends EnemyShip {
 	// move
 	public void move() {
 		if (game.getDirection()) {
-			if (posY < Game.DIM_Y)
-				posY++;
-			
-			else 
-				game.changeDirection();
-			
+			if (Game.DIM_Y -1 == posY) 
+				game.goADown();
+						
+			posY++;
 		}
 		
 		else {
-			if (posY > 0)
-				posY--;
-			else 
-				game.changeDirection();
+			if (0 == posY) 
+				game.goADown();
 			
+			posY--;
+
 		}
 	}
 	
 	public void onDelete() {
 		game.setPoints(this.points);		
 	}
-	// NearBorder
+	
+	public void computerAction() {
+		posX++;
+	}
 	
 }

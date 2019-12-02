@@ -15,12 +15,6 @@ public class RegularAlien extends AlienShip {
 
 	// ______________________   Methods   ______________________
 
-	@Override
-	public void computerAction() {
-		// TODO Auto-generated method stub
-		
-	}
-
 	// on delete
 	public void onDelete() {
 		game.receivePoints(points);

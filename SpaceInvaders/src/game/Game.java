@@ -65,7 +65,8 @@ public class Game implements IPlayerController {
 	
 	//Game is finished 	
 	public boolean isFinished() {
-		return playerWin() || aliensWin() || end;
+		return false;
+		//playerWin() || aliensWin() || end
 	}
 
 	//Player wins	
@@ -224,6 +225,12 @@ public class Game implements IPlayerController {
 			direction = false;
 		else
 			direction = true;
+	}
+
+	public void goADown() {
+		// TODO Auto-generated method stub
+		board.goADown();
+		direction = !direction;
 	}
 
 	

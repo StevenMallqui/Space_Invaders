@@ -97,21 +97,19 @@ public class GameObjectBoard {
 	
 	// update
 	public void update() {
-		for (GameObject go : objects) 
-			if (go instanceof AlienShip)
-				go.move();
-			
-			
-			else 
-				go.move();		
+		for (GameObject obj : objects) {
+			if (!(obj instanceof AlienShip)) 
+				obj.move();
+		}
 	}
-	
+		
 	// computer action
 	public void computerAction() {
 		for(GameObject obj : objects) {
 				obj.computerAction();
 				checkAttacks(obj);
 		}
+		
 		removeDead();
 	}
 	
@@ -173,6 +171,16 @@ public class GameObjectBoard {
 			}
 			
 			return true;
+		}
+
+
+		public void goADown() {
+			// TODO Auto-generated method stub
+			for (GameObject go : objects) {
+				if (go instanceof AlienShip)
+					go.computerAction();
+			}
+
 		}
 
 }
