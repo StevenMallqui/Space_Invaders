@@ -166,8 +166,8 @@ public class GameObjectBoard {
 	// shoot shock wave
 	public boolean shootShockwave() {
 		for (GameObject go: objects) {
-			if (go instanceof EnemyShip)
-				go.damageObject(1);
+			go.receiveMissileAttack(1);
+
 		}
 		
 		return true;
@@ -198,14 +198,12 @@ public class GameObjectBoard {
 			for (GameObject obj : objects) {
 				if (obj instanceof UCMMissile) {
 					GameObject imp = getObjectInPosition(obj.getPosX(), obj.getPosY());
-					if (imp != null && (imp instanceof EnemyShip))
-						imp.damageObject(((UCMMissile) obj).getDamage());
+					imp.receiveMissileAttack(((UCMMissile) obj).getDamage());
 				}
 				
 				else if (obj instanceof Bomb) {
 					GameObject imp = getObjectInPosition(obj.getPosX(), obj.getPosY());
-					if (imp != null && (imp instanceof UCMShip))
-						imp.damageObject(((Bomb) obj).getDamage());
+					imp.receiveBombAttack(((Bomb) obj).getDamage());
 				}
 			}
 		}
