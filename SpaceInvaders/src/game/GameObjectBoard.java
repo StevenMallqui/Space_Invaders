@@ -55,8 +55,7 @@ public class GameObjectBoard {
 			}
 		
 		objects = newList(currentObjects -1);
-		objects[currentObjects] = object;
-		currentObjects++;
+		currentObjects--;
 	}
 	
 	// check attacks
@@ -99,8 +98,30 @@ public class GameObjectBoard {
 	public void update() {
 		for (GameObject obj : objects) {
 			if (!(obj instanceof AlienShip)) 
-				obj.move();
+				obj.move();				
 		}
+		
+		boolean goDown = false;
+		for (GameObject obj : objects) {
+			if (obj instanceof AlienShip && !goDown)
+				goDown = ((AlienShip) obj).checkBorders();
+		}
+		
+		if (goDown) {
+			for (GameObject obj : objects) {
+				if (obj instanceof AlienShip)
+					((AlienShip) obj).goDown();
+			}
+		}
+		
+		else {
+			for (GameObject obj : objects) {
+				if (obj instanceof AlienShip)
+					obj.move();
+			}
+		}
+			
+
 	}
 		
 	// computer action
@@ -173,14 +194,20 @@ public class GameObjectBoard {
 			return true;
 		}
 
-
-		public void goADown() {
-			// TODO Auto-generated method stub
-			for (GameObject go : objects) {
-				if (go instanceof AlienShip)
-					go.computerAction();
+		// object impact
+		public void objectImpact() {
+			for (GameObject obj : objects) {
+				if (obj instanceof UCMMissile) {
+					GameObject imp = getObjectInPosition(obj.getPosX(), obj.getPosY());
+					if (imp != null && (imp instanceof EnemyShip))
+						imp.damageObject(((UCMMissile) obj).getDamage());
+				}
+				
+				else if (obj instanceof Bomb) {
+					GameObject imp = getObjectInPosition(obj.getPosX(), obj.getPosY());
+					if (imp != null && (imp instanceof UCMShip))
+						imp.damageObject(((Bomb) obj).getDamage());
+				}
 			}
-
 		}
-
 }

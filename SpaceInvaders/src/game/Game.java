@@ -221,16 +221,6 @@ public class Game implements IPlayerController {
 	
 	// change direction
 	public void changeDirection() {
-		if (direction)
-			direction = false;
-		else
-			direction = true;
-	}
-
-	public void goADown() {
-		board.goADown();
 		direction = !direction;
-	}
-
-	
+	}	
 }

@@ -20,19 +20,14 @@ public abstract class AlienShip extends EnemyShip {
 	
 	// move
 	public void move() {
-		if (game.getDirection()) {
-			if (Game.DIM_Y -1 == posY) 
-				game.goADown();
-						
-			posY++;
-		}
-		
-		else {
-			if (0 == posY) 
-				game.goADown();
+		if (game.getCycle() % game.getLevel().getNumCyclesToMoveOneCell() == 0) {
+			if (game.getDirection()) {
+				posY++;
+			}
 			
-			posY--;
-
+			else {
+				posY--;
+			}
 		}
 	}
 	
@@ -41,7 +36,29 @@ public abstract class AlienShip extends EnemyShip {
 	}
 	
 	public void computerAction() {
+		
+	}
+
+	public void goDown() {
 		posX++;
+	}
+
+	public boolean checkBorders() {
+		if (game.getDirection()) {
+			if(Game.DIM_Y == posY) {
+				game.changeDirection();
+				return true;
+			}
+		}
+		
+		else {
+			if (0 == posY) {
+				game.changeDirection();
+				return true;
+			}
+		}
+		
+		return false;
 	}
 	
 }
