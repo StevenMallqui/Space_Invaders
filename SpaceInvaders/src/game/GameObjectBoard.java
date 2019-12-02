@@ -63,7 +63,6 @@ public class GameObjectBoard {
 		for (GameObject obj : objects) {
 				obj.performAttack(object);
 		}	
-		
 	}
 
 	// remove dead
