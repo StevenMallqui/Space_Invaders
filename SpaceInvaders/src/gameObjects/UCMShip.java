@@ -4,7 +4,7 @@ import game.Game;
 
 public class UCMShip extends Ship {
 	
-	private boolean shockwave = true;
+	private boolean shockwave = false;
 	private boolean missile = false;
 	private String skin = "^__^";
 	

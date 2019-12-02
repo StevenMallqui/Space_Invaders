@@ -28,7 +28,9 @@ public class Controller {
 
 	// Run
 	public void run() {
+
 		printGame();
+		
 		
 		while (!game.isFinished()) {
 			// Receive Command
@@ -39,8 +41,9 @@ public class Controller {
 			if (command != null) {
 				if (command.execute(game))
 					printGame();
-				else
+				else {
 					System.out.print("  Command > ");
+				}
 			}
 			
 			else 
@@ -49,7 +52,8 @@ public class Controller {
 		}
 		
 		// End game
-		System.out.println(new BoardPrinter(Game.DIM_X, Game.DIM_Y));		
+		BoardPrinter bp = new BoardPrinter(Game.DIM_Y, Game.DIM_X);
+		System.out.println(bp.toString(game));		
 	}
 	
 	
@@ -60,7 +64,6 @@ public class Controller {
 		System.out.println(printer.scoreBoard(game));
 		System.out.print(printer.toString(game));
 		System.out.print("  Command > ");
-
 	}
 }
 

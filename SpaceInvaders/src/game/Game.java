@@ -28,7 +28,7 @@ public class Game implements IPlayerController {
 	private Level level;
 
 	// End
-	private boolean end;
+	private boolean end = false;
 	
 	// direction
 	private int points = 0;
@@ -44,7 +44,7 @@ public class Game implements IPlayerController {
 		initGame();
 		
 	}
-	// ______________________   Methods   ______________________
+	// ______________________   METHODS   ______________________
 	
 	// ----------------------  Get Info  -----------------------
 	
@@ -76,12 +76,6 @@ public class Game implements IPlayerController {
 	//Aliens wins
 	public boolean aliensWin() {
 		return !ucm.isAlive() || board.haveLanded();
-	}
-
-	// receive points
-	public void receivePoints(int points) {
-		// TODO Auto-generated method stub
-		
 	}
 	
 	// Get lives
@@ -115,18 +109,57 @@ public class Game implements IPlayerController {
 		return direction;
 	}
 	
-	// ----------------------  Set Info  -----------------------
+	// ______________________PLAYER ACTIONS__________________________
 	
-	// enable shock wave
+	// SHOOT MISSILE
+	public boolean shootLaser() {
+		if (!board.shootLaser())
+			return false;
+			
+		else {
+			board.add(new UCMMissile(this, ucm.getPosX(), ucm.getPosY()));
+			return true;
+		}
+	}
+
+	// SHOOT SHOCKWAVE
+	public boolean shockWave() {
+		if (ucm.getShockwave()) {
+			board.shootShockwave();
+			return true;
+		}
+			
+		else return false;			
+		}
+		
+	// MOVE
+	public boolean move(int num) {
+		boolean ok = false;
+			
+		if (ucm.getPosY() + num >= 0 && ucm.getPosY() + num <= DIM_Y) {
+			ok = true;
+			ucm.setMovement(num);
+		}			
+		return ok;
+	}
+
+	//______________________CALLBACKS_____________________________
+		
+	// RECEIVE POINTS
+	public void receivePoints(int points) {
+		
+	}
+			
+	// ENABLE SHOCKWAVE
 	public void enableShockWave() {
 		ucm.enableShockWave();
 	}
 
-	// enable missile
+	// ENABLE MISSILE
 	public void enableMissile() {
 		ucm.enableMissile();
- 	}
-
+	}
+			
 	// ----------------------  End Game  -----------------------
 
 	//Initializer 
@@ -161,7 +194,7 @@ public class Game implements IPlayerController {
 	public void update() {
 		board.computerAction();
 		board.update();
-		cycle +=1;
+		cycle ++;
 	}
 	
 	//Return a boolean if it´s on board
@@ -179,17 +212,6 @@ public class Game implements IPlayerController {
 		board.add(object);
 	}
 	
-	// Move
-	public boolean move(int num) {
-		boolean ok = false;
-		
-		if (ucm.getPosY() + num >= 0 && ucm.getPosY() + num <= DIM_Y) {
-			ok = true;
-			ucm.setMovement(num);
-		}
-		
-		return ok;
-	}
 	
 	// shock wave
 	public boolean getShockWave() {
@@ -204,25 +226,5 @@ public class Game implements IPlayerController {
 			direction = true;
 	}
 
-	// shoot Laser
-	public boolean shootLaser() {
-		if (!board.shootLaser())
-			return false;
-		
-		else {
-			board.add(new UCMMissile(this, ucm.getPosX(), ucm.getPosY()));
-			return true;
-		}
-	}
-
-	// shoot shock wave
-	public boolean shockWave() {
-		if (ucm.getShockwave()) {
-			board.shootShockwave();
-			return true;
-		}
-		
-		else return false;
-		
-	}
+	
 }
