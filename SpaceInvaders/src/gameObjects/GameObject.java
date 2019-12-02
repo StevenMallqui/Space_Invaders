@@ -69,5 +69,5 @@ public abstract class GameObject implements IAttack {
 	public boolean isOut() {
 		return !game.isOnBoard(posX, posY);
 	}
-	
+		
 }

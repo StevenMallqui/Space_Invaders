@@ -65,7 +65,8 @@ public class Game implements IPlayerController {
 	
 	//Game is finished 	
 	public boolean isFinished() {
-		return playerWin() || aliensWin() || end;
+		return false;
+		//playerWin() || aliensWin() || end
 	}
 
 	//Player wins	
@@ -220,11 +221,6 @@ public class Game implements IPlayerController {
 	
 	// change direction
 	public void changeDirection() {
-		if (direction)
-			direction = false;
-		else
-			direction = true;
-	}
-
-	
+		direction = !direction;
+	}	
 }

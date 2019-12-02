@@ -87,4 +87,5 @@ public class BoardPrinter implements GamePrinter {
 		
 		return text;
 	}
+	
 }

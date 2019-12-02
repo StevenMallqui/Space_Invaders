@@ -3,10 +3,6 @@ package gameObjects;
 import game.Game;
 
 public abstract class AlienShip extends EnemyShip {
-
-	// ______________________ Variables   ______________________  
-	
-	boolean direction = false;
 	
 	// ______________________ Constructor ______________________    
 
@@ -24,27 +20,45 @@ public abstract class AlienShip extends EnemyShip {
 	
 	// move
 	public void move() {
-		if (game.getDirection()) {
-			if (posY < Game.DIM_Y)
+		if (game.getCycle() % game.getLevel().getNumCyclesToMoveOneCell() == 0) {
+			if (game.getDirection()) {
 				posY++;
+			}
 			
-			else 
-				game.changeDirection();
-			
-		}
-		
-		else {
-			if (posY > 0)
+			else {
 				posY--;
-			else 
-				game.changeDirection();
-			
+			}
 		}
 	}
 	
 	public void onDelete() {
 		game.setPoints(this.points);		
 	}
-	// NearBorder
+	
+	public void computerAction() {
+		
+	}
+
+	public void goDown() {
+		posX++;
+	}
+
+	public boolean checkBorders() {
+		if (game.getDirection()) {
+			if(Game.DIM_Y == posY) {
+				game.changeDirection();
+				return true;
+			}
+		}
+		
+		else {
+			if (0 == posY) {
+				game.changeDirection();
+				return true;
+			}
+		}
+		
+		return false;
+	}
 	
 }
