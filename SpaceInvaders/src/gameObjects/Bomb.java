@@ -36,7 +36,11 @@ public class Bomb extends Weapons implements IExecuteRandomActions {
 	}
 
 
-	
+	public boolean receiveMissileAttack(int damage) {
+		damageObject(damage);
+		return true;
+	}
+
 }
 
 /*

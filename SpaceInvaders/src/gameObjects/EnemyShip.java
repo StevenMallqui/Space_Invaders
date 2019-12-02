@@ -17,12 +17,24 @@ public abstract class EnemyShip extends Ship {
 	}
 
 	// ______________________   Methods   ______________________
-	/*
 	public void move () {
 		this.posY--;
 	}
 	
 	public int getPoints() {
 		return points;
-	}*/
+
+
+	}
+	
+	public boolean receiveMissileAttack(int damage) {
+		damageObject(damage);
+		return true;
+	}
+
+	public boolean receiveShockWaveAttack(int damage) {
+		damageObject(damage);
+		return true;
+	}
+
 }

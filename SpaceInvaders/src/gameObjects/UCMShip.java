@@ -70,5 +70,11 @@ public class UCMShip extends Ship {
 		// TODO Auto-generated method stub
 		missile = true;
 	}
+	
+	public boolean receiveBombAttack(int damage) {
+		damageObject(damage);
+		return true;
+	}
+
 
 }
