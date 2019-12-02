@@ -17,12 +17,12 @@ public abstract class EnemyShip extends Ship {
 	}
 
 	// ______________________   Methods   ______________________
-
+	/*
 	public void move () {
 		this.posY--;
 	}
 	
 	public int getPoints() {
 		return points;
-	}
+	}*/
 }

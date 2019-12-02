@@ -24,7 +24,8 @@ public class BoardInitializer {
 	
 	// initialize ufo
 	private void initializeOvni () {
-		board.add(new Ovni(game, 0, 9, 1));
+			board.add(new Ovni(game, 0, 9, 1));
+		
 	}
 
 	// initialize regular aliens

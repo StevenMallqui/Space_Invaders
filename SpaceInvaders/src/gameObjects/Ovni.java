@@ -4,21 +4,24 @@ import game.*;
 
 public class Ovni extends EnemyShip implements IExecuteRandomActions{
 	
-	//______________________Variables______________________  
 	
+	//______________________Variables______________________  
+	private boolean enableOvni;
 	private UCMShip ucm;
 		
 	//______________________Constructor______________________    
 	
 	public Ovni(Game game, int x, int y, int live) {
 		super(game, x, y, live, 25);
+		enableOvni = false;
 	}
 	
 	//______________________Methods______________________
 	
 	@Override
 	public void computerAction() {
-		if(IExecuteRandomActions.canGenerateRandomOvni(game)){
+		if(IExecuteRandomActions.canGenerateRandomOvni(game) && enableOvni == false){
+			enableOvni = true;
 			move();
 		}
 	}
@@ -34,12 +37,15 @@ public class Ovni extends EnemyShip implements IExecuteRandomActions{
 		return "O[" + lives + "]";
 	}
 	
+	@Override
 	public void move() {
-		if(this.posY > 0) {
-			this.posY--;	
+		if(this.posY > -1 && this.enableOvni == true) {
+			System.out.print("Marcoshomo");
+			this.posY --;	
 		}
 		else {
-			this.posY = 9;
+			this.enableOvni = false; 
+			this.posY = 10;
 		}
 	}
 		

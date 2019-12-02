@@ -56,7 +56,7 @@ public enum Level {
 	}
 	
 	public int getNumRegularAliensPerRow() {
-		return numRegularAliens / numRowsOfRegularAliens;
+		return 4;
 	}
 	
 	public int  getNumDestroyerAliensPerRow() {

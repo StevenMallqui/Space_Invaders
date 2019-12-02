@@ -65,10 +65,9 @@ public class Game implements IPlayerController {
 	
 	//Game is finished 	
 	public boolean isFinished() {
-		return false;
-		//playerWin() || aliensWin() || end
+		return playerWin() || aliensWin() || end;
 	}
-
+	
 	//Player wins	
 	private boolean playerWin() {
 		return board.allDead();
