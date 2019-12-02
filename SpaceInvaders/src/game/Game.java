@@ -228,7 +228,6 @@ public class Game implements IPlayerController {
 	}
 
 	public void goADown() {
-		// TODO Auto-generated method stub
 		board.goADown();
 		direction = !direction;
 	}

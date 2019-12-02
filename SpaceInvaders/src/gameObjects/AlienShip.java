@@ -3,7 +3,7 @@ package gameObjects;
 import game.Game;
 
 public abstract class AlienShip extends EnemyShip {
-
+	
 	// ______________________ Constructor ______________________    
 
 	public AlienShip(Game game, int x, int y, int live, int points) {
