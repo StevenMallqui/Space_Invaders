@@ -168,7 +168,7 @@ public class GameObjectBoard {
 		// have landed
 		public boolean haveLanded() {
 			for (GameObject go : objects) {
-				if (go instanceof AlienShip && go.getPosX() == Game.DIM_X -1)
+				if (go instanceof AlienShip || go.getPosX() == Game.DIM_X -1)
 					return false;
 			}
 			
