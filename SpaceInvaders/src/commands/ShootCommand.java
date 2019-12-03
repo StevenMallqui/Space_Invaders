@@ -2,60 +2,60 @@ package commands;
 
 import game.Game;
 
-public class ShootCommand extends Command {
+public class ShootCommand extends Command{
 
 	// ______________________ Variables   ______________________  
-	
-	public boolean supermissil;
 
+	private boolean supermissile;
+	
 	// ______________________ Constructor ______________________    
 
 	public ShootCommand() {
 		super("shoot","s","shoot","UCM-Ship launches a missile.");
-
 	}
-	
+
 	// ______________________   Methods   ______________________
 
+	// parse
+	public Command parse(String[] commandWords) {
+		ShootCommand command = null;
+		
+		if (commandWords.length == 1 && matchCommandName(commandWords[0])) {
+			command = new ShootCommand();
+			command.setCommands(false);
+		}
+		
+		else if (commandWords.length == 2 && matchCommandName(commandWords[0])) {
+			if (commandWords[1].equals("supermissile") || commandWords[1].equals("s")) {
+				command = new ShootCommand();
+				command.setCommands(true);
+			}
+		}
+		
+		return command;
+	}
+	
 	// Execute
 	public boolean execute(Game game) {
 		boolean ok = false;
-	
-		if (supermissil) {
-			if (game.shootSuperMissile()) {
+		
+		if (supermissile) {
+			if (game.shootSuperMissile() && game.shootLaser()) {
 				game.update();
 				ok = true;
 			}			
 		}
 		
-		else {
-			if (game.shootLaser()) {
+		else if (game.shootLaser()) {
 				game.update();
 				ok = true;
 			}
-		}
+		
 		
 		return ok;
 	}
 	
-	// parse
-	public Command parse(String[] commandWords) {
-		Command command = null;
-		
-		if (commandWords.length == 1 && (commandWords[0].equals(shortCut) || commandWords[0].equals(name))) {
-			command = new ShootCommand();
-			supermissil = false;
-		}
-		
-		if (commandWords.length == 2 && (commandWords[0].equals(shortCut) || commandWords[0].equals(name)) ) {
-			if (commandWords[1].equals("supermissile")) {
-				command = new ShootCommand();
-				supermissil = true;
-			}
-		}
-			
-		return command;
+	private void setCommands(boolean ok) {
+		supermissile = ok;
 	}
-
-	
 }

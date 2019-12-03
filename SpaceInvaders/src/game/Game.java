@@ -141,7 +141,7 @@ public class Game implements IPlayerController {
 		
 	// RECEIVE POINTS
 	public void receivePoints(int points) {
-		
+		this.points += points;
 	}
 			
 	// ENABLE SHOCKWAVE
@@ -221,6 +221,7 @@ public class Game implements IPlayerController {
 		if (points >= 20) {
 				System.out.println("   Missile acquired");
 				ucm.addSuperMissile();
+				points -= 20;
 		}
 		
 		else 
@@ -233,10 +234,14 @@ public class Game implements IPlayerController {
 	}
 
 	public boolean shootSuperMissile() {
-		if (ucm.getNumSuperMissile() > 0) {
-			ucm.substractMissile();
+		if (!board.shootLaser())
+			return false;
+			
+		else {
 			board.add(new UCMMissile(this, ucm.getPosX(), ucm.getPosY(), 2));
+			points--;
+			ucm.substractMissile();
+			return true;
 		}
-		return false;
 	}	
 }

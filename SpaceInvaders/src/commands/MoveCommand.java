@@ -21,7 +21,7 @@ public class MoveCommand extends Command{
 	public Command parse(String[] commandWords) {
 		MoveCommand command = null;
 		
-		if (commandWords.length == 3 && (commandWords[0].equals(shortCut) || commandWords[0].equals(name))) {
+		if (commandWords.length == 3 && matchCommandName(commandWords[0])) {
 			command = new MoveCommand();
 			command.setCommands(commandWords[1], commandWords[2]);
 		}
@@ -49,6 +49,6 @@ public class MoveCommand extends Command{
 	
 	private void setCommands(String command1, String command2) {
 		direction = command1;
-		spaces =Integer.parseInt(command2) ;
+		spaces = Integer.parseInt(command2) ;
 	}
 }

@@ -7,7 +7,6 @@ public class DestroyerAlien extends AlienShip {
 
 	// ______________________ Variables   ______________________  
 	private boolean activeBomb;
-	int points = 10;
 	
 	// ______________________ Constructor ______________________    
 
@@ -32,5 +31,11 @@ public class DestroyerAlien extends AlienShip {
 	}
 
 	public void set(boolean activeBomb) { 
+		
+	}
+
+	@Override
+	public void onDelete() {
+		game.receivePoints(points);
 	}
 }

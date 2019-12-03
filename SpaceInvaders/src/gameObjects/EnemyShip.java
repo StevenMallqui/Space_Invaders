@@ -8,11 +8,12 @@ public abstract class EnemyShip extends Ship {
 	// ______________________ Variables   ______________________  
 	
 	protected int points;
-
+	
 	// ______________________ Constructor ______________________    
 
 	public EnemyShip(Game game, int x, int y, int live, int points) {
 		super(game, x, y, live);
+		this.points = points;
 		// TODO Auto-generated constructor stub
 	}
 

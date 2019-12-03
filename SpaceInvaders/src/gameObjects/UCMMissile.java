@@ -6,8 +6,8 @@ public class UCMMissile extends Weapons {
 	
 	// ______________________ Constructor ______________________    
 
-	public UCMMissile(Game game, int x, int y, int lives) {
-		super(game, x, y, lives);
+	public UCMMissile(Game game, int x, int y, int damage) {
+		super(game, x, y, damage);
 	}
 
 	// ______________________   Methods   ______________________

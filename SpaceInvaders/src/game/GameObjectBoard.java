@@ -69,6 +69,7 @@ public class GameObjectBoard {
 	private void removeDead() {
 		for(int i = 0; i < currentObjects; i++) 
 			if(!objects[i].isAlive()) {
+				objects[i].onDelete();
 				remove(objects[i]);
 				i--;
 			}
@@ -203,7 +204,6 @@ public class GameObjectBoard {
 					GameObject imp = getObjectInPosition(obj.getPosX(), obj.getPosY());
 					if (imp.receiveMissileAttack(((UCMMissile) obj).getDamage()))
 						((Weapons) obj).deactivate();
-					
 				}
 				
 				else if (obj instanceof Bomb) {

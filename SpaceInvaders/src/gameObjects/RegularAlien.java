@@ -6,7 +6,6 @@ public class RegularAlien extends AlienShip {
 
 	// ______________________ Variables   ______________________  
 
-	int points = 5;
 	
 	// ______________________ Constructor ______________________    
 

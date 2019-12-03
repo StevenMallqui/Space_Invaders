@@ -7,7 +7,6 @@ public class Ovni extends EnemyShip implements IExecuteRandomActions{
 	
 	//______________________Variables______________________  
 	private boolean enableOvni;
-	int points = 25;
 		
 	//______________________Constructor______________________    
 	
