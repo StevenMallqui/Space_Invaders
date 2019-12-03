@@ -28,9 +28,12 @@ public abstract class EnemyShip extends Ship {
 	}
 	
 	public boolean receiveMissileAttack(int damage) {
-		if (lives > 0)
+		if (lives > 0) {
 			damageObject(damage);
-		return lives > 0;
+			return true;
+		}
+		
+		return false;
 	}
 
 	public boolean receiveShockWaveAttack(int damage) {
