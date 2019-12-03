@@ -72,8 +72,10 @@ public class UCMShip extends Ship {
 	}
 	
 	public boolean receiveBombAttack(int damage) {
-		damageObject(damage);
-		return true;
+		
+		if (lives > 0)
+			damageObject(damage);
+		return lives > 0;
 	}
 
 

@@ -194,6 +194,7 @@ public class Game implements IPlayerController {
 	public void update() {
 		board.computerAction();
 		board.update();
+		
 		cycle ++;
 	}
 	

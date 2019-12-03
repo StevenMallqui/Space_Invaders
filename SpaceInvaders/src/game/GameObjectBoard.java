@@ -119,8 +119,8 @@ public class GameObjectBoard {
 					obj.move();
 			}
 		}
-			
-		removeDead();
+		
+		objectImpact();
 	}
 		
 	// computer action
@@ -198,12 +198,16 @@ public class GameObjectBoard {
 			for (GameObject obj : objects) {
 				if (obj instanceof UCMMissile) {
 					GameObject imp = getObjectInPosition(obj.getPosX(), obj.getPosY());
-					imp.receiveMissileAttack(((UCMMissile) obj).getDamage());
+					if (imp.receiveMissileAttack(((UCMMissile) obj).getDamage()))
+						obj.damageObject(((UCMMissile) obj).getDamage());
+					
 				}
 				
 				else if (obj instanceof Bomb) {
 					GameObject imp = getObjectInPosition(obj.getPosX(), obj.getPosY());
-					imp.receiveBombAttack(((Bomb) obj).getDamage());
+					if (imp.receiveBombAttack(((Bomb) obj).getDamage()))
+						obj.damageObject(((Bomb) obj).getDamage());
+					
 				}
 			}
 		}
