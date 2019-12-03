@@ -2,7 +2,7 @@ package gameObjects;
 
 import game.*;
 
-public class Bomb extends Weapons implements IExecuteRandomActions {
+public class Bomb extends Weapons{
 
 	// ______________________ Constructor ______________________    
 
@@ -14,9 +14,7 @@ public class Bomb extends Weapons implements IExecuteRandomActions {
 	// ______________________   Methods   ______________________
 
 	// Computer action
-	public void computerAction() {
-		IExecuteRandomActions.canGenerateRandomBomb(game);
-	}
+	
 
 	// On delete -----------------------------------------------
 	public void onDelete() {
@@ -39,6 +37,12 @@ public class Bomb extends Weapons implements IExecuteRandomActions {
 	public boolean receiveMissileAttack(int damage) {
 		damageObject(damage);
 		return true;
+	}
+
+	@Override
+	public void computerAction() {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

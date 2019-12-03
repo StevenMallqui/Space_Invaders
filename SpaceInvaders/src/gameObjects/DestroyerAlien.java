@@ -1,6 +1,7 @@
 package gameObjects;
 
 import game.Game;
+import game.IExecuteRandomActions;
 
 public class DestroyerAlien extends AlienShip {
 
@@ -15,6 +16,12 @@ public class DestroyerAlien extends AlienShip {
 
 	// ______________________   Methods   ______________________
 
+	public void computerAction() {
+		if(IExecuteRandomActions.canGenerateRandomBomb(game)) {
+			game.addObject(new Bomb(game,this.getPosY(),this.getPosX()));
+		}
+	}
+	
 	// Get skin
 	public String toString() {
 		return "D[" + lives + "]";
