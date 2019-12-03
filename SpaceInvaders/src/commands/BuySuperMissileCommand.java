@@ -1,36 +1,35 @@
 package commands;
 
 import game.Game;
-import view.BoardPrinter;
 
-public class HelpCommand extends Command{
+public class BuySuperMissileCommand extends Command {
 
 	// ______________________ Variables   ______________________  
 
 	// ______________________ Constructor ______________________    
 
-	public HelpCommand() {
-		super("help","h","help","Prints this help message.");
+	public BuySuperMissileCommand() {
+		super("buy supermissile","bsm","Buy SUper Missile","Spend 20 points to buy a superMissile");
 	}
 
 	// ______________________   Methods   ______________________
 
-	// Parse
+	// parse
 	public Command parse(String[] commandWords) {
 		Command command = null;
 		
 		if (commandWords.length == 1 && (commandWords[0].equals(shortCut) || commandWords[0].equals(name)))
-			command = new HelpCommand();
+			command = new BuySuperMissileCommand();
 		
 		return command;
 	}
 	
 	// Execute
 	public boolean execute(Game game) {
-		BoardPrinter bp = new BoardPrinter(Game.DIM_X, Game.DIM_Y);
-
-		System.out.print(bp.helpText());
+		
+		game.buySuperMissile();
 		
 		return false;
 	}
+	
 }

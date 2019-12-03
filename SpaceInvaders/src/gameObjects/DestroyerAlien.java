@@ -6,6 +6,7 @@ public class DestroyerAlien extends AlienShip {
 
 	// ______________________ Variables   ______________________  
 	private boolean activeBomb;
+	int points = 10;
 	
 	// ______________________ Constructor ______________________    
 

@@ -11,8 +11,8 @@ public abstract class Weapons extends GameObject {
 	
 	// ______________________ Constructor ______________________    
 
-	public Weapons(Game game, int x, int y) {
-		super(game, x, y, 1);
+	public Weapons(Game game, int x, int y, int lives) {
+		super(game, x, y, lives);
 	}
 
 	// ______________________   Methods   ______________________

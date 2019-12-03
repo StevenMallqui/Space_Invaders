@@ -7,7 +7,7 @@ public class Bomb extends Weapons implements IExecuteRandomActions {
 	// ______________________ Constructor ______________________    
 
 	public Bomb(Game game, int x, int y) {
-		super(game, x, y);
+		super(game, x, y, 1);
 		// TODO Auto-generated constructor stub
 	}
 

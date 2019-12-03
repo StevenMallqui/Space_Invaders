@@ -9,6 +9,7 @@ public class UCMShip extends Ship {
 	private String skin = "^__^";
 	
 	private int numSpacesMove;
+	private int superMissile = 0;
 
 	// ______________________ Constructor ______________________    
 
@@ -75,7 +76,6 @@ public class UCMShip extends Ship {
 	}
 
 	public void enableMissile() {
-		// TODO Auto-generated method stub
 		missile = true;
 	}
 	
@@ -86,6 +86,19 @@ public class UCMShip extends Ship {
 		}
 		
 		return false;
+	}
+
+	public int getNumSuperMissile() {
+		return superMissile;
+	}
+
+	public void addSuperMissile() {
+		superMissile++;
+	}
+
+	public void substractMissile() {
+		// TODO Auto-generated method stub
+		superMissile--;
 	}
 
 

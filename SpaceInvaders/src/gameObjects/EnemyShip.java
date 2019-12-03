@@ -20,13 +20,7 @@ public abstract class EnemyShip extends Ship {
 	public void move () {
 		this.posY--;
 	}
-	
-	public int getPoints() {
-		return points;
-
-
-	}
-	
+		
 	public boolean receiveMissileAttack(int damage) {
 		if (lives > 0) {
 			damageObject(damage);

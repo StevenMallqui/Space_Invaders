@@ -5,6 +5,8 @@ import game.Game;
 public class ShootCommand extends Command {
 
 	// ______________________ Variables   ______________________  
+	
+	public boolean supermissil;
 
 	// ______________________ Constructor ______________________    
 
@@ -19,9 +21,18 @@ public class ShootCommand extends Command {
 	public boolean execute(Game game) {
 		boolean ok = false;
 	
-		if (game.shootLaser()) {
-			game.update();
-			ok = true;
+		if (supermissil) {
+			if (game.shootSuperMissile()) {
+				game.update();
+				ok = true;
+			}			
+		}
+		
+		else {
+			if (game.shootLaser()) {
+				game.update();
+				ok = true;
+			}
 		}
 		
 		return ok;
@@ -33,6 +44,14 @@ public class ShootCommand extends Command {
 		
 		if (commandWords.length == 1 && (commandWords[0].equals(shortCut) || commandWords[0].equals(name))) {
 			command = new ShootCommand();
+			supermissil = false;
+		}
+		
+		if (commandWords.length == 2 && (commandWords[0].equals(shortCut) || commandWords[0].equals(name)) ) {
+			if (commandWords[1].equals("supermissile")) {
+				command = new ShootCommand();
+				supermissil = true;
+			}
 		}
 			
 		return command;
