@@ -3,7 +3,6 @@ package game;
 
 import java.util.Random;
 
-import gameObjects.AlienShip;
 import gameObjects.GameObject;
 import gameObjects.UCMMissile;
 import gameObjects.UCMShip;
@@ -199,8 +198,7 @@ public class Game implements IPlayerController {
 	
 	//Return a boolean if it´s on board
 	public boolean isOnBoard(int posX, int posY) {
-
-		return false;
+		return ucm.getPosX() == posX && ucm.getPosY() == posY;
 	}
 	
 	
