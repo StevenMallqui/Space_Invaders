@@ -22,6 +22,14 @@ public class UCMShip extends Ship {
 	public void computerAction() {
 		
 	}
+	
+	public boolean performAttack(GameObject other) {
+		if (other != null)
+			return missile;
+		
+		else
+			return false;
+	}
 
 	// on delete
 	public void onDelete() {
