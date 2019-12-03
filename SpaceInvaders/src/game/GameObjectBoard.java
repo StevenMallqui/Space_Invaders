@@ -50,12 +50,12 @@ public class GameObjectBoard {
 				int pos = i;
 				
 				for (int j = pos; j > currentObjects -1; j++) 
-					objects[i] = objects[i+1];
+					objects[j] = objects[j+1];
 				
 			}
 		
-		objects = newList(currentObjects -1);
 		currentObjects--;
+		objects = newList(currentObjects);
 	}
 	
 	// check attacks
@@ -78,14 +78,14 @@ public class GameObjectBoard {
 	
 	// add
 	public void add(GameObject object) {
-		objects = newList(currentObjects);
+		objects = newList(currentObjects +1);
 		objects[currentObjects] = object;
 		currentObjects++;
 	}
 	
 	// new list
 	public GameObject[] newList(int size) {
-		GameObject[] list = new GameObject[size +1];
+		GameObject[] list = new GameObject[size];
 		
 		for (int i = 0; i < currentObjects; i++)
 			list[i] = objects[i];
@@ -120,7 +120,7 @@ public class GameObjectBoard {
 			}
 		}
 			
-
+		removeDead();
 	}
 		
 	// computer action
