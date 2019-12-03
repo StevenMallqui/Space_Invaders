@@ -49,7 +49,7 @@ public class GameObjectBoard {
 			if (objects[i].equals(object)) {
 				int pos = i;
 				
-				for (int j = pos; j > currentObjects -1; j++) 
+				for (int j = pos; j < currentObjects-1; j++) 
 					objects[j] = objects[j+1];
 				
 			}
