@@ -12,13 +12,16 @@ public class DestroyerAlien extends AlienShip {
 
 	public DestroyerAlien(Game game, int x, int y) {
 		super(game, x, y, 1, 10);
+		activeBomb = false;
 	}
 
 	// ______________________   Methods   ______________________
 
 	public void computerAction() {
-		if(IExecuteRandomActions.canGenerateRandomBomb(game)) {
-			game.addObject(new Bomb(game,this.getPosY(),this.getPosX()));
+		if(IExecuteRandomActions.canGenerateRandomBomb(game) && activeBomb == false) {
+			activeBomb = true;
+			game.addObject(new Bomb(game,this.getPosX(),this.getPosY()));
+			
 		}
 	}
 	
@@ -27,5 +30,6 @@ public class DestroyerAlien extends AlienShip {
 		return "D[" + lives + "]";
 	}
 
-
+	public void set(boolean activeBomb) { 
+	}
 }

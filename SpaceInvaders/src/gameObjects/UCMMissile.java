@@ -26,7 +26,7 @@ public class UCMMissile extends Weapons {
 	public void move() {
 		posX--;
 		if (posX < 0)
-			lives = 0;
+			deactivate();
 	}
 
 	// skin

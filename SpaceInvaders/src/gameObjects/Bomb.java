@@ -23,9 +23,9 @@ public class Bomb extends Weapons{
 
 	// move
 	public void move() {
-		posY++;
+		posX++;
 		if (Game.DIM_X == posX)
-			lives = 0;
+			deactivate();
 	}
 
 	// skin
