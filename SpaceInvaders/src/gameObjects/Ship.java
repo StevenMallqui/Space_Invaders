@@ -4,6 +4,7 @@ import game.Game;
 
 public abstract class Ship extends GameObject {
 
+	
 	// ______________________ Constructor ______________________    
 
 	public Ship(Game game, int x, int y, int live) {

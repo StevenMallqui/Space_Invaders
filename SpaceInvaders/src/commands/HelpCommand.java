@@ -27,27 +27,9 @@ public class HelpCommand extends Command{
 	
 	// Execute
 	public boolean execute(Game game) {
-		//BoardPrinter bp = new BoardPrinter(0, 0);
-		String text = "\n";
-		Command c = new MoveCommand();
-		text += c.helpText();
-		c = new ShootCommand();
-		text += c.helpText();
-		c = new ShockwaveCommand();
-		text += c.helpText();
-		c = new ListCommand();
-		text += c.helpText();
-		c = new ResetCommand();
-		text += c.helpText();
-		c = new ExitCommand();
-		text += c.helpText();
-		c = new UpdateCommand();
-		text += c.helpText();
-		text += this.helpText();
-		text+= "\n";
-		
+		BoardPrinter bp = new BoardPrinter(Game.DIM_X, Game.DIM_Y);
 
-		System.out.print(text);
+		System.out.print(bp.helpText());
 		
 		return false;
 	}

@@ -7,7 +7,6 @@ public class Ovni extends EnemyShip implements IExecuteRandomActions{
 	
 	//______________________Variables______________________  
 	private boolean enableOvni;
-	private UCMShip ucm;
 		
 	//______________________Constructor______________________    
 	
@@ -28,8 +27,8 @@ public class Ovni extends EnemyShip implements IExecuteRandomActions{
 	
 	@Override
 	public void onDelete() {
-		ucm.enableShockWave();
-		game.setPoints(this.points);
+		game.enableShockWave();
+		game.receivePoints(this.points);
 	}
 	
 	@Override
@@ -42,6 +41,7 @@ public class Ovni extends EnemyShip implements IExecuteRandomActions{
 		if(this.posY > -1 && this.enableOvni == true) {
 			this.posY --;	
 		}
+		
 		else {
 			this.enableOvni = false; 
 			this.posY = 10;

@@ -2,36 +2,34 @@ package commands;
 
 import game.Game;
 
-public class UpdateCommand extends Command{
+public class BuySuperMissileCommand extends Command {
 
 	// ______________________ Variables   ______________________  
 
 	// ______________________ Constructor ______________________    
 
-	public UpdateCommand() {
-		super("","","[none]","Skips one cycle.");
-
+	public BuySuperMissileCommand() {
+		super("buy supermissile","bsm","Buy SUper Missile","Spend 20 points to buy a superMissile");
 	}
 
 	// ______________________   Methods   ______________________
 
-	// Execute
-	public boolean execute(Game game) {
-		game.update();
-		return true;
-	}
-	
-	
 	// parse
 	public Command parse(String[] commandWords) {
 		Command command = null;
 		
 		if (commandWords.length == 1 && matchCommandName(commandWords[0]))
-			command = new UpdateCommand();
+			command = new BuySuperMissileCommand();
 		
 		return command;
 	}
-
 	
+	// Execute
+	public boolean execute(Game game) {
+		
+		game.buySuperMissile();
+		
+		return false;
+	}
 	
 }

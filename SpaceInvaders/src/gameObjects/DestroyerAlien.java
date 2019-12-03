@@ -29,7 +29,13 @@ public class DestroyerAlien extends AlienShip {
 		return "D[" + lives + "]";
 	}
 
+
 	public void set(boolean active) { 
 		activeBomb = active;
+
+
+	@Override
+	public void onDelete() {
+		game.receivePoints(points);
 	}
 }

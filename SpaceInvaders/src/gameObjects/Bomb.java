@@ -7,6 +7,7 @@ public class Bomb extends Weapons{
 		private DestroyerAlien destroyer;
 	// ______________________ Constructor ______________________    
 
+
 	public Bomb(Game game, int x, int y,DestroyerAlien destroyer) {
 		super(game, x, y);
 		this.destroyer = destroyer;

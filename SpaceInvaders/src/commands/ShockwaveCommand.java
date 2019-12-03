@@ -18,7 +18,7 @@ public class ShockwaveCommand extends Command {
 	public Command parse(String[] commandWords) {
 		Command command = null;
 		
-		if (commandWords.length == 1 && (commandWords[0].equals(shortCut) || commandWords[0].equals(name)))
+		if (commandWords.length == 1 && matchCommandName(commandWords[0]))
 			command = new ShockwaveCommand();
 		
 		return command;		

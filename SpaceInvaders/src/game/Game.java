@@ -92,11 +92,6 @@ public class Game implements IPlayerController {
 		return points;
 	}
 	
-	// set points
-	public void setPoints(int aux) {
-		this.points += aux;
-	}
-		
 	
 	// get number of enemies
 	public int numEnemies() {
@@ -116,7 +111,7 @@ public class Game implements IPlayerController {
 			return false;
 			
 		else {
-			board.add(new UCMMissile(this, ucm.getPosX(), ucm.getPosY()));
+			board.add(new UCMMissile(this, ucm.getPosX(), ucm.getPosY(), 1));
 			return true;
 		}
 	}
@@ -146,7 +141,7 @@ public class Game implements IPlayerController {
 		
 	// RECEIVE POINTS
 	public void receivePoints(int points) {
-		
+		this.points += points;
 	}
 			
 	// ENABLE SHOCKWAVE
@@ -219,5 +214,34 @@ public class Game implements IPlayerController {
 	// change direction
 	public void changeDirection() {
 		direction = !direction;
+	}
+
+	public void buySuperMissile() {
+		
+		if (points >= 20) {
+				System.out.println("   Missile acquired");
+				ucm.addSuperMissile();
+				points -= 20;
+		}
+		
+		else 
+			System.out.println("  Not enough points");
+		
+	}
+
+	public int getNumSupermissiles() {
+		return ucm.getNumSuperMissile();
+	}
+
+	public boolean shootSuperMissile() {
+		if (!board.shootLaser())
+			return false;
+			
+		else {
+			board.add(new UCMMissile(this, ucm.getPosX(), ucm.getPosY(), 2));
+			points--;
+			ucm.substractMissile();
+			return true;
+		}
 	}	
 }

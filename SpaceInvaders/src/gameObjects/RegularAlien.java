@@ -6,6 +6,7 @@ public class RegularAlien extends AlienShip {
 
 	// ______________________ Variables   ______________________  
 
+	
 	// ______________________ Constructor ______________________    
 
 	public RegularAlien(Game game, int x, int y) {
