@@ -39,4 +39,10 @@ public class UCMMissile extends Weapons {
 		return true;
 	}
 
+	@Override
+	public void deactivate() {
+		lives = 0;
+		
+	}
+
 }

@@ -6,13 +6,12 @@ import game.IExecuteRandomActions;
 public class DestroyerAlien extends AlienShip {
 
 	// ______________________ Variables   ______________________  
-	private boolean activeBomb;
+	private boolean activeBomb = false;
 	
 	// ______________________ Constructor ______________________    
 
 	public DestroyerAlien(Game game, int x, int y) {
 		super(game, x, y, 1, 10);
-		activeBomb = false;
 	}
 
 	// ______________________   Methods   ______________________
@@ -20,7 +19,7 @@ public class DestroyerAlien extends AlienShip {
 	public void computerAction() {
 		if(IExecuteRandomActions.canGenerateRandomBomb(game) && activeBomb == false) {
 			activeBomb = true;
-			game.addObject(new Bomb(game,this.getPosX(),this.getPosY()));
+			game.addObject(new Bomb(game,this.getPosX(),this.getPosY(),this));
 			
 		}
 	}
@@ -30,6 +29,7 @@ public class DestroyerAlien extends AlienShip {
 		return "D[" + lives + "]";
 	}
 
-	public void set(boolean activeBomb) { 
+	public void set(boolean active) { 
+		activeBomb = active;
 	}
 }

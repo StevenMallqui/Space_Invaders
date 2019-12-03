@@ -3,20 +3,20 @@ package gameObjects;
 import game.*;
 
 public class Bomb extends Weapons{
-
+	
+		private DestroyerAlien destroyer;
 	// ______________________ Constructor ______________________    
 
-	public Bomb(Game game, int x, int y) {
+	public Bomb(Game game, int x, int y,DestroyerAlien destroyer) {
 		super(game, x, y);
-		// TODO Auto-generated constructor stub
+		this.destroyer = destroyer;
 	}
 
-	// ______________________   Methods   ______________________
-
-	// Computer action
+	// ______________________ Methods ______________________
 	
 
-	// On delete -----------------------------------------------
+	//_______________________ On delete ________________________
+	@Override
 	public void onDelete() {
 		
 	}
@@ -24,8 +24,10 @@ public class Bomb extends Weapons{
 	// move
 	public void move() {
 		posX++;
-		if (Game.DIM_X == posX)
+		if (Game.DIM_X == posX) {
 			deactivate();
+			destroyer.set(false);
+		}
 	}
 
 	// skin
@@ -44,6 +46,14 @@ public class Bomb extends Weapons{
 		// TODO Auto-generated method stub
 		
 	}
+
+	@Override
+	public void deactivate() {
+		lives = 0;
+		destroyer.set(false);
+	}
+	
+	
 
 }
 

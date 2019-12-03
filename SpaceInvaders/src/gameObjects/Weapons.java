@@ -5,7 +5,6 @@ import game.Game;
 public abstract class Weapons extends GameObject {
 	
 	// ______________________ Variables   ______________________  
-
 	protected int damage = 1;
 	
 	
@@ -23,7 +22,16 @@ public abstract class Weapons extends GameObject {
 	}
 	
 	// deactivate
+	/*
 	public void deactivate() {
 		lives = 0;
+	}
+	*/
+	
+	public abstract void deactivate();
+	
+	
+	public int getLive() {
+		return lives;
 	}
 }
