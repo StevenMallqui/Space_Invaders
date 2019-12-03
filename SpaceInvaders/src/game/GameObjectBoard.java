@@ -49,7 +49,7 @@ public class GameObjectBoard {
 			if (objects[i].equals(object)) {
 				int pos = i;
 				
-				for (int j = pos; j > currentObjects -1; j++) 
+				for (int j = pos; j < currentObjects-1; j++) 
 					objects[j] = objects[j+1];
 				
 			}
@@ -68,8 +68,11 @@ public class GameObjectBoard {
 	// remove dead
 	private void removeDead() {
 		for(int i = 0; i < currentObjects; i++) 
-			if(!objects[i].isAlive()) 
+			if(!objects[i].isAlive()) {
 				remove(objects[i]);
+				i--;
+			}
+				
 			
 				
 	}
@@ -186,11 +189,11 @@ public class GameObjectBoard {
 		// have landed
 		public boolean haveLanded() {
 			for (GameObject go : objects) {
-				if (go instanceof AlienShip || go.getPosX() == Game.DIM_X -1)
-					return false;
+				if (go instanceof AlienShip && go.getPosX() == Game.DIM_X -2)
+					return true;
 			}
 			
-			return true;
+			return false;
 		}
 
 		// object impact
@@ -199,16 +202,17 @@ public class GameObjectBoard {
 				if (obj instanceof UCMMissile) {
 					GameObject imp = getObjectInPosition(obj.getPosX(), obj.getPosY());
 					if (imp.receiveMissileAttack(((UCMMissile) obj).getDamage()))
-						obj.damageObject(((UCMMissile) obj).getDamage());
+						((Weapons) obj).deactivate();
 					
 				}
 				
 				else if (obj instanceof Bomb) {
 					GameObject imp = getObjectInPosition(obj.getPosX(), obj.getPosY());
 					if (imp.receiveBombAttack(((Bomb) obj).getDamage()))
-						obj.damageObject(((Bomb) obj).getDamage());
+						((Weapons) obj).deactivate();
 					
 				}
 			}
+			removeDead();
 		}
 }

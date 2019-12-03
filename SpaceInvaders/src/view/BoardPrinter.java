@@ -79,7 +79,7 @@ public class BoardPrinter implements GamePrinter {
 	// score board
 	public String scoreBoard(Game game) {
 		String text = "";		
-		text += "  Life : " + game.getLives();
+		text += "\n  Life : " + game.getLives();
 		text += "\n  Number of cycles : " + game.getCycle();
 		text += "\n  Points : " + game.getPoints();
 		text += "\n  Remaining aliens : " + game.numEnemies();
