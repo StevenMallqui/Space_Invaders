@@ -40,7 +40,6 @@ public class Ovni extends EnemyShip implements IExecuteRandomActions{
 	@Override
 	public void move() {
 		if(this.posY > -1 && this.enableOvni == true) {
-			System.out.print("Marcoshomo");
 			this.posY --;	
 		}
 		else {

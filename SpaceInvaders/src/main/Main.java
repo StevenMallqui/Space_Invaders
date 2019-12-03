@@ -43,7 +43,7 @@ public class Main {
 				else if (level.equals("HARD"))
 					nvl = Level.HARD;
 					
-				else if (level.equals("Insane"))
+				else if (level.equals("INSANE"))
 					nvl = Level.INSANE;
 		 
 			 Game game = new Game(nvl, rand);
