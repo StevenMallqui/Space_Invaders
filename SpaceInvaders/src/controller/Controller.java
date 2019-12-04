@@ -53,14 +53,10 @@ public class Controller {
 			}
 			catch (CommandParseException|CommandExecuteException ex) {
 					
-					System.err.format(ex.getMessage() + "%n"); 
-					System.out.format(" Command > ");
+					System.err.println(ex.getMessage()); 
+					System.out.print(" Command > ");
 			}
 			
-			/*else 
-				// Error message
-				System.out.format("  Unkown Command, please try again\n  Command > ");
-				*/
 		}
 		
 		System.out.println(game.getWinnerMessage());

@@ -97,7 +97,6 @@ public class UCMShip extends Ship {
 	}
 
 	public void substractMissile() {
-		// TODO Auto-generated method stub
 		superMissile--;
 	}
 
