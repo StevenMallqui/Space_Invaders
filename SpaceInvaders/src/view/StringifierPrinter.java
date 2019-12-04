@@ -9,6 +9,7 @@ public class StringifierPrinter extends GamePrinter {
 		printerName = "stringifier";
 		helpText = "prints the game as plain text";
 	}
+	
 	public String toString(Game game) {
 		String text = "\n";
 		
