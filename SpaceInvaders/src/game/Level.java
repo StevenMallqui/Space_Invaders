@@ -97,4 +97,9 @@ public enum Level {
 			return 4;
 	}
 
+
+	public double getExplosionFrequency() {
+		return 0.05;
+	}
+
 }

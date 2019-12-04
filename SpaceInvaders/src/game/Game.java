@@ -245,5 +245,9 @@ public class Game implements IPlayerController {
 			ucm.substractMissile();
 			return true;
 		}
+	}
+
+	public void damageNearbyObjects(int x, int y) {
+		board.explode(x, y);
 	}	
 }

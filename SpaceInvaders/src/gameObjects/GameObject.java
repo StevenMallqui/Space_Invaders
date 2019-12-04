@@ -70,4 +70,10 @@ public abstract class GameObject implements IAttack {
 		return !game.isOnBoard(posX, posY);
 	}
 		
+	// receive explosion attack
+	public boolean receiveExplosionAttack(int damage) {
+		damageObject(damage);
+		return true;
+	}
+
 }

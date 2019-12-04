@@ -51,9 +51,7 @@ public class Controller {
 				System.out.format("  Unkown Command, please try again\n  Command > ");
 		}
 		
-		// End game
-		BoardPrinter bp = new BoardPrinter(Game.DIM_Y, Game.DIM_X);
-		System.out.println(bp.toString(game));		
+		System.out.println("    GAME OVER ...");
 	}
 	
 	
