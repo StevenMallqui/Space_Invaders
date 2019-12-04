@@ -38,4 +38,12 @@ public class DestroyerAlien extends AlienShip {
 	public void onDelete() {
 		game.receivePoints(points);
 	}
+
+	@Override
+	public String toStringified() {
+		String dir = "left";
+		if (game.getDirection())
+			dir = "right";
+		return "D;" + posX + "," + posY + ";" + lives + ";" + (3 - game.getCycle()%3) + ";" + dir + "\n";
+	}
 }

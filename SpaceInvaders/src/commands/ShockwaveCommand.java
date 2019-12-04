@@ -29,7 +29,7 @@ public class ShockwaveCommand extends Command {
 		boolean ok = false;
 
 		if (game.shockWave()) {
-			ok = false;
+			ok = true;
 			game.update();
 		}
 		

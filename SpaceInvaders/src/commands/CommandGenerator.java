@@ -17,7 +17,9 @@ public class CommandGenerator {
 			new MoveCommand(), 
 			new ShockwaveCommand(),
 			new ShootCommand(),
-			new BuySuperMissileCommand()
+			new BuySuperMissileCommand(),
+			new StringifyCommand(),
+			new ListPrinterCommand()
 			};
 
 	
@@ -45,7 +47,6 @@ public class CommandGenerator {
 		
 		for(Command availableCommand : availableCommands) 
 			help = availableCommand.helpText();
-		
 		
 		return help;
 	}

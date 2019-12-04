@@ -47,5 +47,10 @@ public class Ovni extends EnemyShip implements IExecuteRandomActions{
 			this.posY = 10;
 		}
 	}
+
+	@Override
+	public String toStringified() {
+		return "O;" + posX + "," + posY + ";" + lives + "\n";
+	}
 		
 }

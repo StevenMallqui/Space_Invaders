@@ -170,17 +170,17 @@ public class GameObjectBoard {
 	// shoot shock wave
 	public boolean shootShockwave() {
 		for (GameObject go: objects) {
-			go.receiveMissileAttack(1);
-
+			go.receiveShockWaveAttack(1);
 		}
 		
+		removeDead();
 		return true;
 	}
 	
 	// all dead
 		public boolean allDead() {			
 			for (GameObject go : objects) {
-				if (go.isAlive())
+				if ((go instanceof AlienShip) && go.isAlive())
 					return false;
 			}
 			
@@ -216,4 +216,26 @@ public class GameObjectBoard {
 			}
 			removeDead();
 		}
+
+		// explode
+		public void explode(int x, int y) {
+			for (int i = 0; i < 3; i++)
+				for (int j = 0; j < 3; j++) {
+					if (getObjectInPosition(x -1 +i, y -1 +j) != null) {
+						getObjectInPosition(x -1 +i, y -1 +j).receiveExplosionAttack(1);
+					}
+				}
+		}
+
+
+		public String toStringifier() {
+			String text = "";
+			
+			for (GameObject obj : objects) 
+				text += obj.toStringified();
+			
+			return text;
+		}
+
+
 }

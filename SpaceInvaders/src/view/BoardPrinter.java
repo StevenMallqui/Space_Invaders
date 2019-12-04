@@ -3,11 +3,12 @@ package view;
 import commands.*;
 
 import game.Game;
-import game.GameObjectBoard;
 import util.MyStringUtils;
 
-public class BoardPrinter implements GamePrinter {
+public class BoardPrinter extends GamePrinter {
 
+
+	
 	int numRows; 
 	int numCols;
 	String[][] board;
@@ -17,6 +18,8 @@ public class BoardPrinter implements GamePrinter {
 		numRows = dimX;
 		numCols = dimY;
 		
+		this.printerName = "boardprinter";
+		this.helpText = "prints the game formatted as a board of dimension: 8 x 9";
 	}
 
 	public String toString(Game game) {
@@ -47,15 +50,20 @@ public class BoardPrinter implements GamePrinter {
 				}
 				str.append(lineDelimiter);
 		}
-		return str.toString();
+		return (scoreBoard(game) +  str.toString() + "\n  Command > ");
 	}
 
 
 	public GamePrinter parse(String name) {
-		return PrinterGenerator.parse(name);
+		GamePrinter gp = null;
+		
+		if (printerName.equals(name))
+			gp = new BoardPrinter(Game.DIM_Y, Game.DIM_X);
+		
+		return gp;
 	}
 
-	public String helpText() {
+	public String helpCommand() {
 		String text = "\n";
 		Command c = new MoveCommand();
 		text += c.helpText();
@@ -71,10 +79,15 @@ public class BoardPrinter implements GamePrinter {
 		text += c.helpText();
 		c = new UpdateCommand();
 		text += c.helpText();
+		c = new StringifyCommand();
+		text += c.helpText();
+		c = new ListPrinterCommand();
+		text += c.helpText();
 		text += this.helpText();
 		
 		return text;
 	}
+	
 	
 	// score board
 	public String scoreBoard(Game game) {
@@ -83,9 +96,16 @@ public class BoardPrinter implements GamePrinter {
 		text += "\n  Number of cycles : " + game.getCycle();
 		text += "\n  Points : " + game.getPoints();
 		text += "\n  Remaining aliens : " + game.numEnemies();
-		text += "\n  Shockwave : " + game.shockWave();
+		text += "\n  Shockwave : " + game.getShockWave();
 		text += "\n  Super Missiles : " + game.getNumSupermissiles();
 		return text;
 	}
+
+	@Override
+	public void setGame(Game game) {
+		// TODO Auto-generated method stub
+		
+	}
+
 	
 }

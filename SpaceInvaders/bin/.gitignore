@@ -1,6 +1,6 @@
-/gameObjects/
+
+/controller/
+/commands/
 /game/
 /view/
-/commands/
-/exceptions/
-/controller/
+/gameObjects/

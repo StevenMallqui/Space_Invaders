@@ -96,5 +96,4 @@ public enum Level {
 		else 
 			return 4;
 	}
-
 }

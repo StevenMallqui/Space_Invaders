@@ -29,6 +29,9 @@ public abstract class GameObject implements IAttack {
 	public abstract void onDelete();
 	public abstract void move();
 	public abstract String toString();
+	
+	public abstract String toStringified();
+
 
 	// ----------------------   Get Info  ----------------------
 	
@@ -70,4 +73,10 @@ public abstract class GameObject implements IAttack {
 		return !game.isOnBoard(posX, posY);
 	}
 		
+	// receive explosion attack
+	public boolean receiveExplosionAttack(int damage) {
+		damageObject(damage);
+		return true;
+	}
+
 }
