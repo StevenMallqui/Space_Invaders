@@ -1,12 +1,17 @@
 package game;
 
 
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.Random;
 
 import gameObjects.GameObject;
 import gameObjects.UCMMissile;
 import gameObjects.UCMShip;
+
 import view.PrinterGenerator;
+import view.StringifierPrinter;
 
 
 public class Game implements IPlayerController {
@@ -136,7 +141,7 @@ public class Game implements IPlayerController {
 		if (ucm.getPosY() + num >= 0 && ucm.getPosY() + num <= DIM_Y) {
 			ok = true;
 			ucm.setMovement(num);
-		}			
+		}
 		return ok;
 	}
 
@@ -258,6 +263,18 @@ public class Game implements IPlayerController {
 
 	public String listPrinterCommand() {
 		return PrinterGenerator.printerHelp();
+	}
+
+	public boolean saveGame(String name) throws IOException {
+		StringifierPrinter sp = new StringifierPrinter();
+		String text = sp.toString(this);
+		
+		BufferedWriter writer = new BufferedWriter(new FileWriter(name));
+		
+		writer.write(text);
+		writer.close();
+		
+		return true; 
 	}
 
 }

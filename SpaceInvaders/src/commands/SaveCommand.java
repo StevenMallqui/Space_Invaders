@@ -1,5 +1,7 @@
 package commands;
 
+import java.io.IOException;
+
 import game.Game;
 
 public class SaveCommand extends Command{
@@ -9,18 +11,18 @@ public class SaveCommand extends Command{
 	// ______________________ Constructor ______________________    
 
 	public SaveCommand() {
-		super("save","s","save","saves the current game.");
+		super("save","v","save","saves the current game.");
 	}
 
 	// ______________________   Methods   ______________________
 
 	// parse
 	public Command parse(String[] commandWords) {
-		Command command = null;
+		SaveCommand command = null;
 		
 		if (commandWords.length == 2 && matchCommandName(commandWords[0])) {
 			command = new SaveCommand();
-			setFileName(commandWords[1]);
+			command.setCommands(commandWords[1]);
 		}
 		
 		return command;
@@ -29,16 +31,21 @@ public class SaveCommand extends Command{
 	// Execute
 	public boolean execute(Game game) {
 		
-//		if  (game.saveGame(name))
-//			System.out.println("  Game successfully saved in file <" + name + ">\n");
-//		
-//			else 
-//				System.out.println("  Error, game not saved");
+		try {
+			if  (game.saveGame(name))
+				System.out.print("  Game successfully saved in file <" + name + ">\n");
+			
+				else 
+					System.out.print("  Error, game not saved");
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 			
 		return false;
 	}
 	
-	private void setFileName(String name) {
+	private void setCommands(String name) {
 		this.name = name + ".dat";
 	}
 
