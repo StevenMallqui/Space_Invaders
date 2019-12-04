@@ -103,7 +103,6 @@ public class BoardPrinter extends GamePrinter {
 
 	@Override
 	public void setGame(Game game) {
-		// TODO Auto-generated method stub
 		
 	}
 

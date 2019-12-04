@@ -13,7 +13,6 @@ public class RegularAlien extends AlienShip {
 
 	public RegularAlien(Game game, int x, int y) {
 		super(game, x, y, 2, 5);
-		// TODO Auto-generated constructor stub
 	}
 
 	// ______________________   Methods   ______________________
