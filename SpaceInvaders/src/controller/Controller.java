@@ -52,8 +52,10 @@ public class Controller {
 				}
 			}
 			catch (CommandParseException|CommandExecuteException ex) {
-					System.err.format(ex.getMessage() + " %n %n"); 
-					}
+					
+					System.err.format(ex.getMessage() + "%n"); 
+					System.out.format(" Command > ");
+			}
 			
 			/*else 
 				// Error message

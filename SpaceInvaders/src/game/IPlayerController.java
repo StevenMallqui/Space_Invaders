@@ -1,11 +1,12 @@
 package game;
 
+import exceptions.CommandExecuteException;
 
 public interface IPlayerController {
 	
 	// PLAYER ACTIONS	
-	public boolean move (int numCells);
-	public boolean shootLaser();
+	public boolean move (int numCells) throws CommandExecuteException;
+	public boolean shootLaser() throws CommandExecuteException;
 	public boolean shockWave();
 	
 	// CALLBACKS

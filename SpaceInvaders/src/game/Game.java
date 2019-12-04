@@ -3,6 +3,7 @@ package game;
 
 import java.util.Random;
 
+import exceptions.*;
 import gameObjects.GameObject;
 import gameObjects.UCMMissile;
 import gameObjects.UCMShip;
@@ -118,25 +119,37 @@ public class Game implements IPlayerController {
 	}
 
 	// SHOOT SHOCKWAVE
-	public boolean shockWave() {
-		if (ucm.getShockwave()) {
-			board.shootShockwave();
-			ucm.setShockWave(false);
-			return true;
-		}
-		
-		else
-			return false;			
+	public boolean shockWave(){
+	
+			if (ucm.getShockwave()) {
+				board.shootShockwave();
+				ucm.setShockWave(false);
+				return true;
+			}
+			
+			else 
+				return false;
+			
 	}
 		
 	// MOVE
-	public boolean move(int num) {
+	public boolean move(int num) throws CommandExecuteException {
 		boolean ok = false;
+		try {	
+			if (ucm.getPosY() + num >= 0 && ucm.getPosY() + num <= DIM_Y) {
+				ok = true;
+				ucm.setMovement(num);
+			}
+			else {
+				throw new limitException();
+			}
+		}
+		catch(limitException e) {
+			throw new CommandExecuteException(e.getMessage());
+		}
 			
-		if (ucm.getPosY() + num >= 0 && ucm.getPosY() + num <= DIM_Y) {
-			ok = true;
-			ucm.setMovement(num);
-		}			
+	
+		
 		return ok;
 	}
 
