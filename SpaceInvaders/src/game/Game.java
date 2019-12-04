@@ -120,11 +120,13 @@ public class Game implements IPlayerController {
 	public boolean shockWave() {
 		if (ucm.getShockwave()) {
 			board.shootShockwave();
+			ucm.setShockWave(false);
 			return true;
 		}
-			
-		else return false;			
-		}
+		
+		else
+			return false;			
+	}
 		
 	// MOVE
 	public boolean move(int num) {
@@ -138,7 +140,7 @@ public class Game implements IPlayerController {
 	}
 
 	//______________________CALLBACKS_____________________________
-		
+	
 	// RECEIVE POINTS
 	public void receivePoints(int points) {
 		this.points += points;
@@ -146,7 +148,7 @@ public class Game implements IPlayerController {
 			
 	// ENABLE SHOCKWAVE
 	public void enableShockWave() {
-		ucm.enableShockWave();
+		ucm.setShockWave(true);
 	}
 
 	// ENABLE MISSILE

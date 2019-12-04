@@ -83,7 +83,7 @@ public class BoardPrinter implements GamePrinter {
 		text += "\n  Number of cycles : " + game.getCycle();
 		text += "\n  Points : " + game.getPoints();
 		text += "\n  Remaining aliens : " + game.numEnemies();
-		text += "\n  Shockwave : " + game.shockWave();
+		text += "\n  Shockwave : " + game.getShockWave();
 		text += "\n  Super Missiles : " + game.getNumSupermissiles();
 		return text;
 	}

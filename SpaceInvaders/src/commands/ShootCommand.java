@@ -40,7 +40,7 @@ public class ShootCommand extends Command{
 		boolean ok = false;
 		
 		if (supermissile) {
-			if (game.shootSuperMissile() && game.shootLaser()) {
+			if (game.shootSuperMissile()) {
 				game.update();
 				ok = true;
 			}			

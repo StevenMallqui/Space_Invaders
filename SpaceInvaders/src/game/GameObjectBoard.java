@@ -170,17 +170,17 @@ public class GameObjectBoard {
 	// shoot shock wave
 	public boolean shootShockwave() {
 		for (GameObject go: objects) {
-			go.receiveMissileAttack(1);
-
+			go.receiveShockWaveAttack(1);
 		}
 		
+		removeDead();
 		return true;
 	}
 	
 	// all dead
 		public boolean allDead() {			
 			for (GameObject go : objects) {
-				if (go.isAlive())
+				if ((go instanceof AlienShip) && go.isAlive())
 					return false;
 			}
 			
