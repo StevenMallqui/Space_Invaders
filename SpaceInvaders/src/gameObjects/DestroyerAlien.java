@@ -32,7 +32,7 @@ public class DestroyerAlien extends AlienShip {
 
 	public void set(boolean active) { 
 		activeBomb = active;
-
+	}
 
 	@Override
 	public void onDelete() {

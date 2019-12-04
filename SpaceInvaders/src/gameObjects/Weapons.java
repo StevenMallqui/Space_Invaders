@@ -6,9 +6,7 @@ public abstract class Weapons extends GameObject {
 	
 	// ______________________ Variables   ______________________  
 
-	//protected int damage = 1;
-	
-	protected int damage;
+	protected int damage = 1;
 	
 	// ______________________ Constructor ______________________    
 
@@ -20,21 +18,24 @@ public abstract class Weapons extends GameObject {
 	// ______________________   Methods   ______________________
 		
 	// get weapon damage
-	public int getDamage() {
-		return damage;
-	}
-	
-	// deactivate
-	/*
-	public void deactivate() {
-		lives = 0;
-	}
-	*/
-	
+		public int getDamage() {
+			return damage;
+		}
+		
+		// deactivate
+		/*
+		public void deactivate() {
+			lives = 0;
+		}
+		*/
+		
+		public int getLive() {
+			return lives;
+		}
+	//_____________________Abstract Method_______________
+
 	public abstract void deactivate();
+
 	
 	
-	public int getLive() {
-		return lives;
-	}
 }

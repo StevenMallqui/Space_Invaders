@@ -9,20 +9,29 @@ public class Bomb extends Weapons{
 
 
 	public Bomb(Game game, int x, int y,DestroyerAlien destroyer) {
-		super(game, x, y);
+		super(game, x, y,1);
 		this.destroyer = destroyer;
 	}
 
-	// ______________________ Methods ______________________
+	// ______________________ METHODS _______________________
 	
-
-	//_______________________ On delete ________________________
+	//_______________________ abstract _____________________
+	
 	@Override
 	public void onDelete() {
-		
+	}
+	
+	@Override
+	public void computerAction() {
 	}
 
-	// move
+	@Override
+	public void deactivate() {
+		lives = 0;
+		destroyer.set(false);
+	}
+
+	//_______________________ move __________________________
 	public void move() {
 		posX++;
 		if (Game.DIM_X == posX) {
@@ -31,31 +40,18 @@ public class Bomb extends Weapons{
 		}
 	}
 
-	// skin
+	//________________________ get skin _________________________
+	
 	public String toString() {
 		return "*";
 	}
 
-
+	//________________________ recieve missil attack ____________
+	
 	public boolean receiveMissileAttack(int damage) {
 		damageObject(damage);
 		return true;
 	}
-
-	@Override
-	public void computerAction() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void deactivate() {
-		lives = 0;
-		destroyer.set(false);
-	}
-	
-	
-
 }
 
 /*
