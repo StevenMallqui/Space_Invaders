@@ -6,7 +6,10 @@ import commands.CommandGenerator;
 import commands.Command;
 
 import game.Game;
-import view.BoardPrinter;
+
+import view.GamePrinter;
+import view.PrinterGenerator;
+
 import java.lang.String;
 
 public class Controller {
@@ -15,7 +18,8 @@ public class Controller {
 
 	private Game game;
 	private Scanner in;
-	private BoardPrinter printer;
+	
+	String printerType = "boardprinter";
 	
 	// ______________________ Constructor ______________________    
 
@@ -28,9 +32,8 @@ public class Controller {
 
 	// Run
 	public void run() {
-
-		printGame();
-		
+		GamePrinter printer = PrinterGenerator.parse(printerType);
+		System.out.print(printer.toString(game));
 		
 		while (!game.isFinished()) {
 			// Receive Command
@@ -40,7 +43,7 @@ public class Controller {
 			// Execute
 			if (command != null) {
 				if (command.execute(game))
-					printGame();
+					System.out.print(printer.toString(game));
 				else {
 					System.out.print("  Command > ");
 				}
@@ -54,14 +57,12 @@ public class Controller {
 		System.out.println(game.getWinnerMessage());
 	}
 	
-	
-	// Print Game
-	private void printGame() {
-		printer = new BoardPrinter(Game.DIM_Y, Game.DIM_X);
+	public void changePrinter() {
+		if (printerType.equals("bordprinter"))
+			printerType = "stringifier";
 		
-		System.out.println(printer.scoreBoard(game));
-		System.out.print(printer.toString(game));
-		System.out.print("  Command > ");
+		else
+			printerType = "boardPrinter";
 	}
 }
 

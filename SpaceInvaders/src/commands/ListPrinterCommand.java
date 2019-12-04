@@ -1,17 +1,16 @@
 package commands;
 
 import game.Game;
-import view.StringifierPrinter;
 
-public class StringifyCommand extends Command {
+public class ListPrinterCommand extends Command {
 	
 	// ______________________ Variables   ______________________  
 
 
 	// ______________________ Constructor ______________________    
 
-	public StringifyCommand() {
-		super("stringify","","stringify","Prints standart text format");
+	public ListPrinterCommand() {
+		super("list printer","lp","list","Prints the list of available ships.");
 	}
 
 	// ______________________   Methods   ______________________	
@@ -21,14 +20,15 @@ public class StringifyCommand extends Command {
 		Command command = null;
 		
 		if (commandWords.length == 1 && matchCommandName(commandWords[0]))
-			command = new StringifyCommand();
+			command = new ListPrinterCommand();
 		
 		return command;
 	}
 	
 	public boolean execute(Game game) {
-		StringifierPrinter str = new StringifierPrinter();
-		System.out.println(str.toString(game));
+
+		System.out.println(game.listPrinterCommand());
+		
 		return false;
 	}
 }

@@ -2,14 +2,18 @@ package view;
 
 import game.Game;
 
-public interface GamePrinter {
+public abstract class GamePrinter {
 	
-	String toString(Game game);
-	
-	public GamePrinter parse(String name);
-	
-	public String helpText();
+	protected String printerName;
+	protected String helpText;
 
-	void setGame(Game game);
+	public abstract String toString(Game game);
+	
+	public abstract GamePrinter parse(String name);
+	
+	public String helpText() {
+		return  "  " + printerName + " : " + helpText + "\n";
+	}
+	
+	public abstract void setGame(Game game);
 }
-

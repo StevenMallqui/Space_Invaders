@@ -5,7 +5,7 @@ import game.Game;
 public class PrinterGenerator {
 		private static GamePrinter[] availablePrinters = {
 			new BoardPrinter(Game.DIM_X, Game.DIM_Y),
-			new Stringifier(),
+			new StringifierPrinter(),
 			};
 
 		public static GamePrinter parse(String name) {		
@@ -15,7 +15,7 @@ public class PrinterGenerator {
 				printer = p.parse(name);
 				
 				if (printer != null) 
-					break;
+					return printer;
 			}
 			
 			return printer;

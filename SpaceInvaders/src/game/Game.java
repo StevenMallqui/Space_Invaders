@@ -6,6 +6,7 @@ import java.util.Random;
 import gameObjects.GameObject;
 import gameObjects.UCMMissile;
 import gameObjects.UCMShip;
+import view.PrinterGenerator;
 
 
 public class Game implements IPlayerController {
@@ -253,6 +254,10 @@ public class Game implements IPlayerController {
 
 	public String boardToStringifier() {
 		return board.toStringifier();
+	}
+
+	public String listPrinterCommand() {
+		return PrinterGenerator.printerHelp();
 	}
 
 }

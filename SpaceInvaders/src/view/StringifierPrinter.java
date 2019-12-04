@@ -3,15 +3,12 @@ package view;
 import game.Game;
 
 
-public class Stringifier implements GamePrinter {
+public class StringifierPrinter extends GamePrinter {
 	
-	Game game;
-
-	public Stringifier() {
-
+	public StringifierPrinter() {
+		printerName = "stringifier";
+		helpText = "prints the game as plain text";
 	}
-	
-	@Override
 	public String toString(Game game) {
 		String text = "\n";
 		
@@ -25,15 +22,14 @@ public class Stringifier implements GamePrinter {
 
 	@Override
 	public GamePrinter parse(String name) {
-		// TODO Auto-generated method stub
-		return null;
+		GamePrinter gp = null;
+		
+		if (printerName.equals(name))
+			gp = new StringifierPrinter();
+		
+		return gp;
 	}
 
-	@Override
-	public String helpText() {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 	@Override
 	public void setGame(Game game) {
