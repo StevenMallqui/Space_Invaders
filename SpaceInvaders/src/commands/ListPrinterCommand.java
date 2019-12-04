@@ -1,5 +1,6 @@
 package commands;
 
+
 import game.Game;
 
 public class ListPrinterCommand extends Command {
@@ -16,12 +17,15 @@ public class ListPrinterCommand extends Command {
 	// ______________________   Methods   ______________________	
 	
 	// Parse
-	public Command parse(String[] commandWords) {
+	public Command parse(String[] commandWords){
 		Command command = null;
 		
-		if (commandWords.length == 1 && matchCommandName(commandWords[0]))
-			command = new ListPrinterCommand();
-		
+	
+			if (commandWords.length == 1 && matchCommandName(commandWords[0])) {
+				
+				command = new ListPrinterCommand();
+			}
+	
 		return command;
 	}
 	

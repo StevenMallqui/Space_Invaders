@@ -36,7 +36,7 @@ public class MoveCommand extends Command{
 				}
 			}
 			
-			else { 
+			else if(commandWords.length > 3){ 
 				throw new lengthException();
 			}
 		}

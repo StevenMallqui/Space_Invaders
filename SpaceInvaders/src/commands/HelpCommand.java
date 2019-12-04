@@ -29,7 +29,7 @@ public class HelpCommand extends Command{
 	public boolean execute(Game game) {
 		BoardPrinter bp = new BoardPrinter(Game.DIM_X, Game.DIM_Y);
 
-		System.out.print(bp.helpText());
+		System.out.print(bp.helpCommand());
 		
 		return false;
 	}

@@ -42,16 +42,16 @@ public class Controller {
 			
 			try {
 			Command command = CommandGenerator.parse(words);
-			// Execute
 
-			if (command != null) {
-				if (command.execute(game))
-					System.out.print(printer.toString(game));
-				else {
-					System.out.print("  Command > ");
+				if (command != null) {
+					if (command.execute(game))
+						System.out.print(printer.toString(game));
+					else {
+						System.out.print("  Command > ");
+					}
 				}
 			}
-			catch (CommandParseException |CommandExecuteException ex) {
+			catch (CommandParseException|CommandExecuteException ex) {
 					System.err.format(ex.getMessage() + " %n %n"); 
 					}
 			
