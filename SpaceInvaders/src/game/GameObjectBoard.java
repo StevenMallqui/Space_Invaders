@@ -226,4 +226,16 @@ public class GameObjectBoard {
 					}
 				}
 		}
+
+
+		public String toStringifier() {
+			String text = "";
+			
+			for (GameObject obj : objects) 
+				text += obj.toStringified();
+			
+			return text;
+		}
+
+
 }

@@ -11,6 +11,6 @@ public interface IExecuteRandomActions {
 	}
 	
 	static boolean  canGenerateRandomExplosion(Game game){
-		return game.getRandom().nextDouble() < game.getLevel().getExplosionFrequency();	
+		return game.getRandom().nextDouble() < game.getLevel().getTurnExplodeFrequency();	
 	}
 }

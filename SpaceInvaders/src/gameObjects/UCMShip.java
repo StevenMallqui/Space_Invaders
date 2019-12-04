@@ -101,5 +101,11 @@ public class UCMShip extends Ship {
 		superMissile--;
 	}
 
+	@Override
+	public String toStringified() {
+		return "P;" + posX + "," + posY + ";" + lives + ";" + game.getPoints() +
+				";" + game.getShockWave() + ";" + superMissile +"\n";
+	}
+
 
 }

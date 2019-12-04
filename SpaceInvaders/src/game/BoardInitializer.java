@@ -27,21 +27,6 @@ public class BoardInitializer {
 		board.add(new Ovni(game, 0, 9, 1));
 		
 	}
-
-	//_______________INITIALIZE REGULAR ALIENS_______________________
-	/*
-	private void initializeRegularAliens () {
-		int numAliens = level.getNumRegularAliens();
-		int numAliRow = level.getNumRegularAliensPerRow();
-		
-		int strRow = level.getRegularStartingRow();
-		int strCol = level.getRegularStartingCol();
-		
-		for (int i = 0; i < (numAliens/numAliRow); i++)
-			for(int j = 0; j < numAliens; j++)
-				board.add(new RegularAlien(game, strRow + i, strCol + j));
-
-	}*/
 	
 	private void initializeRegularAliens () {
 		int numAliens = level.getNumRegularAliens();
@@ -68,22 +53,7 @@ public class BoardInitializer {
 			}
 		}
 	}
-	
-	//_______________INITIALIZE DESTROYER ALIENS_______________________
-	/*
-	private void initializeDestroyerAliens() {		
-		int numAliens = level.getNumDestroyerAliens();
-		int numAliRow = level.getNumDestroyerAliensPerRow();
 		
-		int strRow = level.getDestroyerStartingRow();
-		int strCol = level.getDestroyerStartingCol();
-		
-		for (int i = 0; i < (numAliens/numAliRow); i++)
-			for(int j = 0; j < numAliens; j++)
-				board.add(new DestroyerAlien(game, strRow + i, strCol + j));
-
-	}*/
-	
 	private void initializeDestroyerAliens() {		
 		int numDestroyers = level.getNumDestroyerAliens();
 		int numRegulars = level.getNumRegularAliens();

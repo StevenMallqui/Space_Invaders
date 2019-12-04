@@ -40,4 +40,16 @@ public class RegularAlien extends AlienShip {
 			selfDestruct = true;
 		}
 	}
+
+	@Override
+	public String toStringified() {
+		String dir = "left";
+		if (game.getDirection())
+			dir = "right";
+		
+		if (selfDestruct)
+			return "R;" + posX + "," + posY + ";" + lives + ";" + (3 - game.getCycle()%3) + ";" + dir + "\n";
+		else
+			return "E;" + posX + "," + posY + ";" + lives + ";" + (3 - game.getCycle()%3) + ";" + dir + "\n";
+	}
 }

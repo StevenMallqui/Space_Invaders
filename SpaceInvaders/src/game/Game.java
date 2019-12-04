@@ -58,7 +58,7 @@ public class Game implements IPlayerController {
 	}
 
 	//COLLISIONS && PRINTING 
-	public String toString(int posX,int posY) {
+	public String toString(int posX, int posY) {
 		return board.toString(posX,posY);
 	}
 	
@@ -249,5 +249,10 @@ public class Game implements IPlayerController {
 
 	public void damageNearbyObjects(int x, int y) {
 		board.explode(x, y);
-	}	
+	}
+
+	public String boardToStringifier() {
+		return board.toStringifier();
+	}
+
 }

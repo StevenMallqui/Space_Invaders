@@ -3,7 +3,6 @@ package view;
 import commands.*;
 
 import game.Game;
-import game.GameObjectBoard;
 import util.MyStringUtils;
 
 public class BoardPrinter implements GamePrinter {
@@ -86,6 +85,12 @@ public class BoardPrinter implements GamePrinter {
 		text += "\n  Shockwave : " + game.getShockWave();
 		text += "\n  Super Missiles : " + game.getNumSupermissiles();
 		return text;
+	}
+
+	@Override
+	public void setGame(Game game) {
+		// TODO Auto-generated method stub
+		
 	}
 	
 }

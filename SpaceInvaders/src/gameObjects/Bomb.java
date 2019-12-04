@@ -52,6 +52,11 @@ public class Bomb extends Weapons{
 		damageObject(damage);
 		return true;
 	}
+
+	@Override
+	public String toStringified() {
+		return "B;" + posX + "," + posY + "\n";
+	}
 }
 
 /*

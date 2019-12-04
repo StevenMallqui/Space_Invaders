@@ -45,4 +45,9 @@ public class UCMMissile extends Weapons {
 		
 	}
 
+	@Override
+	public String toStringified() {
+		return "M;" + posX + "," + posY +"\n";
+	}
+
 }

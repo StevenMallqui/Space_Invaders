@@ -96,10 +96,4 @@ public enum Level {
 		else 
 			return 4;
 	}
-
-
-	public double getExplosionFrequency() {
-		return 0.05;
-	}
-
 }

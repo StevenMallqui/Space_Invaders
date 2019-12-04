@@ -51,7 +51,7 @@ public class Controller {
 				System.out.format("  Unkown Command, please try again\n  Command > ");
 		}
 		
-		System.out.println("    GAME OVER ...");
+		System.out.println(game.getWinnerMessage());
 	}
 	
 	
