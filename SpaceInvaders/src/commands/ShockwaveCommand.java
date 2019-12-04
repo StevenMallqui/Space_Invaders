@@ -1,5 +1,6 @@
 package commands;
 
+import exceptions.*;
 import game.Game;
 
 public class ShockwaveCommand extends Command {
@@ -25,12 +26,21 @@ public class ShockwaveCommand extends Command {
 	}
 	
 	// Execute
-	public boolean execute(Game game) {
+	public boolean execute(Game game) throws CommandExecuteException {
 		boolean ok = false;
-
-		if (game.shockWave()) {
-			ok = true;
-			game.update();
+		
+		try {
+			
+			if (game.shockWave()) {
+				ok = true;
+				game.update();
+			}
+			else {
+				throw new shockwaveException();
+			}
+		}
+		catch(shockwaveException e) {
+			throw new CommandExecuteException(e.getMessage());
 		}
 		
 		return ok;

@@ -1,5 +1,6 @@
 package commands;
 
+import exceptions.*;
 import game.Game;
 
 public class ShootCommand extends Command{
@@ -36,20 +37,27 @@ public class ShootCommand extends Command{
 	}
 	
 	// Execute
-	public boolean execute(Game game) {
+	public boolean execute(Game game) throws CommandExecuteException{
 		boolean ok = false;
-		
-		if (supermissile) {
-			if (game.shootSuperMissile()) {
-				game.update();
-				ok = true;
-			}			
-		}
-		
-		else if (game.shootLaser()) {
-				game.update();
-				ok = true;
+		try {
+			if (supermissile) {
+				if (game.shootSuperMissile()) {
+					game.update();
+					ok = true;
+				}			
 			}
+			
+			else if (game.shootLaser()) {
+					game.update();
+					ok = true;
+			}
+			else {
+				throw new shootException();
+			}
+		}
+		catch(shootException e) {
+			throw new CommandExecuteException(e.getMessage());
+		}
 		
 		
 		return ok;
