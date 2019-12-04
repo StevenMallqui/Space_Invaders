@@ -1,5 +1,7 @@
 package commands;
 
+import exceptions.CommandParseException;
+
 public class CommandGenerator {
 	
 	// ______________________ Variables   ______________________  
@@ -25,7 +27,7 @@ public class CommandGenerator {
 	// ______________________   Methods   ______________________
 	
 	// Parse
-	public static Command parse(String[]commandWords) {
+	public static Command parse(String[]commandWords) throws CommandParseException {
 		Command command = null;
 		
 		for(Command availableCommand : availableCommands) {

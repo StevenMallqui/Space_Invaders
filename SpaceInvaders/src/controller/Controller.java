@@ -3,6 +3,7 @@ package controller;
 import java.util.Scanner;
 
 import commands.CommandGenerator;
+import exceptions.*;
 import commands.Command;
 
 import game.Game;
@@ -35,20 +36,26 @@ public class Controller {
 		while (!game.isFinished()) {
 			// Receive Command
 			String[] words = in.nextLine().toLowerCase().trim().split("\\s+");
-			Command command = CommandGenerator.parse(words);
 			
+			try {
+			Command command = CommandGenerator.parse(words);
 			// Execute
-			if (command != null) {
-				if (command.execute(game))
-					printGame();
-				else {
-					System.out.print("  Command > ");
+				if (command != null) {
+					if (command.execute(game)) 
+						printGame();
+					else 
+						System.out.print("  Command > ");
+					
 				}
 			}
+			catch (CommandParseException |CommandExecuteException ex) {
+					System.err.format(ex.getMessage() + " %n %n"); 
+					}
 			
-			else 
+			/*else 
 				// Error message
 				System.out.format("  Unkown Command, please try again\n  Command > ");
+				*/
 		}
 		
 		// End game

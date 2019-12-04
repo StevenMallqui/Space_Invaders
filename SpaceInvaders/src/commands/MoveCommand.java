@@ -1,5 +1,6 @@
 package commands;
 
+import exceptions.*;
 import game.Game;
 
 public class MoveCommand extends Command{
@@ -15,34 +16,70 @@ public class MoveCommand extends Command{
 		super("move", "m","move <left|right> <1|2>","Moves UCM-Ship to the indicated direction.");
 	}
 
-	// ______________________   Methods   ______________________
+	// ______________________   METHODS   ______________________
 
-	// parse
-	public Command parse(String[] commandWords) {
+	// _________________________ PARSE ________________________________
+	
+	public Command parse(String[] commandWords) throws CommandParseException {
+		
 		MoveCommand command = null;
 		
-		if (commandWords.length == 3 && matchCommandName(commandWords[0])) {
-			command = new MoveCommand();
-			command.setCommands(commandWords[1], commandWords[2]);
+		try {
+			if (commandWords.length == 3 ) {
+				if(matchCommandName(commandWords[0])) {
+					command = new MoveCommand();
+					command.setCommands(commandWords[1], commandWords[2]);
+				}
+				
+				else {
+					throw new wrongWordException();
+				}
+			}
+			
+			else { 
+				throw new lengthException();
+			}
 		}
+		
+		catch(lengthException | wrongWordException e){
+			throw new CommandParseException(e.getMessage());
+		}
+		
 		return command;
 	}
 	
-	// Execute
-	public boolean execute(Game game) {
+	// __________________________ EXECUTE ___________________________
+	
+	public boolean execute(Game game) throws CommandExecuteException {
+		
 		boolean ok = false;
 		
-		if (direction.equals("left") || direction.equals("right")) 
-			if (spaces ==  1 || spaces == 2) {
+		try {
+			if (direction.equals("left") || direction.equals("right")) { 
+				if (spaces ==  1 || spaces == 2) {
+					
+					if (direction.equals("left"))
+						spaces = -spaces;
+			
+					if (game.move(spaces)) {
+						game.update();
+						ok = true;
+					}
+				}
 				
-				if (direction.equals("left"))
-					spaces = -spaces;
-		
-				if (game.move(spaces)) {
-					game.update();
-					ok = true;
+				else {
+					throw new spacesException();
 				}
 			}
+			
+			else {
+				throw new directionException();
+			}
+		}
+			
+		catch(directionException | spacesException e) {
+			throw new CommandExecuteException(e.getMessage());
+		}
 
 		return ok;
 	}

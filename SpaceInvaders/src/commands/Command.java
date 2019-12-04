@@ -1,5 +1,6 @@
 package commands;
 
+import exceptions.*;
 import game.*;
 
 
@@ -29,10 +30,10 @@ public abstract class Command {
 	// ----------------------  Abstract   ----------------------
 	
 	// execute
-	public abstract boolean execute(Game game);
+	public abstract boolean execute(Game game) throws CommandExecuteException;
 	
 	// Parse
-	public abstract Command parse(String[] commandWords);
+	public abstract Command parse(String[] commandWords) throws CommandParseException;
 
 	// ----------------------  Operations ----------------------
 
