@@ -19,7 +19,8 @@ public class CommandGenerator {
 			new ShootCommand(),
 			new BuySuperMissileCommand(),
 			new StringifyCommand(),
-			new ListPrinterCommand()
+			new ListPrinterCommand(),
+			new SaveCommand()
 			};
 
 	
