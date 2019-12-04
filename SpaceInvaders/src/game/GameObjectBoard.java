@@ -134,6 +134,7 @@ public class GameObjectBoard {
 				checkAttacks(obj);
 		}
 		
+		
 		removeDead();
 	}
 	

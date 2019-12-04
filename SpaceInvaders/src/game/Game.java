@@ -8,6 +8,7 @@ import java.util.Random;
 
 import exceptions.*;
 import gameObjects.GameObject;
+import gameObjects.Ovni;
 import gameObjects.UCMMissile;
 import gameObjects.UCMShip;
 
@@ -286,6 +287,10 @@ public class Game implements IPlayerController {
 		writer.close();
 		
 		return true; 
+	}
+
+	public void resetOvni() {
+		board.add(new Ovni(this));		
 	}
 
 }

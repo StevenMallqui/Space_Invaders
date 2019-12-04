@@ -6,12 +6,13 @@ public class Ovni extends EnemyShip implements IExecuteRandomActions{
 	
 	
 	//______________________Variables______________________  
+	
 	private boolean enableOvni;
 		
 	//______________________Constructor______________________    
 	
-	public Ovni(Game game, int x, int y, int live) {
-		super(game, x, y, live, 25);
+	public Ovni(Game game) {
+		super(game, 0, 9, 1, 25);
 		enableOvni = false;
 	}
 	
@@ -29,6 +30,7 @@ public class Ovni extends EnemyShip implements IExecuteRandomActions{
 	public void onDelete() {
 		game.enableShockWave();
 		game.receivePoints(this.points);
+		game.resetOvni();
 	}
 	
 	@Override
