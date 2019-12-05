@@ -18,7 +18,7 @@ public class BuySuperMissileCommand extends Command {
 	public Command parse(String[] commandWords) {
 		Command command = null;
 		
-		if (commandWords.length == 3 && matchCommandName(commandWords[0]))
+		if (commandWords.length == 1 && matchCommandName(commandWords[0]))
 			command = new BuySuperMissileCommand();
 		
 		return command;
