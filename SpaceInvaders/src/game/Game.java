@@ -9,6 +9,7 @@ import java.util.Random;
 import exceptions.*;
 import gameObjects.GameObject;
 import gameObjects.Ovni;
+import gameObjects.ExplosiveAlien;
 import gameObjects.UCMMissile;
 import gameObjects.UCMShip;
 
@@ -23,6 +24,7 @@ public class Game implements IPlayerController {
 	// World Borders :
 	public final static int DIM_Y = 8;
 	public final static int DIM_X = 9 ;
+	private final int MissileCost = 20;
 	
 	// Objects
 	private UCMShip ucm;
@@ -111,7 +113,18 @@ public class Game implements IPlayerController {
 		return direction;
 	}
 	
-	// ______________________PLAYER ACTIONS__________________________
+	// shock wave
+	public boolean getShockWave() {
+		return ucm.getShockwave();
+	}
+
+	// List Printer Command
+	public String listPrinterCommand() {
+		return PrinterGenerator.printerHelp();
+	}
+
+	
+	// -------------------- Player Actions ---------------------
 	
 	// SHOOT MISSILE
 	public boolean shootLaser() {
@@ -119,7 +132,7 @@ public class Game implements IPlayerController {
 			return false;
 			
 		else {
-			board.add(new UCMMissile(this, ucm.getPosX(), ucm.getPosY(), 1));
+			board.add(new UCMMissile(this, ucm.getPosX(), ucm.getPosY()));
 			return true;
 		}
 	}
@@ -137,7 +150,34 @@ public class Game implements IPlayerController {
 				return false;
 			
 	}
+	
+	// Shoot super Missile
+	public boolean shootSuperMissile() {
+		if (!board.shootLaser())
+			return false;
+			
+		else {
+			board.add(new UCMMissile(this, ucm.getPosX(), ucm.getPosY()));
+			points--;
+			ucm.substractMissile();
+			return true;
+		}
+	}
+
+	// buy super missile
+	public void buySuperMissile() {
 		
+		if (points >= MissileCost) {
+				System.out.println("   Missile acquired");
+				ucm.addSuperMissile();
+				points -= MissileCost;
+		}
+		
+		else 
+			System.out.println("  Not enough points");
+		
+	}
+
 	// MOVE
 	public boolean move(int num) throws CommandExecuteException {
 		boolean ok = false;
@@ -157,7 +197,7 @@ public class Game implements IPlayerController {
 		return ok;
 	}
 
-	//______________________CALLBACKS_____________________________
+	// ------------------- Misc Operations ---------------------
 	
 	// RECEIVE POINTS
 	public void receivePoints(int points) {
@@ -173,15 +213,26 @@ public class Game implements IPlayerController {
 	public void enableMissile() {
 		ucm.enableMissile();
 	}
+	
+	// get number of missiles
+	public int getNumSupermissiles() {
+		return ucm.getNumSuperMissile();
+	}
+
+	// Serialize
+	public String boardToStringifier() {
+		return board.toStringifier();
+	}
+
 			
 	// ----------------------  End Game  -----------------------
 
 	//Initializer 
 	public void initGame () {
 		cycle = 0;
-		board = initializer.initialize(this, level);
 		ucm = new UCMShip(this, DIM_X /2, DIM_Y -1);
 		board.add(ucm);
+		board = initializer.initialize(this, level);
 	}
 
 	// End game
@@ -202,81 +253,7 @@ public class Game implements IPlayerController {
 		else return "This should not happen";
 	}
 
-	// ----------------------   Update   -----------------------
-
-	// Update
-	public void update() {
-		board.computerAction();
-		board.update();
-		cycle ++;
-	}
-	
-	//Return a boolean if it´s on board
-	public boolean isOnBoard(int posX, int posY) {
-		return ucm.getPosX() == posX && ucm.getPosY() == posY;
-	}
-	
-	
-	// ---------------------- Operations -----------------------
-
-	
-	//Add objects 	
-	public void addObject(GameObject object) {
-		board.add(object);
-	}
-	
-	
-	// shock wave
-	public boolean getShockWave() {
-		return ucm.getShockwave();
-	}
-	
-	// change direction
-	public void changeDirection() {
-		direction = !direction;
-	}
-
-	public void buySuperMissile() {
-		
-		if (points >= 20) {
-				System.out.println("   Missile acquired");
-				ucm.addSuperMissile();
-				points -= 20;
-		}
-		
-		else 
-			System.out.println("  Not enough points");
-		
-	}
-
-	public int getNumSupermissiles() {
-		return ucm.getNumSuperMissile();
-	}
-
-	public boolean shootSuperMissile() {
-		if (!board.shootLaser())
-			return false;
-			
-		else {
-			board.add(new UCMMissile(this, ucm.getPosX(), ucm.getPosY(), 2));
-			points--;
-			ucm.substractMissile();
-			return true;
-		}
-	}
-
-	public void damageNearbyObjects(int x, int y) {
-		board.explode(x, y);
-	}
-
-	public String boardToStringifier() {
-		return board.toStringifier();
-	}
-
-	public String listPrinterCommand() {
-		return PrinterGenerator.printerHelp();
-	}
-
+	// Save Game
 	public boolean saveGame(String name) throws IOException {
 		StringifierPrinter sp = new StringifierPrinter();
 		String text = sp.toString(this);
@@ -289,8 +266,50 @@ public class Game implements IPlayerController {
 		return true; 
 	}
 
+	// ----------------------   Update   -----------------------
+
+	// Update
+	public void update() {
+		board.computerAction();
+		board.update();
+		cycle++;
+	}
+	
+	//Return a boolean if its on board
+	public boolean isOnBoard(int posX, int posY) {
+		return ucm.getPosX() == posX && ucm.getPosY() == posY;
+	}
+	
+	
+	// ---------------------- Operations -----------------------
+	
+	// change direction
+	public void changeDirection() {
+		direction = !direction;
+	}
+
+	//Add objects 	
+	public void addObject(GameObject object) {
+		board.add(object);
+	}
+	
+	// Explode
+	public void damageNearbyObjects(int x, int y) {
+		board.explode(x, y);
+	}
+
+
+	//
 	public void resetOvni() {
 		board.add(new Ovni(this));		
 	}
+
+	// Turn Explosive
+	public void regularToExplosive(int posX, int posY, int lives) {
+		board.add(new ExplosiveAlien(this, posX, posY, lives));
+	}
+
+	
+
 
 }

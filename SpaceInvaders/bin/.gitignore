@@ -1,8 +1,6 @@
-
-/controller/
-/commands/
-/game/
-/view/
 /gameObjects/
-/exceptions/
 /main/
+/util/
+/view/
+/game/
+/commands/

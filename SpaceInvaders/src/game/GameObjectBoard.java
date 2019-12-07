@@ -4,12 +4,12 @@ import gameObjects.*;
 
 public class GameObjectBoard {
 	
-	//______________________ VARIABLES________________________
+	//______________________ VARIABLES _______________________
 	
 	private GameObject[] objects;
 	private int currentObjects;
 	
-	//______________________CONSTRUCTOR_______________________
+	//_____________________ CONSTRUCTOR ______________________
 	
 	public GameObjectBoard (int width, int height) {
 		
@@ -18,8 +18,10 @@ public class GameObjectBoard {
 	}
 	
 	
-	//_______________________METHODS (PRIVATE)_____________________________
-		
+	// _______________________  METHODS ________________________
+	
+	// -----------------------  PRIVATE  -----------------------
+
 	// get object in position
 	private GameObject getObjectInPosition (int x,int y ) {
 		
@@ -60,9 +62,10 @@ public class GameObjectBoard {
 	
 	// check attacks
 	private void checkAttacks(GameObject object) {
-		for (GameObject obj : objects) {
-				obj.performAttack(object);
-		}	
+		for (int j = 0; j < currentObjects; j++)
+			if (object.getPosX() == objects[j].getPosX())
+				if (object.getPosY() == objects[j].getPosY())
+					object.performAttack(objects[j]);
 	}
 
 	// remove dead
@@ -73,22 +76,10 @@ public class GameObjectBoard {
 				remove(objects[i]);
 				i--;
 			}
-				
-			
-				
-	}
-	
-//_______________________METHODS (PUBLIC)_____________________________
-	
-	// add
-	public void add(GameObject object) {
-		objects = newList(currentObjects +1);
-		objects[currentObjects] = object;
-		currentObjects++;
 	}
 	
 	// new list
-	public GameObject[] newList(int size) {
+	private GameObject[] newList(int size) {
 		GameObject[] list = new GameObject[size];
 		
 		for (int i = 0; i < currentObjects; i++)
@@ -97,43 +88,32 @@ public class GameObjectBoard {
 		return list;
 	}
 	
+	// ----------------------   Public   -----------------------
+	
+	// add
+	public void add(GameObject object) {
+		objects = newList(currentObjects +1);
+		objects[currentObjects] = object;
+		currentObjects++;
+	}
+	
+	
 	// update
 	public void update() {
 		for (GameObject obj : objects) {
-			if (!(obj instanceof AlienShip)) 
-				obj.move();				
+			obj.move();
+			checkAttacks(obj);
 		}
-		
-		boolean goDown = false;
-		for (GameObject obj : objects) {
-			if (obj instanceof AlienShip && !goDown)
-				goDown = ((AlienShip) obj).checkBorders();
-		}
-		
-		if (goDown) {
-			for (GameObject obj : objects) {
-				if (obj instanceof AlienShip)
-					((AlienShip) obj).goDown();
-			}
-		}
-		
-		else {
-			for (GameObject obj : objects) {
-				if (obj instanceof AlienShip)
-					obj.move();
-			}
-		}
-		
-		objectImpact();
+		removeDead();
 	}
 		
 	// computer action
 	public void computerAction() {
 		for(GameObject obj : objects) {
-				obj.computerAction();
-				checkAttacks(obj);
+			obj.computerAction();
+			checkAttacks(obj);
 		}
-		
+				
 		
 		removeDead();
 	}
@@ -145,7 +125,8 @@ public class GameObjectBoard {
 				return obj.toString();
 			}
 		}
-		return " ";
+		
+		return "";
 	}
 
 	// get number of enemies
@@ -168,6 +149,27 @@ public class GameObjectBoard {
 		return true;
 	}
 
+	
+	// all dead
+	public boolean allDead() {			
+		for (GameObject go : objects) {
+			if ((go instanceof AlienShip) && go.isAlive())
+				return false;
+		}
+		
+		return true;
+	}
+	
+	// have landed
+	public boolean haveLanded() {
+		for (GameObject go : objects) {
+			if (go instanceof AlienShip && go.getPosX() == Game.DIM_X -2)
+				return true;
+		}
+		
+		return false;
+	}
+
 	// shoot shock wave
 	public boolean shootShockwave() {
 		for (GameObject go: objects) {
@@ -177,66 +179,27 @@ public class GameObjectBoard {
 		removeDead();
 		return true;
 	}
-	
-	// all dead
-		public boolean allDead() {			
-			for (GameObject go : objects) {
-				if ((go instanceof AlienShip) && go.isAlive())
-					return false;
+
+
+	// explode ship
+	public void explode(int x, int y) {
+		for (int i = 0; i < 3; i++)
+			for (int j = 0; j < 3; j++) {
+				if (getObjectInPosition(x -1 +i, y -1 +j) != null) {
+					getObjectInPosition(x -1 +i, y -1 +j).receiveExplosionAttack(1);
+				}
 			}
-			
-			return true;
-		}
+	}
+
+	// Board info to Serialize
+	public String toStringifier() {
+		String text = "";
 		
-		// have landed
-		public boolean haveLanded() {
-			for (GameObject go : objects) {
-				if (go instanceof AlienShip && go.getPosX() == Game.DIM_X -2)
-					return true;
-			}
-			
-			
-			return false;
-		}
-
-		// object impact
-		public void objectImpact() {
-			for (GameObject obj : objects) {
-				if (obj instanceof UCMMissile) {
-					GameObject imp = getObjectInPosition(obj.getPosX(), obj.getPosY());
-					if (imp.receiveMissileAttack(((UCMMissile) obj).getDamage()))
-						((Weapons) obj).deactivate();
-				}
-				
-				else if (obj instanceof Bomb) {
-					GameObject imp = getObjectInPosition(obj.getPosX(), obj.getPosY());
-					if (imp.receiveBombAttack(((Bomb) obj).getDamage()))
-						((Weapons) obj).deactivate();
-					
-				}
-			}
-			removeDead();
-		}
-
-		// explode
-		public void explode(int x, int y) {
-			for (int i = 0; i < 3; i++)
-				for (int j = 0; j < 3; j++) {
-					if (getObjectInPosition(x -1 +i, y -1 +j) != null) {
-						getObjectInPosition(x -1 +i, y -1 +j).receiveExplosionAttack(1);
-					}
-				}
-		}
-
-
-		public String toStringifier() {
-			String text = "";
-			
-			for (GameObject obj : objects) 
-				text += obj.toStringified();
-			
-			return text;
-		}
+		for (GameObject obj : objects) 
+			text += obj.toStringified();
+		
+		return text;
+	}
 
 
 }

@@ -57,5 +57,13 @@ public class Bomb extends Weapons{
 	public String toStringified() {
 		return "B;" + posX + "," + posY + "\n";
 	}
+	
+	public boolean performAttack(GameObject other) {
+		if (other.receiveBombAttack(damage)) {
+			deactivate();
+			return true;
+		}
+		return false;
+	}
 }
 

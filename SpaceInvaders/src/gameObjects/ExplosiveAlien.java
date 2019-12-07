@@ -3,14 +3,12 @@ package gameObjects;
 import game.Game;
 import game.IExecuteRandomActions;
 
-public class RegularAlien extends AlienShip {
-
-	// ______________________ Variables   ______________________  
+public class ExplosiveAlien extends AlienShip {
 	
 	// ______________________ Constructor ______________________    
 
-	public RegularAlien(Game game, int x, int y) {
-		super(game, x, y, 2, 5);
+	public ExplosiveAlien(Game game, int x, int y, int lives) {
+		super(game, x, y, lives, 5);
 	}
 
 	// ______________________   Methods   ______________________
@@ -18,28 +16,25 @@ public class RegularAlien extends AlienShip {
 	// on delete
 	public void onDelete() {
 		game.receivePoints(points);
+		game.damageNearbyObjects(posX, posY);
 	}
 
 	// Get skin
 	public String toString() {
-		return "R[" + lives + "]";
+		return "E[" + lives + "]";
 	}
 
 	// computer action
 	public void computerAction() {
-		if(IExecuteRandomActions.canGenerateRandomExplosion(game)){
-			game.regularToExplosive(posX, posY, lives);
-			points = 0;
-			lives = 0;
-		}
+		
 	}
 
-	@Override
+	// to serial
 	public String toStringified() {
 		String dir = "left";
 		if (game.getDirection())
 			dir = "right";
 		
-		return "R;" + posX + "," + posY + ";" + lives + ";" + (3 - game.getCycle()%3) + ";" + dir + "\n";
+		return "E;" + posX + "," + posY + ";" + lives + ";" + (3 - game.getCycle()%3) + ";" + dir + "\n";
 	}
 }

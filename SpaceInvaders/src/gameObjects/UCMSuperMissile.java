@@ -2,12 +2,12 @@ package gameObjects;
 
 import game.Game;
 
-public class UCMMissile extends Weapons {
+public class UCMSuperMissile extends Weapons {
 	
 	// ______________________ Constructor ______________________    
 
-	public UCMMissile(Game game, int x, int y) {
-		super(game, x, y, 1);
+	public UCMSuperMissile(Game game, int x, int y) {
+		super(game, x, y, 2);
 	}
 
 	// ______________________   Methods   ______________________
