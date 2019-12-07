@@ -104,6 +104,7 @@ public class GameObjectBoard {
 			obj.move();
 			checkAttacks(obj);
 		}
+		
 		removeDead();
 	}
 		

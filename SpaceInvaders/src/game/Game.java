@@ -42,6 +42,7 @@ public class Game implements IPlayerController {
 	// direction
 	private int points = 0;
 	private boolean direction;
+	private boolean goDown;
 
 	
 	// ______________________ Constructor ______________________    
@@ -100,17 +101,6 @@ public class Game implements IPlayerController {
 	// get points
 	public int getPoints() {
 		return points;
-	}
-	
-	
-	// get number of enemies
-	public int numEnemies() {
-		return board.getCurrentEnemies();
-	}
-
-	// get direction
-	public boolean getDirection() {
-		return direction;
 	}
 	
 	// shock wave
@@ -224,6 +214,15 @@ public class Game implements IPlayerController {
 		return board.toStringifier();
 	}
 
+	// set GoDown
+	public void setGoDown(boolean set) {
+		goDown = set;
+	}
+	
+	//Add objects 	
+	public void addObject(GameObject object) {
+		board.add(object);
+	}
 			
 	// ----------------------  End Game  -----------------------
 
@@ -278,38 +277,39 @@ public class Game implements IPlayerController {
 	//Return a boolean if its on board
 	public boolean isOnBoard(int posX, int posY) {
 		return ucm.getPosX() == posX && ucm.getPosY() == posY;
-	}
+	}	
 	
-	
-	// ---------------------- Operations -----------------------
-	
-	// change direction
-	public void changeDirection() {
-		direction = !direction;
-	}
-
-	//Add objects 	
-	public void addObject(GameObject object) {
-		board.add(object);
-	}
-	
-	// Explode
-	public void damageNearbyObjects(int x, int y) {
-		board.explode(x, y);
-	}
-
-
-	//
-	public void resetOvni() {
-		board.add(new Ovni(this));		
-	}
+	// --------------------  Enemy Ships  ----------------------
 
 	// Turn Explosive
 	public void regularToExplosive(int posX, int posY, int lives) {
 		board.add(new ExplosiveAlien(this, posX, posY, lives));
 	}
 
-	
+	// change direction
+	public void changeDirection() {
+		direction = !direction;
+	}
 
+	// Explode
+	public void damageNearbyObjects(int x, int y) {
+		board.explode(x, y);
+	}
+
+	// get go Down
+	public boolean goDown() {
+		return goDown;
+	}
+	
+	// get number of enemies
+	public int numEnemies() {
+		return board.getCurrentEnemies();
+	}
+
+	// get direction
+	public boolean getDirection() {
+		return direction;
+	}
+	
 
 }
