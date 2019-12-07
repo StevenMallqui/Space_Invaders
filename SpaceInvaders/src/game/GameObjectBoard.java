@@ -113,7 +113,6 @@ public class GameObjectBoard {
 			obj.computerAction();
 			checkAttacks(obj);
 		}
-				
 		
 		removeDead();
 	}

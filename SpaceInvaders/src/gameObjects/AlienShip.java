@@ -4,6 +4,9 @@ import game.Game;
 
 public abstract class AlienShip extends EnemyShip {
 	
+	protected boolean goDown = false;
+	protected int counter;
+	
 	// ______________________ Constructor ______________________    
 
 	public AlienShip(Game game, int x, int y, int live, int points) {
@@ -20,45 +23,47 @@ public abstract class AlienShip extends EnemyShip {
 	
 	// move
 	public void move() {
-		if (game.getCycle() % game.getLevel().getNumCyclesToMoveOneCell() == 0) {
-			if (game.getDirection()) {
-				posY++;
-			}
+		checkBorders();
+		
+		if (goDown) {
+			counter++;
+			posX++;
+		}
+		
+		else if (game.getCycle() % game.getLevel().getNumCyclesToMoveOneCell() == 0) {
 			
-			else {
+			if (game.getDirection()) 
+				posY++;
+			
+			else 
 				posY--;
-			}
+			
 		}
 	}
 	
 	public void onDelete() {
-		game.receivePoints(points);;		
+		game.receivePoints(points);	
 	}
 	
-	public void computerAction() {
-		
-	}
-
-	public void goDown() {
-		posX++;
-	}
-
-	public boolean checkBorders() {
+	private void checkBorders() {
 		if (game.getDirection()) {
 			if(Game.DIM_Y == posY) {
 				game.changeDirection();
-				return true;
+				goDown = true;
+				counter = 0;
 			}
 		}
 		
 		else {
 			if (0 == posY) {
 				game.changeDirection();
-				return true;
+				goDown = true;
+				counter = 0;
 			}
 		}
 		
-		return false;
+		if (counter <= game.numEnemies())
+			goDown = false;
 	}
 	
 }
