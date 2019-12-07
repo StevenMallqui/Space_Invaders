@@ -230,9 +230,9 @@ public class Game implements IPlayerController {
 	//Initializer 
 	public void initGame () {
 		cycle = 0;
+		board = initializer.initialize(this, level);
 		ucm = new UCMShip(this, DIM_X /2, DIM_Y -1);
 		board.add(ucm);
-		board = initializer.initialize(this, level);
 	}
 
 	// End game

@@ -7,52 +7,55 @@ public class Ovni extends EnemyShip implements IExecuteRandomActions{
 	
 	//______________________Variables______________________  
 	
-	private boolean enableOvni;
+	private boolean Alive;
 		
 	//______________________Constructor______________________    
 	
 	public Ovni(Game game) {
 		super(game, 0, 9, 1, 25);
-		enableOvni = false;
 	}
 	
 	//______________________Methods______________________
 	
-	@Override
+	// computer Action
 	public void computerAction() {
-		if(IExecuteRandomActions.canGenerateRandomOvni(game) && enableOvni == false){
-			enableOvni = true;
-			move();
+		if(IExecuteRandomActions.canGenerateRandomOvni(game) && Alive == false){
+			Alive = true;
+			lives = 1;
 		}
 	}
 	
-	@Override
-	public void onDelete() {
-		game.enableShockWave();
-		game.receivePoints(this.points);
-		game.resetOvni();
-	}
+	// on delete
+	public void onDelete() { /* Empty, never dies */}
 	
-	@Override
+	// skin
 	public String toString() {
 		return "O[" + lives + "]";
 	}
 	
-	@Override
+	// move
 	public void move() {
-		if(this.posY > -1 && this.enableOvni == true) {
+		if(this.posY > -1 && Alive == true) {
 			this.posY --;	
 		}
 		
 		else {
-			this.enableOvni = false; 
-			this.posY = 10;
+			Alive = false; 
+			posY = 9;
 		}
 	}
 
-	@Override
+	// serialize
 	public String toStringified() {
 		return "O;" + posX + "," + posY + ";" + lives + "\n";
 	}
-		
+	
+	// damage object rewrite
+	public void damageObject (int damage) {		
+		if (lives - damage == 0) {
+			Alive = false;
+			posY = 9;
+		}
+	}
+
 }
