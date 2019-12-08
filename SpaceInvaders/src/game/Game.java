@@ -43,6 +43,7 @@ public class Game implements IPlayerController {
 	private int points = 0;
 	private boolean direction;
 	private boolean goDown;
+	private int cont;
 
 	
 	// ______________________ Constructor ______________________    
@@ -217,6 +218,7 @@ public class Game implements IPlayerController {
 	// set GoDown
 	public void setGoDown(boolean set) {
 		goDown = set;
+		cont = 0;
 	}
 	
 	//Add objects 	
@@ -298,6 +300,10 @@ public class Game implements IPlayerController {
 
 	// get go Down
 	public boolean goDown() {
+		if (cont < numEnemies())
+			cont++;
+		else
+			goDown = false;
 		return goDown;
 	}
 	
@@ -311,5 +317,4 @@ public class Game implements IPlayerController {
 		return direction;
 	}
 	
-
 }
