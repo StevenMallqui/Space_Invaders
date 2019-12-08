@@ -8,7 +8,6 @@ import java.util.Random;
 
 import exceptions.*;
 import gameObjects.GameObject;
-import gameObjects.Ovni;
 import gameObjects.ExplosiveAlien;
 import gameObjects.UCMMissile;
 import gameObjects.UCMShip;
