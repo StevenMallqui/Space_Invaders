@@ -19,7 +19,7 @@ public class UCMSuperMissile extends Weapons {
 
 	// On delete -----------------------------------------------
 	public void onDelete() {
-		
+		game.deactivateMissile();
 	}
 
 	// move

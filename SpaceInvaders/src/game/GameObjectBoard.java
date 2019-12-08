@@ -139,16 +139,6 @@ public class GameObjectBoard {
 				
 		return num;
 	}
-
-	// shoot laser
-	public boolean shootLaser() {
-		for (GameObject go : objects) 
-			if (go instanceof UCMMissile) 
-				return false;
-		
-		return true;
-	}
-
 	
 	// all dead
 	public boolean allDead() {			

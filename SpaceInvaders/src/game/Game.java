@@ -12,7 +12,7 @@ import gameObjects.Ovni;
 import gameObjects.ExplosiveAlien;
 import gameObjects.UCMMissile;
 import gameObjects.UCMShip;
-
+import gameObjects.UCMSuperMissile;
 import view.PrinterGenerator;
 import view.StringifierPrinter;
 
@@ -119,11 +119,12 @@ public class Game implements IPlayerController {
 	
 	// SHOOT MISSILE
 	public boolean shootLaser() {
-		if (!board.shootLaser())
+		if (ucm.getActiveMissile())
 			return false;
 			
 		else {
 			board.add(new UCMMissile(this, ucm.getPosX(), ucm.getPosY()));
+			ucm.setMissileActive(true);
 			return true;
 		}
 	}
@@ -144,11 +145,12 @@ public class Game implements IPlayerController {
 	
 	// Shoot super Missile
 	public boolean shootSuperMissile() {
-		if (!board.shootLaser())
+		if (ucm.getActiveMissile())
 			return false;
 			
 		else {
-			board.add(new UCMMissile(this, ucm.getPosX(), ucm.getPosY()));
+			board.add(new UCMSuperMissile(this, ucm.getPosX(), ucm.getPosY()));
+			ucm.setMissileActive(true);
 			points--;
 			ucm.substractMissile();
 			return true;
@@ -167,6 +169,10 @@ public class Game implements IPlayerController {
 		else 
 			System.out.println("  Not enough points");
 		
+	}
+	
+	public void deactivateMissile() {
+		ucm.setMissileActive(false);
 	}
 
 	// MOVE
