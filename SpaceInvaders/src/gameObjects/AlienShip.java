@@ -37,6 +37,7 @@ public abstract class AlienShip extends EnemyShip {
 	
 	public void onDelete() {
 		game.receivePoints(points);
+		game.decreaseAlien();
 	}
 	
 	// descend

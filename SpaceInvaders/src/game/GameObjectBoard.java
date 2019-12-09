@@ -35,15 +35,15 @@ public class GameObjectBoard {
 	}
 	
 	// get index
-	private int getIndex(int x, int y) {
-		int index=0;
-		for(int i=0; i < currentObjects; i++) {
-			if(objects[i].location(x, y)) {
-				index=i;
-			}
-		}
-		return index;
-	}
+//	private int getIndex(int x, int y) {
+//		int index=0;
+//		for(int i=0; i < currentObjects; i++) {
+//			if(objects[i].location(x, y)) {
+//				index=i;
+//			}
+//		}
+//		return index;
+//	}
 	
 	// remove
 	private void remove(GameObject object) {
@@ -128,17 +128,6 @@ public class GameObjectBoard {
 		
 		return "";
 	}
-
-	// get number of enemies
-	public int getCurrentEnemies() {
-		int num = 0;
-		
-		for(GameObject obj : objects) 
-			if(obj instanceof AlienShip)
-				num++;
-				
-		return num;
-	}
 	
 	// all dead
 	public boolean allDead() {			
@@ -174,11 +163,10 @@ public class GameObjectBoard {
 	// explode ship
 	public void explode(int x, int y) {
 		for (int i = 0; i < 3; i++)
-			for (int j = 0; j < 3; j++) {
+			for (int j = 0; j < 3; j++) 
 				if (getObjectInPosition(x -1 +i, y -1 +j) != null) {
 					getObjectInPosition(x -1 +i, y -1 +j).receiveExplosionAttack(1);
 				}
-			}
 	}
 
 	// Board info to Serialize

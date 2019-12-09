@@ -40,6 +40,7 @@ public class Game implements IPlayerController {
 	
 	// direction
 	private int points = 0;
+	private int numAliens;
 	private boolean direction;
 	private boolean goDown;
 	private int cont;
@@ -80,7 +81,7 @@ public class Game implements IPlayerController {
 	
 	//Player wins	
 	private boolean playerWin() {
-		return board.allDead();
+		return numAliens == 0;
 	}
 	
 	//Aliens wins
@@ -230,7 +231,17 @@ public class Game implements IPlayerController {
 	public void addObject(GameObject object) {
 		board.add(object);
 	}
-			
+	
+	// Set number of aliens
+	public void setNumAliens(int num) {
+		numAliens = num;
+	}
+		
+	// decrease aliens
+	public void decreaseAlien() {
+		numAliens--;
+	}
+	
 	// ----------------------  End Game  -----------------------
 
 	//Initializer 
@@ -314,7 +325,7 @@ public class Game implements IPlayerController {
 	
 	// get number of enemies
 	public int numEnemies() {
-		return board.getCurrentEnemies();
+		return numAliens;
 	}
 
 	// get direction

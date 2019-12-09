@@ -10,6 +10,8 @@ public class BoardInitializer {
 	private GameObjectBoard board;
 	private Game game;
 	
+	private int alienCont = 0;
+	
 	// initialize game object board
 	public  GameObjectBoard initialize(Game game, Level level) {
 		this.level = level;
@@ -19,6 +21,8 @@ public class BoardInitializer {
 		initializeOvni();
 		initializeRegularAliens();
 		initializeDestroyerAliens();
+		
+		game.setNumAliens(alienCont);
 		return board;
 	}
 	
@@ -29,54 +33,31 @@ public class BoardInitializer {
 	}
 	
 	private void initializeRegularAliens () {
-		int numAliens = level.getNumRegularAliens();
-		int numAliRow = level.getNumRegularAliensPerRow();
-		int strCol = 3;
+		int numShips = level.getNumRegularAliens();
+		int numShipsPerRow = level.getNumAliensPerRow();
+		int strCol = level.getRegularStartingCol();
+		int strRow = level.getRegularStartingRow();
 		
-		for (int i = 0; i < numAliRow; i++) {
-				board.add(new RegularAlien(game,1, strCol));
-				strCol++;
-		}
+		alienCont += numShips;
 		
-		if(numAliens == 8 || numAliens == 12) {
-			strCol = 3;
-			for(int i = 4; i < 8; i++){
-				board.add(new RegularAlien(game,2, strCol));
-				strCol++;
-			}
-		}
-		if(numAliens == 12) {
-			strCol = 3;
-			for(int i = 8; i< numAliens; i++){
-				board.add(new RegularAlien(game,3, strCol));
-				strCol++;
-			}
-		}
+		for (int i = 0; i < (numShips / numShipsPerRow); i++) 
+			for (int j = 0; j < numShipsPerRow; j++) 
+				board.add(new RegularAlien(game, strRow + i, strCol + j));
+			
+		
 	}
 		
 	private void initializeDestroyerAliens() {		
-		int numDestroyers = level.getNumDestroyerAliens();
-		int numRegulars = level.getNumRegularAliens();
-		int strRow = level.getDestroyerStartingRow();
+		int numShips = level.getNumDestroyerAliens();
 		int strCol = level.getDestroyerStartingCol();
+		int strRow = level.getDestroyerStartingRow();
 		
-		if(numDestroyers == 2){
-			strRow = 2;
-			strCol = 4;
-		}
-		else if(numRegulars == 8 && numDestroyers == 4) {
-			strRow = 3;
-			strCol = 3;
-		}
-		else {
-			strRow = 4;
-			strCol = 3;
-		}
+		alienCont += numShips;
+
+		for (int i = 0; i < numShips; i++) 
+			board.add(new DestroyerAlien(game, strRow, strCol + i));
 		
-		for (int i = 0; i < numDestroyers; i++) {
-			board.add(new DestroyerAlien(game, strRow, strCol));
-			strCol++;
-		}
+	
 	}
 	
 }

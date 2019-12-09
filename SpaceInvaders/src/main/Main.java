@@ -18,7 +18,8 @@ public class Main {
 		 // Read arguments
 		 while (args.length == 0) {
 			System.out.print("   Introduce Level and/or seed : ");
-		 	Scanner scan = new Scanner(System.in);
+		 	@SuppressWarnings("resource")
+			Scanner scan = new Scanner(System.in);
 			args = scan.nextLine().toUpperCase().trim().split("\\s+");
 			
 		 }
