@@ -106,5 +106,12 @@ public class UCMShip extends Ship {
 				";" + game.getShockWave() + ";" + superMissile +"\n";
 	}
 
+	public void setMissileActive(boolean actv) {
+		missile = actv;
+	}
+	
+	public boolean getActiveMissile() {
+		return missile;
+	}
 
 }

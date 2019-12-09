@@ -48,11 +48,7 @@ public class Main {
 							 }
 					 }
 				  
-				  } 
-			
-				
-			
-			 
+				  } 			 
 		 Random rand = new Random(seed);
 		 Level nvl = null;
 		 

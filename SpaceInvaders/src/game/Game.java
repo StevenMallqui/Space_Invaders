@@ -8,11 +8,10 @@ import java.util.Random;
 
 import exceptions.*;
 import gameObjects.GameObject;
-import gameObjects.Ovni;
 import gameObjects.ExplosiveAlien;
 import gameObjects.UCMMissile;
 import gameObjects.UCMShip;
-
+import gameObjects.UCMSuperMissile;
 import view.PrinterGenerator;
 import view.StringifierPrinter;
 
@@ -41,8 +40,10 @@ public class Game implements IPlayerController {
 	
 	// direction
 	private int points = 0;
+	private int numAliens;
 	private boolean direction;
 	private boolean goDown;
+	private int cont;
 
 	
 	// ______________________ Constructor ______________________    
@@ -80,7 +81,7 @@ public class Game implements IPlayerController {
 	
 	//Player wins	
 	private boolean playerWin() {
-		return board.allDead();
+		return numAliens == 0;
 	}
 	
 	//Aliens wins
@@ -118,11 +119,12 @@ public class Game implements IPlayerController {
 	
 	// SHOOT MISSILE
 	public boolean shootLaser() {
-		if (!board.shootLaser())
+		if (ucm.getActiveMissile())
 			return false;
 			
 		else {
 			board.add(new UCMMissile(this, ucm.getPosX(), ucm.getPosY()));
+			ucm.setMissileActive(true);
 			return true;
 		}
 	}
@@ -143,11 +145,12 @@ public class Game implements IPlayerController {
 	
 	// Shoot super Missile
 	public boolean shootSuperMissile() {
-		if (!board.shootLaser())
+		if (ucm.getActiveMissile())
 			return false;
 			
 		else {
-			board.add(new UCMMissile(this, ucm.getPosX(), ucm.getPosY()));
+			board.add(new UCMSuperMissile(this, ucm.getPosX(), ucm.getPosY()));
+			ucm.setMissileActive(true);
 			points--;
 			ucm.substractMissile();
 			return true;
@@ -166,6 +169,10 @@ public class Game implements IPlayerController {
 		else 
 			System.out.println("  Not enough points");
 		
+	}
+	
+	public void deactivateMissile() {
+		ucm.setMissileActive(false);
 	}
 
 	// MOVE
@@ -217,13 +224,24 @@ public class Game implements IPlayerController {
 	// set GoDown
 	public void setGoDown(boolean set) {
 		goDown = set;
+		cont = 0;
 	}
 	
 	//Add objects 	
 	public void addObject(GameObject object) {
 		board.add(object);
 	}
-			
+	
+	// Set number of aliens
+	public void setNumAliens(int num) {
+		numAliens = num;
+	}
+		
+	// decrease aliens
+	public void decreaseAlien() {
+		numAliens--;
+	}
+	
 	// ----------------------  End Game  -----------------------
 
 	//Initializer 
@@ -298,12 +316,16 @@ public class Game implements IPlayerController {
 
 	// get go Down
 	public boolean goDown() {
+		if (cont < numEnemies())
+			cont++;
+		else
+			goDown = false;
 		return goDown;
 	}
 	
 	// get number of enemies
 	public int numEnemies() {
-		return board.getCurrentEnemies();
+		return numAliens;
 	}
 
 	// get direction
@@ -311,5 +333,4 @@ public class Game implements IPlayerController {
 		return direction;
 	}
 	
-
 }

@@ -1,7 +1,6 @@
 package gameObjects;
 
 import game.Game;
-import game.IExecuteRandomActions;
 
 public class ExplosiveAlien extends AlienShip {
 	

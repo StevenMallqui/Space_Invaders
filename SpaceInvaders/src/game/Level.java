@@ -3,16 +3,15 @@ package game;
 
 public enum Level {
  
-	EASY(4, 2, 0.2, 3, 0.5, 1), 
-	HARD(8, 4, 0.3, 2, 0.2, 2),
-	INSANE(12, 4, 0.5, 1, 0.1, 3);
+	EASY(4, 2, 0.2, 3, 0.5), 
+	HARD(8, 4, 0.3, 2, 0.2),
+	INSANE(12, 4, 0.5, 1, 0.1);
 
 	private int numRegularAliens;
 	private int numDestroyerAliens;
 	private int numCyclesToMoveOneCell;
 	private double ovniFrequency;
 	private double shootFrequency;
-	private int numRowsOfRegularAliens;
 	private double turnExplodeFrequency = 0.005;
 
 	private Level(
@@ -20,48 +19,21 @@ public enum Level {
 			int numDestroyerAliens, 
 			double shootFrequency, 
 			int numCyclesToMoveOneCell, 
-			double ovniFrequency, 
-			int numRowsOfRegularAliens)
+			double ovniFrequency
+			)
 	{
 		this.numRegularAliens = numRegularAliens;
 		this.numDestroyerAliens = numDestroyerAliens;
 		this.shootFrequency = shootFrequency;
 		this.numCyclesToMoveOneCell = numCyclesToMoveOneCell;
 		this.ovniFrequency = ovniFrequency;
-		this.numRowsOfRegularAliens = numRowsOfRegularAliens;
-	}
-	
-
-	public int getNumRegularAliens() {
-		return numRegularAliens;
-	}
-	
-	public int getNumDestroyerAliens() {
-		return numDestroyerAliens;
-	}
-
-	public double getShootFrequency() {
-		return shootFrequency;
 	}
 	
 	public int getNumCyclesToMoveOneCell() {
 		return numCyclesToMoveOneCell;
 	}
 
-	public double getOvniFrequency() { 
-		return ovniFrequency;
-	}
-	public int getNumRowsOfRegularAliens() {
-		return numRowsOfRegularAliens;
-	}
 	
-	public int getNumRegularAliensPerRow() {
-		return 4;
-	}
-	
-	public int  getNumDestroyerAliensPerRow() {
-		return getNumDestroyerAliens();
-	}
 	
 	public static Level parse(String cadenaEntrada) {
 		for (Level level : Level.values())
@@ -69,9 +41,20 @@ public enum Level {
 				return level;
 	    return EASY;
 	}
-
+	
+	// Weapons
+	public double getShootFrequency() {
+		return shootFrequency;
+	}
+	
 	public double getTurnExplodeFrequency(){
 		return turnExplodeFrequency;
+	}
+
+
+	// Regular
+	public int getNumRegularAliens() {
+		return numRegularAliens;
 	}
 	
 	public int getRegularStartingRow() {
@@ -81,19 +64,32 @@ public enum Level {
 	public int getRegularStartingCol() {
 		return 3;
 	}
+		
+	public int getNumAliensPerRow() {
+		return 4;
+	}
 
+
+	// Destroyers
 	public int getDestroyerStartingRow() {
-		if (numRegularAliens == 4)
-			return 2;
-		else 
-			return 3;
+		return getRegularStartingRow() + (numRegularAliens / getNumAliensPerRow());
+	}
+	
+
+	public int getNumDestroyerAliens() {
+		return numDestroyerAliens;
+	}
+
+	public int getDestroyerStartingCol() {
+		if (numDestroyerAliens == 2)
+			return 4;
+		return 3;
+	}
+
+	// Ovni
+	public double getOvniFrequency() { 
+		return ovniFrequency;
 	}
 
 	
-	public int getDestroyerStartingCol() {
-		if (numDestroyerAliens == 4)
-			return 3;
-		else 
-			return 4;
-	}
 }
