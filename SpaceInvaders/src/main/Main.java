@@ -1,3 +1,7 @@
+
+/*   PRÁCTICA DE MARCOS CONNOLLY LÓPEZ Y STEVEN MALLQUI AGUILAR  */
+				/*              2º D                 */
+
 package main;
 
 import controller.Controller;
@@ -11,35 +15,43 @@ public class Main {
 	
 	// Static main class
 	 public static void main(String[] args) {
-		 long seed = 0l;
-		 String level;
+		 int seed = 0;
+		 String level = null;
+		 boolean entry = false;
+
 		 
-		 	
-		 // Read arguments
-		 while (args.length == 0) {
-			System.out.print("   Introduce Level and/or seed : ");
-		 	Scanner scan = new Scanner(System.in);
-			args = scan.nextLine().toUpperCase().trim().split("\\s+");
+		// Read arguments
+				 while (!entry) {
+					System.out.print("   Introduce Level and/or seed : ");
+				 	Scanner scan = new Scanner(System.in);
+					args = scan.nextLine().toUpperCase().trim().split("\\s+");
+					
+					 if(args.length == 2) {
+						
+							 if(args[0].equals("EASY")||args[0].equals("HARD")||args[0].equals("INSANE")) {
+								 level = args[0];
+								 System.out.println("Level : " + level);
+								 try {
+									 seed = Integer.parseInt(args[1]);
+								 }
+								 
+								 catch(NumberFormatException e) {
+									 System.out.println("   Generating random seed ...");
+									 seed = new Random(System.currentTimeMillis()).nextInt();  
+								 }
+								 entry = true;
+							 
+							}
+							 
+							 else {
+								 	System.out.println("   Level must be one of: EASY, HARD, INSANE.");
+							 }
+					 }
+				  
+				  } 
 			
-		 }
-		 
-		 // Read level
-		 level = args[0];
-		 System.out.println("Level : " + level);
-		 
-		 
-		 // Read seed
-		 if(args.length == 2) {
-			 try {
-				 seed = Integer.parseInt(args[1]);
-			 }
-			 
-			 catch(NumberFormatException e) {
-				 System.out.println("   Generating random seed ...");
-				 seed = new Random(System.currentTimeMillis()).nextInt();  
-			 }
-		 }
-		 
+				
+			
 			 
 		 Random rand = new Random(seed);
 		 Level nvl = null;
@@ -60,10 +72,11 @@ public class Main {
 		 controlador.run();
 		 
 	 }
-	 
-	 
-	 
-	 
 }
+	 
+	 
+	 
+	 
+	 
 
-
+	 
