@@ -5,6 +5,7 @@
 package main;
 
 import controller.Controller;
+import exceptions.*;
 import game.Game;
 import game.Level;
 
@@ -15,37 +16,40 @@ public class Main {
 	
 	// Static main class
 	 public static void main(String[] args) {
-		 int seed = 0;
+		 long seed = 0l;
 		 String level = null;
 		 boolean entry = false;
 
 		 
 		// Read arguments
+		 
 				 while (!entry) {
+					 
+					 try {
+					 
 					System.out.print("   Introduce Level and/or seed : ");
 				 	Scanner scan = new Scanner(System.in);
 					args = scan.nextLine().toUpperCase().trim().split("\\s+");
 					
-					 if(args.length == 2) {
-						
-							 if(args[0].equals("EASY")||args[0].equals("HARD")||args[0].equals("INSANE")) {
-								 level = args[0];
-								 System.out.println("Level : " + level);
-								 try {
+						 if(args.length == 2) {
+							
+								 if(args[0].equals("EASY")||args[0].equals("HARD")||args[0].equals("INSANE")) {
+									 level = args[0];
+									 
 									 seed = Integer.parseInt(args[1]);
-								 }
+									 System.out.println("Level : " + level);
+									 entry = true;
 								 
-								 catch(NumberFormatException e) {
-									 System.out.println("   Generating random seed ...");
-									 seed = new Random(System.currentTimeMillis()).nextInt();  
-								 }
-								 entry = true;
-							 
-							}
-							 
-							 else {
-								 	System.out.println("   Level must be one of: EASY, HARD, INSANE.");
-							 }
+								}
+								 
+								else {
+									 throw new levelException();
+							    }
+						 }
+					 }
+					 
+					 catch(levelException|NumberFormatException e) {
+						 System.out.println(e.getMessage());
 					 }
 				  
 				  } 			 
@@ -68,6 +72,9 @@ public class Main {
 		 controlador.run();
 		 
 	 }
+	 
+
+	 
 }
 	 
 	 
