@@ -1,6 +1,5 @@
 package game;
 
-
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -20,7 +19,7 @@ public class Game implements IPlayerController {
 		
 	// ______________________ Variables   ______________________  
 	
-	// World Borders :
+	// Constants :
 	public final static int DIM_Y = 8;
 	public final static int DIM_X = 9 ;
 	private final int MissileCost = 20;
