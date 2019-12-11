@@ -42,7 +42,7 @@ public class Game implements IPlayerController {
 	// direction
 	private int points = 0;
 	
-	
+	//as
 	// ______________________ Constructor ______________________    
 
 	public Game(Level level, Random rand) {
