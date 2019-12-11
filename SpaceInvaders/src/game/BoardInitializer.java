@@ -19,18 +19,12 @@ public class BoardInitializer {
 		this.game = game;
 		board = new GameObjectBoard(Game.DIM_X, Game.DIM_Y);
 		
-		initializeUCMShip();
 		initializeOvni();
 		initializeRegularAliens();
 		initializeDestroyerAliens();
 		
 		game.setNumAliens(alienCont);
 		return board;
-	}
-	
-	// initialize UCM Ship
-	private void initializeUCMShip() {
-		board.add(new UCMShip(game, Game.DIM_X /2, Game.DIM_Y -1));
 	}
 	
 	// initialize ufo
