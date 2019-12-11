@@ -36,16 +36,14 @@ public class Game implements IPlayerController {
 	private int cycle = 0;
 	private Random rand;
 	private Level level;
+	private int points = 0;
+	private int numAliens;
+
 
 	// End
-	private int numAliens;
-	private boolean aliensLanded = false;
 	private boolean end = false;
-	
-	// direction
-	private int points = 0;
-	
-	//as
+	private boolean aliensLanded = false;
+
 	// ______________________ Constructor ______________________    
 
 	public Game(Level level, Random rand) {
@@ -74,6 +72,8 @@ public class Game implements IPlayerController {
 		return board.toString(posX,posY);
 	}
 	
+	// ----------------------  End  -----------------------
+
 	//Game is finished 	
 	public boolean isFinished() {
 		return playerWin() || aliensWin() || end;
@@ -85,10 +85,12 @@ public class Game implements IPlayerController {
 	}
 	
 	//Aliens wins
-	public boolean aliensWin() {
+	private boolean aliensWin() {
 		return !ucm.isAlive() || aliensLanded;
 	}
 	
+	// ---------------------- Score Board Info -----------------------
+
 	// Get lives
 	public int getLives() {
 		return ucm.getLive();
@@ -176,6 +178,7 @@ public class Game implements IPlayerController {
 			
 	}
 	
+	// deactivate missile
 	public void deactivateMissile() {
 		ucm.setMissileActive(false);
 	}
