@@ -50,7 +50,8 @@ public class Main{
 					
 				else if (level.equals("INSANE"))
 					nvl = Level.INSANE;
-			
+				
+	
 				 Game game = new Game(nvl, rand);
 				 Controller controlador = new Controller(game);
 				 

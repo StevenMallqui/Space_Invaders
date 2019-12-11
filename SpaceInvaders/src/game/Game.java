@@ -1,5 +1,6 @@
 package game;
 
+
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -16,10 +17,12 @@ import view.StringifierPrinter;
 
 
 public class Game implements IPlayerController {
-		
-	// ______________________ Variables   ______________________  
+	
+	
+	// ______________________ Variables   ______________________  													
 	
 	// Constants :
+	// World Borders :
 	public final static int DIM_Y = 8;
 	public final static int DIM_X = 9 ;
 	private final int MissileCost = 20;
@@ -218,6 +221,7 @@ public class Game implements IPlayerController {
 		return board.toStringifier();
 	}
 
+	
 	//Add objects 	
 	public void addObject(GameObject object) {
 		board.add(object);
@@ -236,21 +240,21 @@ public class Game implements IPlayerController {
 	// ----------------------  End Game  -----------------------
 
 	//Initializer 
-	public void initGame() {
+	public void initGame () {
 		cycle = 0;
-		ucm = new UCMShip(this, DIM_X/2, DIM_Y -1);
 		board = initializer.initialize(this, level);
+		ucm = new UCMShip(this, DIM_X /2, DIM_Y -1);
 		board.add(ucm);
-	}
-
-	// End game
-	public void endGame() {
-		end = true;
 	}
 	
 	// Enemy Landed
 	public void haveLanded() {
 		aliensLanded = true;
+	}
+	
+	// End game
+	public void endGame() {
+		end = true;
 	}
 
 	//Restart the game	
@@ -301,14 +305,16 @@ public class Game implements IPlayerController {
 		board.add(new ExplosiveAlien(this, posX, posY, lives));
 	}
 
+
 	// Explode
 	public void damageNearbyObjects(int x, int y) {
 		board.explode(x, y);
 	}
-	
+
 	// get number of enemies
 	public int numEnemies() {
 		return numAliens;
 	}
 
+	
 }
