@@ -1,5 +1,6 @@
 package game;
 
+
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -19,7 +20,7 @@ public class Game implements IPlayerController {
 		
 	// ______________________ Variables   ______________________  
 	
-	// Constants :
+	// World Borders :
 	public final static int DIM_Y = 8;
 	public final static int DIM_X = 9 ;
 	private final int MissileCost = 20;
@@ -35,13 +36,15 @@ public class Game implements IPlayerController {
 	private Level level;
 
 	// End
-	private int numAliens;
-	private boolean aliensLanded = false;
 	private boolean end = false;
 	
 	// direction
 	private int points = 0;
-	
+	private int numAliens;
+	private boolean direction;
+	private boolean goDown;
+	private int cont;
+
 	
 	// ______________________ Constructor ______________________    
 
@@ -83,7 +86,7 @@ public class Game implements IPlayerController {
 	
 	//Aliens wins
 	public boolean aliensWin() {
-		return !ucm.isAlive() || aliensLanded;
+		return !ucm.isAlive() || board.haveLanded();
 	}
 	
 	// Get lives
@@ -142,7 +145,7 @@ public class Game implements IPlayerController {
 	
 	// Shoot super Missile
 	public boolean shootSuperMissile() {
-		if (ucm.getActiveMissile() || ucm.getNumSuperMissile() < 1)
+		if (ucm.getActiveMissile())
 			return false;
 			
 		else {
@@ -218,6 +221,12 @@ public class Game implements IPlayerController {
 		return board.toStringifier();
 	}
 
+	// set GoDown
+	public void setGoDown(boolean set) {
+		goDown = set;
+		cont = 0;
+	}
+	
 	//Add objects 	
 	public void addObject(GameObject object) {
 		board.add(object);
@@ -236,21 +245,16 @@ public class Game implements IPlayerController {
 	// ----------------------  End Game  -----------------------
 
 	//Initializer 
-	public void initGame() {
+	public void initGame () {
 		cycle = 0;
-		ucm = new UCMShip(this, DIM_X/2, DIM_Y -1);
 		board = initializer.initialize(this, level);
+		ucm = new UCMShip(this, DIM_X /2, DIM_Y -1);
 		board.add(ucm);
 	}
 
 	// End game
 	public void endGame() {
 		end = true;
-	}
-	
-	// Enemy Landed
-	public void haveLanded() {
-		aliensLanded = true;
 	}
 
 	//Restart the game	
@@ -300,9 +304,23 @@ public class Game implements IPlayerController {
 		board.add(new ExplosiveAlien(this, posX, posY, lives));
 	}
 
+	// change direction
+	public void changeDirection() {
+		direction = !direction;
+	}
+
 	// Explode
 	public void damageNearbyObjects(int x, int y) {
 		board.explode(x, y);
+	}
+
+	// get go Down
+	public boolean goDown() {
+		if (cont < numEnemies())
+			cont++;
+		else
+			goDown = false;
+		return goDown;
 	}
 	
 	// get number of enemies
@@ -310,4 +328,9 @@ public class Game implements IPlayerController {
 		return numAliens;
 	}
 
+	// get direction
+	public boolean getDirection() {
+		return direction;
+	}
+	
 }
