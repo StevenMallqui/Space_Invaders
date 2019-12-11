@@ -44,7 +44,10 @@ public class ShootCommand extends Command{
 				if (game.shootSuperMissile()) {
 					game.update();
 					ok = true;
-				}			
+				}
+				else {
+					throw new supermissileException();
+				}
 			}
 			
 			else if (game.shootLaser()) {
@@ -55,7 +58,7 @@ public class ShootCommand extends Command{
 				throw new shootException();
 			}
 		}
-		catch(shootException e) {
+		catch(shootException | supermissileException e) {
 			throw new CommandExecuteException(e.getMessage());
 		}
 		
