@@ -158,17 +158,22 @@ public class Game implements IPlayerController {
 	}
 
 	// buy super missile
-	public void buySuperMissile() {
+	public void buySuperMissile() throws CommandExecuteException {
 		
-		if (points >= MissileCost) {
-				System.out.println("   Missile acquired");
-				ucm.addSuperMissile();
-				points -= MissileCost;
+		try {
+			if (points >= MissileCost) {
+					System.out.println("   Missile acquired");
+					ucm.addSuperMissile();
+					points -= MissileCost;
+			}
+			
+			else 
+				throw new buysupermissileException();
 		}
-		
-		else 
-			System.out.println("  Not enough points");
-		
+		catch(buysupermissileException e) {
+			throw new CommandExecuteException (e.getMessage());
+		}
+			
 	}
 	
 	public void deactivateMissile() {
