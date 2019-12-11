@@ -17,9 +17,11 @@ import view.StringifierPrinter;
 
 
 public class Game implements IPlayerController {
-		
-	// ______________________ Variables   ______________________  
 	
+	
+	// ______________________ Variables   ______________________  													
+	
+	// Constants :
 	// World Borders :
 	public final static int DIM_Y = 8;
 	public final static int DIM_X = 9 ;
@@ -36,15 +38,13 @@ public class Game implements IPlayerController {
 	private Level level;
 
 	// End
+	private int numAliens;
+	private boolean aliensLanded = false;
 	private boolean end = false;
 	
 	// direction
 	private int points = 0;
-	private int numAliens;
-	private boolean direction;
-	private boolean goDown;
-	private int cont;
-
+	
 	
 	// ______________________ Constructor ______________________    
 
@@ -86,7 +86,7 @@ public class Game implements IPlayerController {
 	
 	//Aliens wins
 	public boolean aliensWin() {
-		return !ucm.isAlive() || board.haveLanded();
+		return !ucm.isAlive() || aliensLanded;
 	}
 	
 	// Get lives
@@ -145,7 +145,7 @@ public class Game implements IPlayerController {
 	
 	// Shoot super Missile
 	public boolean shootSuperMissile() {
-		if (ucm.getActiveMissile())
+		if (ucm.getActiveMissile() || ucm.getNumSuperMissile() < 1)
 			return false;
 			
 		else {
@@ -221,11 +221,6 @@ public class Game implements IPlayerController {
 		return board.toStringifier();
 	}
 
-	// set GoDown
-	public void setGoDown(boolean set) {
-		goDown = set;
-		cont = 0;
-	}
 	
 	//Add objects 	
 	public void addObject(GameObject object) {
@@ -251,7 +246,12 @@ public class Game implements IPlayerController {
 		ucm = new UCMShip(this, DIM_X /2, DIM_Y -1);
 		board.add(ucm);
 	}
-
+	
+	// Enemy Landed
+	public void haveLanded() {
+		aliensLanded = true;
+	}
+	
 	// End game
 	public void endGame() {
 		end = true;
@@ -305,33 +305,16 @@ public class Game implements IPlayerController {
 		board.add(new ExplosiveAlien(this, posX, posY, lives));
 	}
 
-	// change direction
-	public void changeDirection() {
-		direction = !direction;
-	}
 
 	// Explode
 	public void damageNearbyObjects(int x, int y) {
 		board.explode(x, y);
 	}
 
-	// get go Down
-	public boolean goDown() {
-		if (cont < numEnemies())
-			cont++;
-		else
-			goDown = false;
-		return goDown;
-	}
-	
 	// get number of enemies
 	public int numEnemies() {
 		return numAliens;
 	}
 
-	// get direction
-	public boolean getDirection() {
-		return direction;
-	}
 	
 }
