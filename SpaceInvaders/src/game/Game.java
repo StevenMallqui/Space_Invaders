@@ -247,7 +247,6 @@ public class Game implements IPlayerController {
 	public void initGame () {
 		cycle = 0;
 		board = initializer.initialize(this, level);
-		ucm = new UCMShip(this, DIM_X /2, DIM_Y -1);
 		board.add(ucm);
 	}
 

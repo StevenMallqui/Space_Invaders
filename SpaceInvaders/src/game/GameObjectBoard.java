@@ -35,15 +35,15 @@ public class GameObjectBoard {
 	}
 	
 	// get index
-	private int getIndex(int x, int y) {
-		int index=0;
-		for(int i=0; i < currentObjects; i++) {
-			if(objects[i].location(x, y)) {
-				index=i;
-			}
-		}
-		return index;
-	}
+//	private int getIndex(int x, int y) {
+//		int index=0;
+//		for(int i=0; i < currentObjects; i++) {
+//			if(objects[i].location(x, y)) {
+//				index=i;
+//			}
+//		}
+//		return index;
+//	}
 	
 	// remove
 	private void remove(GameObject object) {
@@ -130,7 +130,7 @@ public class GameObjectBoard {
 	}
 	
 	// all dead
-	public boolean allDead() {			
+	public boolean allDead() {		
 		for (GameObject go : objects) {
 			if ((go instanceof AlienShip) && go.isAlive())
 				return false;
