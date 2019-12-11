@@ -24,26 +24,19 @@ public class GameObjectBoard {
 
 	// get object in position
 	private GameObject getObjectInPosition (int x,int y ) {
-		
-		for(int i = 0; i < currentObjects; i++) {
-			
-			if(objects[i].location(x, y)) {
-				return objects[i];
-			}
-		}
-		return null;
+		return objects[getIndex(x, y)];
 	}
 	
 	// get index
-//	private int getIndex(int x, int y) {
-//		int index=0;
-//		for(int i=0; i < currentObjects; i++) {
-//			if(objects[i].location(x, y)) {
-//				index=i;
-//			}
-//		}
-//		return index;
-//	}
+	private int getIndex(int x, int y) {
+		int index=0;
+		for(int i=0; i < currentObjects; i++) {
+			if(objects[i].location(x, y)) {
+				index=i;
+			}
+		}
+		return index;
+	}
 	
 	// remove
 	private void remove(GameObject object) {
@@ -145,7 +138,7 @@ public class GameObjectBoard {
 		for (int i = 0; i < 3; i++)
 			for (int j = 0; j < 3; j++) 
 				if (getObjectInPosition(x -1 +i, y -1 +j) != null) {
-					getObjectInPosition(x -1 +i, y -1 +j).receiveExplosionAttack(1);
+					getObjectInPosition(x -1 +i, y -1 +j).receiveMissileAttack(1);
 				}
 	}
 

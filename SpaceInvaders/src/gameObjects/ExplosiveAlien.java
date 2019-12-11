@@ -15,7 +15,7 @@ public class ExplosiveAlien extends AlienShip {
 	// on delete
 	public void onDelete() {
 		game.receivePoints(points);
-		game.damageNearbyObjects(posX, posY);
+		game.explode(posX, posY);
 	}
 
 	// Get skin

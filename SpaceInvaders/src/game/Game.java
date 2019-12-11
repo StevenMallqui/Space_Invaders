@@ -313,9 +313,8 @@ public class Game implements IPlayerController {
 		board.add(new ExplosiveAlien(this, posX, posY, lives));
 	}
 
-
 	// Explode
-	public void damageNearbyObjects(int x, int y) {
+	public void explode(int x, int y) {
 		board.explode(x, y);
 	}
 
