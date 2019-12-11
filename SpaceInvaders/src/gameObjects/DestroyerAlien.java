@@ -37,6 +37,7 @@ public class DestroyerAlien extends AlienShip {
 	@Override
 	public void onDelete() {
 		game.receivePoints(points);
+		game.decreaseAlien();
 	}
 
 	@Override

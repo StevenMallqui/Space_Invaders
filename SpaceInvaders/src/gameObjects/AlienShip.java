@@ -70,13 +70,6 @@ public abstract class AlienShip extends EnemyShip {
 		}
 	}
 	
-	// --------------------- On delete  ---------------------
-
-	public void onDelete() {
-		game.receivePoints(points);
-		game.decreaseAlien();
-	}
-	
 	// --------------------- Reached end ---------------------
 
 	// Get Reached bottom

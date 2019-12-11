@@ -297,6 +297,7 @@ public class Game implements IPlayerController {
 
 	// Turn Explosive
 	public void regularToExplosive(int posX, int posY, int lives) {
+		numAliens++;
 		board.add(new ExplosiveAlien(this, posX, posY, lives));
 	}
 

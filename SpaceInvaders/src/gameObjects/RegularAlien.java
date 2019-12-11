@@ -18,6 +18,7 @@ public class RegularAlien extends AlienShip {
 	// on delete
 	public void onDelete() {
 		game.receivePoints(points);
+		game.decreaseAlien();
 	}
 
 	// Get skin
