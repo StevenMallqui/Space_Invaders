@@ -52,8 +52,9 @@ public class Ovni extends EnemyShip implements IExecuteRandomActions{
 	
 	// damage object rewrite
 	public void damageObject (int damage) {		
-		if (lives - damage == 0) {
+		if (lives - damage <= 0) {
 			game.receivePoints(points);
+			game.enableShockWave();
 			Alive = false;
 			posY = 9;
 		}
