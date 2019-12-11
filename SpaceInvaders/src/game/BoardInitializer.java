@@ -2,7 +2,6 @@ package game;
 
 import gameObjects.Ovni;
 import gameObjects.RegularAlien;
-import gameObjects.UCMShip;
 import gameObjects.DestroyerAlien;
 
 public class BoardInitializer {
