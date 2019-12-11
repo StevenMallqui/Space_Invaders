@@ -129,26 +129,6 @@ public class GameObjectBoard {
 		return "";
 	}
 	
-	// all dead
-	public boolean allDead() {		
-		for (GameObject go : objects) {
-			if ((go instanceof AlienShip) && go.isAlive())
-				return false;
-		}
-		
-		return true;
-	}
-	
-	// have landed
-	public boolean haveLanded() {
-		for (GameObject go : objects) {
-			if (go instanceof AlienShip && go.getPosX() == Game.DIM_X -2)
-				return true;
-		}
-		
-		return false;
-	}
-
 	// shoot shock wave
 	public boolean shootShockwave() {
 		for (GameObject go: objects) {
@@ -178,6 +158,5 @@ public class GameObjectBoard {
 		
 		return text;
 	}
-
 
 }

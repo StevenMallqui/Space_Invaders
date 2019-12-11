@@ -37,7 +37,7 @@ public class RegularAlien extends AlienShip {
 	@Override
 	public String toStringified() {
 		String dir = "left";
-		if (game.getDirection())
+		if (direction)
 			dir = "right";
 		
 		return "R;" + posX + "," + posY + ";" + lives + ";" + (3 - game.getCycle()%3) + ";" + dir + "\n";

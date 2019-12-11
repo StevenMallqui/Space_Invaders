@@ -29,7 +29,7 @@ public class DestroyerAlien extends AlienShip {
 		return "D[" + lives + "]";
 	}
 
-
+	
 	public void set(boolean active) { 
 		activeBomb = active;
 	}
@@ -42,7 +42,7 @@ public class DestroyerAlien extends AlienShip {
 	@Override
 	public String toStringified() {
 		String dir = "left";
-		if (game.getDirection())
+		if (direction)
 			dir = "right";
 		return "D;" + posX + "," + posY + ";" + lives + ";" + (3 - game.getCycle()%3) + ";" + dir + "\n";
 	}

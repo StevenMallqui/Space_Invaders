@@ -32,6 +32,7 @@ public class BoardInitializer {
 		
 	}
 	
+	// initialize regular aliens
 	private void initializeRegularAliens () {
 		int numShips = level.getNumRegularAliens();
 		int numShipsPerRow = level.getNumAliensPerRow();
@@ -47,6 +48,7 @@ public class BoardInitializer {
 		
 	}
 		
+	// initialize destroyer alien
 	private void initializeDestroyerAliens() {		
 		int numShips = level.getNumDestroyerAliens();
 		int strCol = level.getDestroyerStartingCol();

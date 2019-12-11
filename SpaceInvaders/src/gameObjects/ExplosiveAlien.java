@@ -31,7 +31,7 @@ public class ExplosiveAlien extends AlienShip {
 	// to serial
 	public String toStringified() {
 		String dir = "left";
-		if (game.getDirection())
+		if (direction)
 			dir = "right";
 		
 		return "E;" + posX + "," + posY + ";" + lives + ";" + (3 - game.getCycle()%3) + ";" + dir + "\n";

@@ -46,7 +46,7 @@ public class Bomb extends Weapons{
 		return "*";
 	}
 
-	//________________________ recieve missil attack ____________
+	//________________________ receive missile attack ____________
 	
 	public boolean receiveMissileAttack(int damage) {
 		damageObject(damage);

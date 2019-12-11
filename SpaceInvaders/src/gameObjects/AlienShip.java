@@ -4,6 +4,10 @@ import game.Game;
 
 public abstract class AlienShip extends EnemyShip {
 	
+	private static int Shipcont = -1;
+	protected static boolean direction = false;
+	private static boolean goDown = false;
+	
 	// ______________________ Constructor ______________________    
 
 	public AlienShip(Game game, int x, int y, int live, int points) {
@@ -13,49 +17,71 @@ public abstract class AlienShip extends EnemyShip {
 
 	// ______________________   Methods   ______________________
 	
-	// Get Reached bottom
-	public boolean reachBottom(int min) {
-		return (posX == min);
-	}
+	// --------------------- move & update ---------------------
 	
-	// move
+	// update
 	public void move() {
-		if (descend())
-			posX++;
+		// Check descend
+		checkBorder();
 		
+		// go down
+		goDown();
+		
+		// move
 		if (game.getCycle() % game.getLevel().getNumCyclesToMoveOneCell() == 0) {
-			
-			if (game.getDirection()) 
+			if (direction) 
 				posY++;
 			
 			else 
-				posY--;
-			
+				posY--;	
 		}
-		
 	}
 	
+	// descend
+	private void checkBorder() {		
+		if (direction) {
+			if(Game.DIM_Y == posY) {
+				direction = !direction;
+				goDown = true;
+			}
+		}
+		
+		else if (0 == posY) {
+			direction = !direction;
+			goDown = true;
+		}
+	}
+
+	// go Down
+	private void goDown() {
+		if (goDown) {
+			if (Shipcont < game.numEnemies()) {
+				posX++;
+				Shipcont++;
+				
+				// Check if reached bottom row 
+				reachBottom();
+			}
+			
+			else {
+				Shipcont = 0;
+				goDown = false;
+			}
+		}
+	}
+	
+	// --------------------- On delete  ---------------------
+
 	public void onDelete() {
 		game.receivePoints(points);
 		game.decreaseAlien();
 	}
 	
-	// descend
-	private boolean descend() {		
-		if (game.getDirection()) {
-			if(Game.DIM_Y == posY) {
-				game.changeDirection();
-				game.setGoDown(true);
-			}
-		}
-		
-		
-		else if (0 == posY) {
-			game.changeDirection();
-			game.setGoDown(true);
-		}
-		
-		return game.goDown();
+	// --------------------- Reached end ---------------------
+
+	// Get Reached bottom
+	private void reachBottom() {
+		if (posX == Game.DIM_X -2)
+			game.haveLanded();
 	}
-	
 }
