@@ -142,7 +142,7 @@ public class Game implements IPlayerController {
 	
 	// Shoot super Missile
 	public boolean shootSuperMissile() {
-		if (ucm.getActiveMissile())
+		if (ucm.getActiveMissile() || ucm.getNumSuperMissile() < 1)
 			return false;
 			
 		else {
