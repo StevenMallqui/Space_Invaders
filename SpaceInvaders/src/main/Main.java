@@ -1,16 +1,14 @@
 
-/*   PRÁCTICA DE MARCOS CONNOLLY LÓPEZ Y STEVEN MALLQUI AGUILAR  */
-				/*              2º D                 */
+/*   PRACTICA DE MARCOS CONNOLLY LOPEZ Y STEVEN MALLQUI AGUILAR  */
+				/*              2 D                 */
 
 package main;
 
 import controller.Controller;
-import exceptions.*;
 import game.Game;
 import game.Level;
 
 import java.util.Random;
-import java.util.Scanner;
 
 
 public class Main{
