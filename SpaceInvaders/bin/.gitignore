@@ -1,5 +1,9 @@
-/main/
+/.DS_Store
+/commands/
+/controller/
+/exceptions/
 /game/
 /gameObjects/
-/exceptions/
-/commands/
+/main/
+/util/
+/view/
