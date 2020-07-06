@@ -4,7 +4,7 @@ import game.Game;
 
 public abstract class AlienShip extends EnemyShip {
 	
-	private static int Shipcont = -1;
+	private static int Shipcont = 0;
 	protected static boolean direction = false;
 	private static boolean goDown = false;
 	
@@ -43,13 +43,16 @@ public abstract class AlienShip extends EnemyShip {
 			if(Game.DIM_Y == posY) {
 				direction = !direction;
 				goDown = true;
+				Shipcont = 0;
 			}
 		}
 		
-		else if (0 == posY) {
-			direction = !direction;
-			goDown = true;
-		}
+		else 
+			if (0 == posY) {
+				direction = !direction;
+				goDown = true;
+				Shipcont = 0;
+			}
 	}
 
 	// go Down
@@ -64,7 +67,6 @@ public abstract class AlienShip extends EnemyShip {
 			}
 			
 			else {
-				Shipcont = 0;
 				goDown = false;
 			}
 		}
