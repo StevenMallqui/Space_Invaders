@@ -92,12 +92,12 @@ public class BoardPrinter extends GamePrinter {
 	// score board
 	public String scoreBoard(Game game) {
 		String text = "";		
-		text += "\n  Life : " + game.getLives();
+		text += "\n  Life : " + game.getUCMShip().getLives();
 		text += "\n  Number of cycles : " + game.getCycle();
-		text += "\n  Points : " + game.getPoints();
-		text += "\n  Remaining aliens : " + game.numEnemies();
-		text += "\n  Shockwave : " + game.getShockWave();
-		text += "\n  Super Missiles : " + game.getNumSupermissiles();
+		text += "\n  Points : " + game.getUCMShip().getPoints();
+		//text += "\n  Remaining aliens : " + game.numEnemies();
+		text += "\n  Shockwave : " + game.getUCMShip().getShockwave();
+		text += "\n  Super Missiles : " + game.getUCMShip().getNumSuperMissile();
 		return text;
 	}
 

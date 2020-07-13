@@ -19,9 +19,9 @@ public class UCMSuperMissile extends Weapons {
 
 	// On delete -----------------------------------------------
 	public void onDelete() {
-		game.deactivateMissile();
+		game.getUCMShip().setMissileActive(false);
 	}
-
+	
 	// move
 	public void move() {
 		posX--;

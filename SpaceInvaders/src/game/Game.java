@@ -1,6 +1,5 @@
 package game;
 
-
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -8,6 +7,7 @@ import java.util.Random;
 
 import exceptions.*;
 import gameObjects.GameObject;
+import gameObjects.AlienShip;
 import gameObjects.ExplosiveAlien;
 import gameObjects.UCMMissile;
 import gameObjects.UCMShip;
@@ -15,34 +15,24 @@ import gameObjects.UCMSuperMissile;
 import view.PrinterGenerator;
 import view.StringifierPrinter;
 
-
 public class Game implements IPlayerController {
-	
 	
 	// ______________________ Variables   ______________________  													
 	
-	// Constants :
-	// World Borders :
 	public final static int DIM_Y = 8;
 	public final static int DIM_X = 9 ;
-	private final int MissileCost = 20;
 	
-	// Objects
 	private UCMShip ucm;
 	private BoardInitializer initializer;
 	private GameObjectBoard board;
-	
-	// Variables
+
 	private int cycle = 0;
 	private Random rand;
 	private Level level;
-	private int points = 0;
-	private int numAliens;
+	
+	private int numAliens = 0;
 
-
-	// End
 	private boolean end = false;
-	private boolean aliensLanded = false;
 
 	// ______________________ Constructor ______________________    
 
@@ -55,199 +45,6 @@ public class Game implements IPlayerController {
 	}
 	// ______________________   METHODS   ______________________
 	
-	// ----------------------  Get Info  -----------------------
-	
-	//Return our random number 
-	public Random getRandom() {
-		return rand;
-	}
-	
-	//Return the level selected 	
-	public Level getLevel() {
-		return level;
-	}
-
-	//COLLISIONS && PRINTING 
-	public String toString(int posX, int posY) {
-		return board.toString(posX,posY);
-	}
-	
-	// ----------------------  End  -----------------------
-
-	//Game is finished 	
-	public boolean isFinished() {
-		return playerWin() || aliensWin() || end;
-	}
-	
-	//Player wins	
-	private boolean playerWin() {
-		return numAliens == 0;
-	}
-	
-	//Aliens wins
-	private boolean aliensWin() {
-		return !ucm.isAlive() || aliensLanded;
-	}
-	
-	// ---------------------- Score Board Info -----------------------
-
-	// Get lives
-	public int getLives() {
-		return ucm.getLive();
-	}
-
-	// get cycle
-	public int getCycle() {
-		return cycle;
-	}
-
-	// get points
-	public int getPoints() {
-		return points;
-	}
-	
-	// shock wave
-	public boolean getShockWave() {
-		return ucm.getShockwave();
-	}
-
-	// List Printer Command
-	public String listPrinterCommand() {
-		return PrinterGenerator.printerHelp();
-	}
-
-	
-	// -------------------- Player Actions ---------------------
-	
-	// SHOOT MISSILE
-	public boolean shootLaser() {
-		if (ucm.getActiveMissile())
-			return false;
-			
-		else {
-			board.add(new UCMMissile(this, ucm.getPosX(), ucm.getPosY()));
-			ucm.setMissileActive(true);
-			return true;
-		}
-	}
-
-	// SHOOT SHOCKWAVE
-	public boolean shockWave(){
-	
-			if (ucm.getShockwave()) {
-				board.shootShockwave();
-				ucm.setShockWave(false);
-				return true;
-			}
-			
-			else 
-				return false;
-			
-	}
-	
-	// Shoot super Missile
-	public boolean shootSuperMissile() {
-		if (ucm.getActiveMissile() || ucm.getNumSuperMissile() < 1)
-			return false;
-			
-		else {
-			board.add(new UCMSuperMissile(this, ucm.getPosX(), ucm.getPosY()));
-			ucm.setMissileActive(true);
-			points--;
-			ucm.substractMissile();
-			return true;
-		}
-	}
-
-	// buy super missile
-	public void buySuperMissile() throws CommandExecuteException {
-		
-		try {
-			if (points >= MissileCost) {
-					System.out.println("   Missile acquired");
-					ucm.addSuperMissile();
-					points -= MissileCost;
-			}
-			
-			else 
-				throw new buysupermissileException();
-		}
-		catch(buysupermissileException e) {
-			throw new CommandExecuteException (e.getMessage());
-		}
-			
-	}
-	
-	// deactivate missile
-	public void deactivateMissile() {
-		ucm.setMissileActive(false);
-	}
-
-	// MOVE
-	public boolean move(int num) throws CommandExecuteException {
-		boolean ok = false;
-		try {	
-			if (ucm.getPosY() + num >= 0 && ucm.getPosY() + num <= DIM_Y) {
-				ok = true;
-				ucm.setMovement(num);
-			}
-			else {
-				throw new limitException();
-			}
-		}
-		catch(limitException e) {
-			throw new CommandExecuteException(e.getMessage());
-		}
-			
-		return ok;
-	}
-
-	// ------------------- Misc Operations ---------------------
-	
-	// RECEIVE POINTS
-	public void receivePoints(int points) {
-		this.points += points;
-	}
-			
-	// ENABLE SHOCKWAVE
-	public void enableShockWave() {
-		ucm.setShockWave(true);
-	}
-
-	// ENABLE MISSILE
-	public void enableMissile() {
-		ucm.enableMissile();
-	}
-	
-	// get number of missiles
-	public int getNumSupermissiles() {
-		return ucm.getNumSuperMissile();
-	}
-
-	// Serialize
-	public String boardToStringifier() {
-		return board.toStringifier();
-	}
-
-	
-	//Add objects 	
-	public void addObject(GameObject object) {
-		board.add(object);
-	}
-	
-	// Set number of aliens
-	public void setNumAliens(int num) {
-		numAliens = num;
-	}
-		
-	// decrease aliens
-	public void decreaseAlien() {
-		numAliens--;
-	}
-	
-	// ----------------------  End Game  -----------------------
-
-	//Initializer 
 	public void initGame () {
 		cycle = 0;
 		board = initializer.initialize(this, level);
@@ -255,30 +52,122 @@ public class Game implements IPlayerController {
 		board.add(ucm);
 	}
 	
-	// Enemy Landed
-	public void haveLanded() {
-		aliensLanded = true;
+	public Random getRandom() {
+		return rand;
 	}
 	
-	// End game
-	public void endGame() {
-		end = true;
+	public Level getLevel() {
+		return level;
 	}
-
-	//Restart the game	
+	
 	public void reset() {
 		initGame();
 	}
+	
+	public void addObject(GameObject object) {
+		board.add(object);
+	}
 
-	//When game is finished 
+	public String toString(int posX, int posY) {
+		return board.toString(posX,posY);
+	}
+	
+	public boolean isFinished() {
+		return playerWin() || aliensWin() || end;
+	}
+	
+	private boolean aliensWin() {
+		return !ucm.isAlive() || AlienShip.haveLanded();
+	}
+	
+	private boolean playerWin() {
+		return AlienShip.allDead();
+	}
+	
+	public void update() {
+		board.computerAction();
+		board.update();
+		cycle++;
+	}
+		
+	public boolean isOnBoard(int posX, int posY) {
+		return ucm.getPosX() == posX && ucm.getPosY() == posY;
+	}	
+	
+	public void endGame() {
+		end = true;
+	}
+	
+	public String boardToStringifier() {
+		return board.toStringifier();
+	}
+
 	public String getWinnerMessage () {
 		if (playerWin()) return "Player win!";
 		else if (aliensWin()) return "Aliens win!";
 		else if (end) return "Player exits the game";
 		else return "This should not happen";
 	}
+	
 
-	// Save Game
+	//______________________IPlayerController____________________
+	
+	//PLAYER ACTIONS
+	
+	public boolean move(int num) throws CommandExecuteException{
+		return ucm.emove(num);
+	}
+
+	public boolean shootLaser() {
+		return ucm.shootLaser();
+	}
+
+	public boolean shockWave(){
+		return ucm.shockWave();
+	}
+	
+	//CALLBACKS
+	
+	public void receivePoints(int points) {
+		ucm.setPoints(points);
+	}
+	
+	public void enableShockWave() {
+		ucm.setShockWave(true);
+	}
+
+	public void enableMissile() {
+		ucm.setMissileActive(true);
+	}
+	
+	//_____________________________________________________________________
+	
+	public GameObjectBoard getBoard() {
+		return board;
+	}
+
+	public int getCycle() {
+		return cycle;
+	}
+
+	public UCMShip getUCMShip() {
+		return ucm;
+	}
+	//______________________COMMANDS____________________
+
+	public String listPrinterCommand() {
+		return PrinterGenerator.printerHelp();
+	}
+
+	public boolean shootSuperMissile() {
+		return ucm.shootSuperMissile();
+	}
+
+
+	public void buySuperMissile() throws CommandExecuteException {
+		ucm.buySuperMissile();
+	}
+	
 	public boolean saveGame(String name) throws IOException {
 		StringifierPrinter sp = new StringifierPrinter();
 		String text = sp.toString(this);
@@ -290,38 +179,26 @@ public class Game implements IPlayerController {
 		
 		return true; 
 	}
-
-	// ----------------------   Update   -----------------------
-
-	// Update
-	public void update() {
-		board.computerAction();
-		board.update();
-		cycle++;
-	}
 	
-	//Return a boolean if its on board
-	public boolean isOnBoard(int posX, int posY) {
-		return ucm.getPosX() == posX && ucm.getPosY() == posY;
-	}	
-	
-	// --------------------  Enemy Ships  ----------------------
-
-	// Turn Explosive
 	public void regularToExplosive(int posX, int posY, int lives) {
-		numAliens++;
 		board.add(new ExplosiveAlien(this, posX, posY, lives));
 	}
-
-	// Explode
+	
 	public void explode(int x, int y) {
 		board.explode(x, y);
 	}
 
-	// get number of enemies
-	public int numEnemies() {
-		return numAliens;
+
+	public void setNumAliens(int num) {
+		numAliens = num;
 	}
 
+	public void decreaseAlien() {
+		numAliens--;
+	}
+	
+	public int numEnemies() {
+    	return numAliens;
+	}
 	
 }

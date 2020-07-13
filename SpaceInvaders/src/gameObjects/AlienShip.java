@@ -7,6 +7,8 @@ public abstract class AlienShip extends EnemyShip {
 	private static int Shipcont = 0;
 	protected static boolean direction = false;
 	private static boolean goDown = false;
+	private static boolean landed = false;
+	private static boolean allDead = false;
 	
 	// ______________________ Constructor ______________________    
 
@@ -35,6 +37,14 @@ public abstract class AlienShip extends EnemyShip {
 			else 
 				posY--;	
 		}
+	}
+	
+	public static boolean haveLanded() {
+		return landed;
+	}
+	
+	public static boolean allDead() {
+		return allDead;
 	}
 	
 	// descend
@@ -77,6 +87,6 @@ public abstract class AlienShip extends EnemyShip {
 	// Get Reached bottom
 	private void reachBottom() {
 		if (posX == Game.DIM_X -2)
-			game.haveLanded();
+			landed = true;
 	}
 }
