@@ -15,6 +15,7 @@ public class ExplosiveAlien extends AlienShip {
 	// on delete
 	public void onDelete() {
 		game.receivePoints(points);
+		game.decreaseAlien();
 		game.explode(posX, posY);
 	}
 

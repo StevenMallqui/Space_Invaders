@@ -10,7 +10,7 @@ public abstract class GameObject implements IAttack {
 	protected int posX;
 	protected int posY;
 	protected int lives;
-	protected Game game;
+	protected static Game game;
 	
 	// ______________________ Constructor ______________________    
 

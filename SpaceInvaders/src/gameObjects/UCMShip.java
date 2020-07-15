@@ -197,4 +197,4 @@ public class UCMShip extends Ship {
 	public void setMissileActive(boolean actv) {
 		missile = actv;
 	}
-}
+} 

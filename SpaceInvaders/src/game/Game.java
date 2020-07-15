@@ -182,6 +182,7 @@ public class Game implements IPlayerController {
 	
 	public void regularToExplosive(int posX, int posY, int lives) {
 		board.add(new ExplosiveAlien(this, posX, posY, lives));
+		numAliens++;
 	}
 	
 	public void explode(int x, int y) {

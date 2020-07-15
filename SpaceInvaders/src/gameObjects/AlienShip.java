@@ -44,6 +44,9 @@ public abstract class AlienShip extends EnemyShip {
 	}
 	
 	public static boolean allDead() {
+		if(game.numEnemies() == 0) {
+			allDead = true;
+		}
 		return allDead;
 	}
 	
