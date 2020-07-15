@@ -132,7 +132,6 @@ public class UCMShip extends Ship {
 		else {
 			game.getBoard().add(new UCMSuperMissile(game,getPosX(),getPosY()));
 			setMissileActive(true);
-			points--;
 			substractMissile();
 			return true;
 		}
