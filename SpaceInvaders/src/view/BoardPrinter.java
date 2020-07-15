@@ -83,6 +83,8 @@ public class BoardPrinter extends GamePrinter {
 		text += c.helpText();
 		c = new ListPrinterCommand();
 		text += c.helpText();
+		c = new SaveCommand();
+		text += c.helpText();
 		text += this.helpText();
 		
 		return text;
