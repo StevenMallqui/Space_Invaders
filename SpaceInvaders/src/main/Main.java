@@ -1,6 +1,4 @@
 
-/*   PRACTICA DE MARCOS CONNOLLY LOPEZ Y STEVEN MALLQUI AGUILAR  */
-				/*              2 D                 */
 
 package main;
 
