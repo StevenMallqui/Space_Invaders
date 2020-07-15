@@ -27,13 +27,7 @@ public class UCMShip extends Ship {
 	public void computerAction() {
 		
 	}
-	
-	public void decreaseSuperMissiles() {
-		if(superMissile > 0) {
-			superMissile--;
-		}
-	}
-	
+		
 	public boolean performAttack(GameObject other) {
 		if (other != null)
 			return missile;

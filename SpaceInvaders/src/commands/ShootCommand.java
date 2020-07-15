@@ -44,6 +44,7 @@ public class ShootCommand extends Command{
 				if (game.shootSuperMissile()) {
 					game.update();
 					ok = true;
+					supermissile = false;
 				}
 				else {
 					throw new supermissileException();
