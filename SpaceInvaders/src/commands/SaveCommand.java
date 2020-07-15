@@ -1,9 +1,12 @@
 package commands;
 
+import java.io.BufferedWriter;
+import java.io.FileWriter;
 import java.io.IOException;
 
 import exceptions.*;
 import game.Game;
+import view.StringifierPrinter;
 
 public class SaveCommand extends Command{
 	
@@ -42,7 +45,7 @@ public class SaveCommand extends Command{
 	public boolean execute(Game game) throws CommandExecuteException {
 		
 		try {
-			if  (game.saveGame(name))
+			if  (saveGame(name,game))
 				System.out.print("  Game successfully saved in file <" + name + ">\n");
 			
 				else 
@@ -59,6 +62,17 @@ public class SaveCommand extends Command{
 		this.name = name + ".dat";
 	}
 
+	public boolean saveGame(String name,Game game) throws IOException {
+		StringifierPrinter sp = new StringifierPrinter();
+		String text = sp.toString(game);
+		
+		BufferedWriter writer = new BufferedWriter(new FileWriter(name));
+		
+		writer.write(text);
+		writer.close();
+		
+		return true; 
+	}
 	
 	
 }

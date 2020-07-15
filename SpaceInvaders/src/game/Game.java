@@ -162,22 +162,9 @@ public class Game implements IPlayerController {
 	public boolean shootSuperMissile() {
 		return ucm.shootSuperMissile();
 	}
-
-
+	
 	public void buySuperMissile() throws CommandExecuteException {
 		ucm.buySuperMissile();
-	}
-	
-	public boolean saveGame(String name) throws IOException {
-		StringifierPrinter sp = new StringifierPrinter();
-		String text = sp.toString(this);
-		
-		BufferedWriter writer = new BufferedWriter(new FileWriter(name));
-		
-		writer.write(text);
-		writer.close();
-		
-		return true; 
 	}
 	
 	public void regularToExplosive(int posX, int posY, int lives) {
@@ -188,8 +175,7 @@ public class Game implements IPlayerController {
 	public void explode(int x, int y) {
 		board.explode(x, y);
 	}
-
-
+	
 	public void setNumAliens(int num) {
 		numAliens = num;
 	}
@@ -201,5 +187,4 @@ public class Game implements IPlayerController {
 	public int numEnemies() {
     	return numAliens;
 	}
-	
 }
