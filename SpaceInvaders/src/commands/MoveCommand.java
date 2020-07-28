@@ -25,7 +25,7 @@ public class MoveCommand extends Command{
 		MoveCommand command = null;
 		
 		try {
-			if (commandWords.length == 3 ) {
+			if (commandWords.length == 3) {
 				if(matchCommandName(commandWords[0])) {
 					command = new MoveCommand();
 					command.setCommands(commandWords[1], commandWords[2]);

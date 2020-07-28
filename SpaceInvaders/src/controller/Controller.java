@@ -41,7 +41,7 @@ public class Controller {
 			String[] words = in.nextLine().toLowerCase().trim().split("\\s+");
 			
 			try {
-			Command command = CommandGenerator.parse(words);
+				Command command = CommandGenerator.parse(words);
 
 				if (command != null) {
 					if (command.execute(game))
@@ -51,10 +51,11 @@ public class Controller {
 					}
 				}
 			}
+			
 			catch (CommandParseException|CommandExecuteException ex) {
 					
 					System.err.println(ex.getMessage()); 
-					System.out.print(" Command > ");
+					System.out.print("  Command > ");
 			}
 			
 		}

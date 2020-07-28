@@ -1,19 +1,13 @@
 package game;
 
-import java.io.BufferedWriter;
-import java.io.FileWriter;
-import java.io.IOException;
 import java.util.Random;
 
 import exceptions.*;
 import gameObjects.GameObject;
 import gameObjects.AlienShip;
 import gameObjects.ExplosiveAlien;
-import gameObjects.UCMMissile;
 import gameObjects.UCMShip;
-import gameObjects.UCMSuperMissile;
 import view.PrinterGenerator;
-import view.StringifierPrinter;
 
 public class Game implements IPlayerController {
 	
@@ -186,5 +180,9 @@ public class Game implements IPlayerController {
 	
 	public int numEnemies() {
     	return numAliens;
+	}
+
+	public void substractCycle() {
+		cycle--;
 	}
 }

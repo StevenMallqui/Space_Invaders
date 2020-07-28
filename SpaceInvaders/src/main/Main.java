@@ -13,7 +13,7 @@ public class Main{
 	
 	public static void main(String[] args) {
 		
-		 long seed = 0l;
+		 long seed;
 		 String level;
 		
 	 if (args.length > 0) {
@@ -33,6 +33,11 @@ public class Main{
 					 System.out.println("   Loading random seed ...");
 					 seed = new Random(System.currentTimeMillis()).nextInt();  
 				 }
+			 }
+			 
+			 else {
+				 System.out.println("   Loading random seed ...");
+				 seed = new Random(System.currentTimeMillis()).nextInt();   
 			 }
 			 
 			 Random rand = new Random(seed);
