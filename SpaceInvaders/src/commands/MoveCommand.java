@@ -28,7 +28,14 @@ public class MoveCommand extends Command{
 			if (commandWords.length == 3 ) {
 				if(matchCommandName(commandWords[0])) {
 					command = new MoveCommand();
-					command.setCommands(commandWords[1], commandWords[2]);
+					
+					if(commandWords[1].equals("left")||commandWords[1].equals("right")) {
+						command.setCommands(commandWords[1], commandWords[2]);
+					}
+				
+					else {
+						throw new directionException();
+					}
 				}
 				
 				else {
@@ -41,7 +48,7 @@ public class MoveCommand extends Command{
 			}
 		}
 		
-		catch(lengthException | wrongWordException e){
+		catch(lengthException | wrongWordException | directionException e){
 			throw new CommandParseException(e.getMessage());
 		}
 		
@@ -55,7 +62,6 @@ public class MoveCommand extends Command{
 		boolean ok = false;
 		
 		try {
-			if (direction.equals("left") || direction.equals("right")) { 
 				if (spaces ==  1 || spaces == 2) {
 					
 					if (direction.equals("left"))
@@ -70,14 +76,8 @@ public class MoveCommand extends Command{
 				else {
 					throw new spacesException();
 				}
-			}
-			
-			else {
-				throw new directionException();
-			}
 		}
-			
-		catch(directionException | spacesException e) {
+		catch(spacesException e) {
 			throw new CommandExecuteException(e.getMessage());
 		}
 
