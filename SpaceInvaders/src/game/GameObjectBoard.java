@@ -13,7 +13,7 @@ public class GameObjectBoard {
 	
 	public GameObjectBoard (int width, int height) {
 		
-		objects = new GameObject[0];
+		objects = new GameObject[width*height];
 		currentObjects = 0;
 	}
 	
@@ -31,9 +31,10 @@ public class GameObjectBoard {
 	private int getIndex(int x, int y) {
 		int index=0;
 		for(int i=0; i < currentObjects; i++) {
-			if(objects[i].location(x, y)) {
-				index=i;
-			}
+			if (objects[i] != null)
+				if(objects[i].location(x, y)) {
+					index=i;
+				}
 		}
 		return index;
 	}
@@ -41,51 +42,43 @@ public class GameObjectBoard {
 	// remove
 	private void remove(GameObject object) {
 		for (int i = 0; i < currentObjects; i++) 
-			if (objects[i].equals(object)) {
-				int pos = i;
-				
-				for (int j = pos; j < currentObjects-1; j++) 
-					objects[j] = objects[j+1];
-				
-			}
+			if (objects[i] != null)
+				if (objects[i].equals(object)) {
+					for (int j = i; j < currentObjects-1; j++) 
+						objects[j] = objects[j+1];
+					
+				}
 		
 		currentObjects--;
-		objects = newList(currentObjects);
+//		objects = newList(currentObjects);
 	}
 	
 	// check attacks
 	private void checkAttacks(GameObject object) {
 		for (int j = 0; j < currentObjects; j++)
-			if (object.getPosX() == objects[j].getPosX())
-				if (object.getPosY() == objects[j].getPosY())
-					object.performAttack(objects[j]);
+			if (objects[j] != null)
+				if (object.getPosX() == objects[j].getPosX())
+					if (object.getPosY() == objects[j].getPosY())
+						object.performAttack(objects[j]);
 	}
 
 	// remove dead
 	private void removeDead() {
 		for(int i = 0; i < currentObjects; i++) 
-			if(!objects[i].isAlive()) {
-				objects[i].onDelete();
-				remove(objects[i]);
-				i--;
-			}
+			if (objects[i] != null)
+				if(!objects[i].isAlive()) {
+					objects[i].onDelete();
+					remove(objects[i]);
+					i--;
+				}
 	}
 	
-	// new list
-	private GameObject[] newList(int size) {
-		GameObject[] list = new GameObject[size];
-		
-		for (int i = 0; i < currentObjects; i++)
-			list[i] = objects[i];
-		
-		return list;
-	}
 	
 	// ----------------------   Public   -----------------------
 	
 	// add
 	public void add(GameObject object) {
-		objects = newList(currentObjects +1);
+//		objects = newList(currentObjects +1);
 		objects[currentObjects] = object;
 		currentObjects++;
 	}
@@ -94,8 +87,10 @@ public class GameObjectBoard {
 	// update
 	public void update() {
 		for (GameObject obj : objects) {
-			obj.move();
-			checkAttacks(obj);
+			if (obj != null) {
+				obj.move();
+				checkAttacks(obj);
+			}
 		}
 		
 		removeDead();
@@ -104,8 +99,11 @@ public class GameObjectBoard {
 	// computer action
 	public void computerAction() {
 		for(GameObject obj : objects) {
-			obj.computerAction();
-			checkAttacks(obj);
+			if (obj != null) {
+				obj.computerAction();
+				checkAttacks(obj);
+
+			}
 		}
 		
 		removeDead();
@@ -114,7 +112,7 @@ public class GameObjectBoard {
 	// to string
 	public String toString(int x, int y) {
 		for(GameObject obj : objects) {
-			if(obj.location(x, y)){
+			if(obj != null && obj.location(x, y)){
 				return obj.toString();
 			}
 		}
@@ -125,7 +123,8 @@ public class GameObjectBoard {
 	// shoot shock wave
 	public boolean shootShockwave() {
 		for (GameObject go: objects) {
-			go.receiveShockWaveAttack(1);
+			if (go != null)
+				go.receiveShockWaveAttack(1);
 		}
 		
 		removeDead();
@@ -147,7 +146,8 @@ public class GameObjectBoard {
 		String text = "";
 		
 		for (GameObject obj : objects) 
-			text += obj.toStringified();
+			if (obj != null)
+				text += obj.toStringified();
 		
 		return text;
 	}
