@@ -40,12 +40,7 @@ public class CommandGenerator {
 				return command;
 		}
 		
-		if(command == null) {
-			throw new CommandParseException("NOT COMMAND FOUND");
-		}
-		
-		
-		return null;
+		throw new CommandParseException("NOT COMMAND FOUND");
 	}
 	
 	// Execute help

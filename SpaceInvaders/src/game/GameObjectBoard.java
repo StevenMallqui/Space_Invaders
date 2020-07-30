@@ -48,7 +48,7 @@ public class GameObjectBoard {
 						objects[j] = objects[j+1];
 					
 				}
-		
+		objects[currentObjects-1] = null;
 		currentObjects--;
 //		objects = newList(currentObjects);
 	}
