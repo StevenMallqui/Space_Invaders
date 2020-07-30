@@ -63,7 +63,7 @@ public class MoveCommand extends Command{
 	// __________________________ EXECUTE ___________________________
 	
 	public boolean execute(Game game) throws CommandExecuteException {
-		
+		 
 		boolean ok = false;
 		
 		if (game.move(spaces)) {
