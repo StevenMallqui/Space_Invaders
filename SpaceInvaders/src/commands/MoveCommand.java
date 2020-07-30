@@ -31,6 +31,14 @@ public class MoveCommand extends Command{
 					
 					if(commandWords[1].equals("left")||commandWords[1].equals("right")) {
 						command.setCommands(commandWords[1], commandWords[2]);
+						if(command.getSpaces() > 0 && command.getSpaces() < 3) {
+							if(command.getDirection().equals("left")) {
+								command.setSpaces(command.iSpaces());
+							}
+						}
+						else {
+							throw new spacesException();
+						}
 					}
 				
 					else {
@@ -48,7 +56,7 @@ public class MoveCommand extends Command{
 			}
 		}
 		
-		catch(lengthException | wrongWordException | directionException e){
+		catch(lengthException | wrongWordException | directionException|spacesException e){
 			throw new CommandParseException(e.getMessage());
 		}
 		
@@ -61,31 +69,29 @@ public class MoveCommand extends Command{
 		
 		boolean ok = false;
 		
-		try {
-				if (spaces ==  1 || spaces == 2) {
-					
-					if (direction.equals("left"))
-						spaces = -spaces;
-			
-					if (game.move(spaces)) {
-						game.update();
-						ok = true;
-					}
-				}
-				
-				else {
-					throw new spacesException();
-				}
+		if (game.move(spaces)) {
+			game.update();
+			ok = true;
 		}
-		catch(spacesException e) {
-			throw new CommandExecuteException(e.getMessage());
-		}
-
+	
 		return ok;
 	}
 	
 	private void setCommands(String command1, String command2) {
 		direction = command1;
 		spaces = Integer.parseInt(command2) ;
+	}
+	
+	private String getDirection() {
+		return direction;
+	}
+	private int getSpaces() {
+		return spaces;
+	}
+	private void setSpaces(int aux) {
+		spaces = aux;
+	}
+	private int iSpaces() {
+		return spaces = -spaces;
 	}
 }
