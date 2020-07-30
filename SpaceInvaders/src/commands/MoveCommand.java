@@ -32,23 +32,20 @@ public class MoveCommand extends Command{
 					if(commandWords[1].equals("left")||commandWords[1].equals("right")) {
 						command.setCommands(commandWords[1], commandWords[2]);
 						if(command.getSpaces() > 0 && command.getSpaces() < 3) {
-							if(command.getDirection().equals("left")) {
+							if(command.getDirection().equals("left")) 
 								command.setSpaces(command.iSpaces());
-							}
 						}
-						else {
+						
+						else 
 							throw new spacesException();
-						}
 					}
-				
-					else {
+	
+					else 
 						throw new directionException();
-					}
 				}
 				
-				else {
+				else 
 					throw new wrongWordException();
-				}
 			}
 			
 			else if(commandWords.length > 3){ 
