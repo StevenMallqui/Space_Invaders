@@ -101,7 +101,7 @@ public class GameObjectBoard {
 		for(GameObject obj : objects) {
 			if (obj != null) {
 				obj.computerAction();
-				//checkAttacks(obj);
+				checkAttacks(obj);
 
 			}
 		}
